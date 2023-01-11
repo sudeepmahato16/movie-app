@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');
+
+
+*,
+*::after,
+*::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Nunito', sans-serif;
+
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
