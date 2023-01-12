@@ -1,25 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 *,
 *::after,
-*::before{
+*::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
   scroll-behavior: smooth;
 }
 
-body{
-  font-family: 'Nunito', sans-serif;
-
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  position: absolute;
+  content: "";
+  height: 2.75px;
+  width: 0;
+  background-color: #ff0000;
+  bottom: -4px;
+  left: 50%;
+  border-radius: 20px;
+  transition: all 0.3s;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-

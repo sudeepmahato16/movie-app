@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        black: '#191624',
+        black: "#191624",
       },
       textColor: {
         lightGray: "#F1EFEE",
@@ -18,13 +19,13 @@ module.exports = {
       backgroundColor: {
         mainColor: "#FBF8F9",
         secondaryColor: "#F0F0F0",
-        blackOverlay: "rgba(0, 0 ,0 ,0.7)"
-      }
+        blackOverlay: "rgba(0, 0 ,0 ,0.7)",
+      },
     },
     fontFamily: {
-      'nunito': ['Nunito', 'sans-serif'],
-      'roboto': ['Roboto', 'sans-serif']
-    }
+      nunito: ["Nunito", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
+    },
   },
   plugins: [],
-}
+};

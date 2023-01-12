@@ -1,9 +1,11 @@
-import React from 'react'
+import { maxWidth } from "./../styles/styles";
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <footer>
+      <div className={`${maxWidth}`}></div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

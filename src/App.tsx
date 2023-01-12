@@ -1,13 +1,18 @@
-import { Routes, Route } from "react-router-dom";
-import { Catalog, Home, Detail } from "./pages";
+import React from "react";
 
-import { Header, Footer } from "./components";
+import { Routes, Route } from "react-router-dom";
+
+import { Catalog, Home, Detail } from "./pages";
+import { Header, Footer, SideBar, Overlay } from "./components";
+import { maxWidth } from "./styles/styles";
 
 const App = () => {
   return (
     <>
+      <Overlay />
       <Header />
-      <main>
+      <SideBar />
+      <main className={`${maxWidth}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:category/:id" element={<Detail />} />
