@@ -13,7 +13,7 @@ const Logo: React.FC<logoProps> = ({ classes = "" }) => {
       className={`h-[28px] w-[28px] flex flex-row items-center gap-2 ${classes}`}
     >
       <img src={LogoImg} alt="logo" className="h-full" />
-      <h3 className="font-semibold text-[18px] text-black">tMovies</h3>
+      <h3 className="font-semibold text-[18px] text-black dark:text-primary">tMovies</h3>
     </Link>
   );
 };

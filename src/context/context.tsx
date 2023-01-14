@@ -6,9 +6,10 @@ const context = React.createContext({
   showSideBar: false,
   activeTheme: "System",
   setActiveTheme: (newTheme: string) => {},
-  setTheme: (newTheme: string | null) => {},
+  setTheme: (newTheme: string) => {},
   checkSystemTheme: () => {},
-  setShowSideBar: (prevValue: boolean) => {}
+  setShowSideBar: (prevValue: boolean) => {},
+  theme: "",
 });
 
 interface Props {
@@ -18,7 +19,7 @@ interface Props {
 const GlobalContextProvider = ({ children }: Props) => {
   const [showThemeOptions, setShowThemeOptions] = useState<boolean>(false);
   const [showSideBar, setShowSideBar] = useState<boolean>(false);
-  const [theme, setTheme] = useState<null | string>(null);
+  const [theme, setTheme] = useState<string>("");
   const [activeTheme, setActiveTheme] = useState<string>("System");
 
   const checkSystemTheme = () => {
@@ -34,7 +35,6 @@ const GlobalContextProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    
     if (theme === "Dark") {
       document.documentElement.classList.add("dark");
     } else if (theme === "Light") {
@@ -55,8 +55,9 @@ const GlobalContextProvider = ({ children }: Props) => {
         activeTheme,
         setActiveTheme,
         setTheme,
+        theme,
         checkSystemTheme,
-        setShowSideBar
+        setShowSideBar,
       }}
     >
       {children}

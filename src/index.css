@@ -11,6 +11,7 @@
 html,
 body {
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
 
 .nav-link {
   position: relative;
+  transition: all ease-in 0.3s;
 }
 
 .nav-link::after {
@@ -42,6 +44,40 @@ body {
   width: 100%;
 }
 
+.light-glass {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark-glass {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+}
+
+.overlay{
+  /* background: linear-gradient(to right,rgba(0,0,0, 0.6) 60%,  transparent 40%) */
+  background: rgba(0, 0, 0, 0.075);
+}
+
+.text-shadow {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.731);
+}
+
+.watch-trailer--dark {
+  box-shadow: inset 0 0 0 1px #fff;
+}
+.watch-trailer--light {
+  box-shadow: inset 0 0 0 1px black;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+

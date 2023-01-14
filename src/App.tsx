@@ -6,13 +6,15 @@ import { Catalog, Home, Detail } from "./pages";
 import { Header, Footer, SideBar, Overlay } from "./components";
 import { maxWidth } from "./styles/styles";
 
+import "swiper/css";
+
 const App = () => {
   return (
     <>
       <Overlay />
       <Header />
       <SideBar />
-      <main className={`${maxWidth}`}>
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:category/:id" element={<Detail />} />

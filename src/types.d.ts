@@ -8,3 +8,10 @@ export interface themeTypes {
 export interface navLinkType extends themeTypes {
     path: string
 }
+
+export interface fetchPropsType {
+    category: string,
+    type: string
+}
+
+

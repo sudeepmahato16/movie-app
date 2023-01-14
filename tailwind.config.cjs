@@ -19,8 +19,13 @@ module.exports = {
       backgroundColor: {
         mainColor: "#FBF8F9",
         secondaryColor: "#F0F0F0",
-        blackOverlay: "rgba(0, 0 ,0 ,0.7)",
+        blackOverlay: "rgba(0, 0 ,0 ,0.3)",
       },
+      boxShadow: {
+        glow: "0 0 18px rgb(255, 0, 0);",
+        glowLight: "0 0 24px rgb(255, 0, 0, 0.5)"
+      },
+      
     },
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],
