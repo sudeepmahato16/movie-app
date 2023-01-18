@@ -7,8 +7,18 @@ import { staggerContainer } from "../utils/motion";
 import { slideUp, zoomIn } from "./../utils/motion";
 
 const HeroSlide = ({ movie }: { movie: any }) => {
-  const { overview, original_title: title, poster_path: imgUrl } = movie;
-  const { theme } = useGlobalContext();
+  const {
+    overview,
+    original_title: title,
+    poster_path: posterPath,
+    id,
+  } = movie;
+  const { theme, getTrailerId, openModal } = useGlobalContext();
+
+  const showTrailer = (id: number) => {
+    getTrailerId(id);
+    openModal();
+  }
 
   return (
     <div
@@ -18,11 +28,11 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         variants={staggerContainer(0.2, 0.4)}
         initial="hidden"
         animate="show"
-        className="dark:text-gray-300 text-[#555] max-w-[420px] font-nunito flex flex-col gap-6 mb-8"
+        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col gap-6 mb-8"
       >
         <motion.h2
           variants={slideUp}
-          className="text-4xl font-extrabold leading-tight dark:text-secColor text-[#333]"
+          className="text-4xl font-extrabold leading-tight dark:text-secColor text-[#333] max-w-[420px]"
         >
           {title}
         </motion.h2>
@@ -46,6 +56,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
             className={`${watchBtn} text-shadow ${
               theme === "Dark" ? "watch-trailer--dark" : "watch-trailer--light"
             } `}
+            onClick={() => showTrailer(id)}
           >
             Watch trailer
           </button>
@@ -57,7 +68,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
           variants={zoomIn(0.5, 0.8)}
           initial="hidden"
           animate="show"
-          src={`https://image.tmdb.org/t/p/original/${imgUrl}`}
+          src={`https://image.tmdb.org/t/p/original/${posterPath}`}
           alt={title}
           className="max-h-[380px] rounded-xl  shadow-lg"
         />

@@ -11,11 +11,35 @@
 html,
 body {
   scroll-behavior: smooth;
-  overflow: hidden;
+  overflow-x: hidden;
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 body {
   font-family: "Montserrat", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  background-color: #aaa;
+}
+
+::-webkit-scrollbar-track {
+  background: #464646;
+}
+
+::-webkit-scrollbar-corner {
+  border-radius: 25px;
 }
 
 .nav-link {
@@ -23,17 +47,22 @@ body {
   transition: all ease-in 0.3s;
 }
 
-.nav-link::after {
+.nav-link::after,
+.line {
   position: absolute;
   content: "";
   height: 2.75px;
-  width: 0;
   background-color: #ff0000;
   bottom: -4px;
-  left: 50%;
+
   border-radius: 20px;
-  transition: all 0.3s;
+}
+
+.nav-link::after {
+  width: 0;
+  left: 50%;
   transform: translateX(-50%);
+  transition: all 0.3s;
 }
 
 .nav-link:hover::after {
@@ -42,6 +71,10 @@ body {
 
 .nav-link.active::after {
   width: 100%;
+}
+
+.line {
+  width: 70%;
 }
 
 .light-glass {
@@ -53,14 +86,19 @@ body {
 }
 
 .dark-glass {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0)
+  );
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  border: 1px solid
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
 
-.overlay{
+.overlay {
   /* background: linear-gradient(to right,rgba(0,0,0, 0.6) 60%,  transparent 40%) */
   background: rgba(0, 0, 0, 0.075);
 }
@@ -69,15 +107,35 @@ body {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.731);
 }
 
-.watch-trailer--dark {
+.watch-trailer--dark,
+.view-all-btn--dark {
   box-shadow: inset 0 0 0 1px #fff;
 }
-.watch-trailer--light {
+.watch-trailer--light,
+.view-all-btn--light {
   box-shadow: inset 0 0 0 1px black;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.modal {
+  transform: translate(-50%, -50%) !important;
+}
+
+.header-bg--dark{
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3)
+  );
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.header-bg--light{
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.075);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
 
 

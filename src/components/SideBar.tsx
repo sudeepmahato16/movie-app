@@ -22,7 +22,7 @@ const SideBar = () => {
 
   return (
     <aside
-      className={`fixed top-0 right-0 w-[40%] h-screen z-10 ${
+      className={`fixed top-0 right-0 w-[40%] h-screen z-20 ${
         theme === "Dark" ? "dark-glass" : "light-glass"
       } shadow-md md:hidden drop-shadow-sm p-4 transition-all duration-300 ease-in ${
         showSideBar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"

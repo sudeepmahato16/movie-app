@@ -2,7 +2,9 @@ import React from 'react'
 
 const Detail = () => {
   return (
-    <div>Detail</div>
+    <section className='min-h-[80vh]'>
+
+    </section>
   )
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { NavLink } from "react-router-dom";
@@ -25,6 +25,21 @@ const Header: React.FC = () => {
     setShowSideBar,
     theme,
   } = useGlobalContext();
+  const [showBg, setShowBg] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkScrollY = setInterval(() => {
+      if (window.scrollY > 0) {
+        if (!showBg) setShowBg(true);
+      } else {
+        if (showBg) setShowBg(false);
+      }
+    }, 0);
+
+    return () => {
+      clearInterval(checkScrollY);
+    };
+  }, [showBg]);
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {
@@ -40,7 +55,11 @@ const Header: React.FC = () => {
   // const textColor = theme === "Dark" ? "text-secColor" : "text-black";
 
   return (
-    <header className="py-4 fixed top-0 left-0 w-full z-10">
+    <header
+      className={`py-4 fixed top-0 left-0 w-full z-10 ${
+        showBg && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
+      } transition-all duration-300`}
+    >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
         <Logo />
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
