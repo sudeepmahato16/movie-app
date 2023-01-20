@@ -8,4 +8,8 @@ export const sideBarHeading =
 
 export const activeListItem = "dark:text-secColor text-black font-semibold";
 
-export const watchBtn = "text-base py-2 px-6 hover:-translate-y-[2px] transition-all duration-300 active:translate-y-[1px] rounded-full dark:text-secColor font-medium";
+export const watchBtn =
+  "text-base py-2 px-6 hover:-translate-y-[2px] transition-all duration-300 active:translate-y-[1px] rounded-full dark:text-secColor font-medium";
+
+export const mainHeading = (textSize: string) =>
+  `${textSize} font-extrabold leading-tight dark:text-secColor text-[#333] max-w-[420px]`;

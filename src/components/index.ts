@@ -10,6 +10,11 @@ import TrendingMovies from "./TrendingMovies";
 import TopRatedMovies from "./TopRatedMovies";
 import TrendingSeries from "./TrendingSeries";
 import TopRatedSeries from './TopRatedTvSeries';
+import Poster from './Poster';
+import Genre from './Genre';
+import Casts from './Casts';
+import VideoSection from './VideoSection';
+import SuggestedMoviesSeries from './SuggestedMoviesSeries';
 
 export {
   Footer,
@@ -23,5 +28,10 @@ export {
   TrendingMovies,
   TopRatedMovies,
   TrendingSeries,
-  TopRatedSeries
+  TopRatedSeries,
+  Poster,
+  Genre,
+  Casts,
+  VideoSection,
+  SuggestedMoviesSeries
 };

@@ -1,3 +1,4 @@
+import React from "react";
 
 import { NavLink } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
@@ -10,7 +11,9 @@ import { activeListItem, listItem, sideBarHeading } from "../styles/styles";
 import { navLinkType, themeTypes } from "../types";
 import Logo from "./Logo";
 
-const SideBar = () => {
+
+
+const SideBar:React.FC = () => {
   const {
     showSideBar,
     setShowSideBar,

@@ -108,11 +108,13 @@ body {
 }
 
 .watch-trailer--dark,
-.view-all-btn--dark {
+.view-all-btn--dark,
+.genre--dark {
   box-shadow: inset 0 0 0 1px #fff;
 }
 .watch-trailer--light,
-.view-all-btn--light {
+.view-all-btn--light,
+.genre--light {
   box-shadow: inset 0 0 0 1px black;
 }
 

@@ -16,6 +16,7 @@ const Home = () => {
   const { data, isError, error, isLoading, isFetching } = useFetch({
     category: "movie",
     type: "popular",
+    key: "trending-movies"
   });
 
   if (isLoading) {
@@ -28,7 +29,7 @@ const Home = () => {
     <>
       <Hero movies={popularMovies} />
       <div className={`${maxWidth} mt-12 `}>
-        <TrendingMovies movies={data.results} />
+        <TrendingMovies movies={data.results} category="movie" />
 
         <LazyLoad height={320} once>
           <TopRatedMovies />

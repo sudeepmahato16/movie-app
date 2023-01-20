@@ -1,10 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import { useGlobalContext } from "../context/context";
-import { maxWidth, watchBtn } from "./../styles/styles";
-import { staggerContainer } from "../utils/motion";
-import { slideUp, zoomIn } from "./../utils/motion";
+import { mainHeading, maxWidth, watchBtn } from "./../styles/styles";
+import { staggerContainer, slideDown } from "../utils/motion";
+
+import Poster from "./Poster";
 
 const HeroSlide = ({ movie }: { movie: any }) => {
   const {
@@ -14,11 +16,12 @@ const HeroSlide = ({ movie }: { movie: any }) => {
     id,
   } = movie;
   const { theme, getTrailerId, openModal } = useGlobalContext();
+  const navigate = useNavigate();
 
   const showTrailer = (id: number) => {
     getTrailerId(id);
     openModal();
-  }
+  };
 
   return (
     <div
@@ -31,16 +34,16 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col gap-6 mb-8"
       >
         <motion.h2
-          variants={slideUp}
-          className="text-4xl font-extrabold leading-tight dark:text-secColor text-[#333] max-w-[420px]"
+          variants={slideDown}
+          className={`${mainHeading("text-4xl")}`}
         >
           {title}
         </motion.h2>
-        <motion.p variants={slideUp} className="text-base leading-relaxed">
+        <motion.p variants={slideDown} className="text-base leading-relaxed">
           {overview.length > 180 ? `${overview.slice(0, 180)}...` : overview}
         </motion.p>
         <motion.div
-          variants={slideUp}
+          variants={slideDown}
           className="flex flex-row items-center gap-4 mt-6"
         >
           <button
@@ -48,6 +51,9 @@ const HeroSlide = ({ movie }: { movie: any }) => {
             className={`${watchBtn} bg-[#ff0000] ${
               theme === "Dark" ? "shadow-glow" : "shadow-glowLight"
             } text-shadow text-secColor `}
+            onClick={() => {
+              navigate(`/movie/${id}`);
+            }}
           >
             Watch now
           </button>
@@ -63,16 +69,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         </motion.div>
       </motion.div>
 
-      <div className="flex-1  md:block hidden">
-        <motion.img
-          variants={zoomIn(0.5, 0.8)}
-          initial="hidden"
-          animate="show"
-          src={`https://image.tmdb.org/t/p/original/${posterPath}`}
-          alt={title}
-          className="max-h-[380px] rounded-xl  shadow-lg"
-        />
-      </div>
+      <Poster title={title} posterPath={posterPath} classes="flex-1" />
     </div>
   );
 };

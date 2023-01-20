@@ -81,6 +81,7 @@ const Header: React.FC = () => {
                         ? `nav-link active ${textColor}`
                         : "nav-link ;";
                     }}
+                    end
                   >
                     {link.title}
                   </NavLink>

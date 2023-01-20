@@ -36,6 +36,7 @@ const Hero = ({ movies }: { movies: any }) => {
             className="transition-all duration-300 ease-in h-full w-full "
           >
             {({ isActive }) => (isActive ? <HeroSlide movie={movie}/> : "")}
+            
           </SwiperSlide>
         );
       })}

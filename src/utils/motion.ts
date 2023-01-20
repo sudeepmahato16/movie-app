@@ -31,7 +31,7 @@ export const staggerContainer = (
   },
 });
 
-export const slideUp = {
+export const slideDown = {
   hidden: {
     opacity: 0,
     y: -25,
@@ -46,3 +46,4 @@ export const slideUp = {
     },
   },
 };
+

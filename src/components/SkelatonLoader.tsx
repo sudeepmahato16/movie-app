@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/context";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-const SkelatonLoader = () => {
+const SkelatonLoader = ({ classes }: { classes?: string }) => {
   const { theme } = useGlobalContext();
 
   const isThemeLight = theme === "Light";
@@ -10,7 +10,7 @@ const SkelatonLoader = () => {
       baseColor={isThemeLight ? "#f5f5f5" : "#333"}
       highlightColor={isThemeLight ? "#eee" : "#444"}
     >
-      <div>
+      <div className={classes}>
         <div className="flex justify-between items-center mb-4">
           <Skeleton width={100} />
           <Skeleton width={100} />

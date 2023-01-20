@@ -5,7 +5,7 @@ import { footerLinks } from "./../constants/constants";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 
-const Footer = () => {
+const Footer:React.FC = () => {
   const { theme } = useGlobalContext();
   return (
     <footer
