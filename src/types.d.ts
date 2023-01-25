@@ -31,3 +31,11 @@ export interface sectionPropsType extends moviesType {
   classes?: string;
   type?:string
 }
+
+
+export interface showTypes {
+  category: string | undefined,
+  type?: string,
+  page?:number,
+  searchQuery?:string
+}

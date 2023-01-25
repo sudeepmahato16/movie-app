@@ -17,7 +17,7 @@ export const navLinks: navLinkType[] = [
   },
   {
     title: "movies",
-    path: "/movies",
+    path: "/movie",
     icon: TbMovie,
   },
   {

@@ -22,8 +22,10 @@ export const staggerContainer = (
   delayChildren: number
 ) => ({
   hidden: {
+    opacity: 0
   },
   show: {
+    opacity: 1,
     transition: {
       staggerChildren,
       delayChildren,
@@ -46,4 +48,23 @@ export const slideDown = {
     },
   },
 };
+export const slideUp = {
+  hidden: {
+    y: 50,
+    x: 50,
+    opacity: 0,
+  },
+  show: {
+    y:0,
+    x:0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+      type: 'tween',
+      
+    },
+  },
+};
+
 

@@ -1,4 +1,5 @@
 export const maxWidth = "max-w-[1140px] mx-auto md:px-8 sm:px-6 px-4 xl:px-0";
+export const smallMaxWidth = "max-w-[940px] mx-auto md:px-8 sm:px-6 px-4 xl:px-0";
 
 export const listItem =
   "flex flex-row gap-3 py-1 px-[10px] items-center w-full dark:hover:text-primary hover:text-black transition-all duration-300";

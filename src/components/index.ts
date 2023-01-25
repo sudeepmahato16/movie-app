@@ -15,6 +15,9 @@ import Genre from './Genre';
 import Casts from './Casts';
 import VideoSection from './VideoSection';
 import SuggestedMoviesSeries from './SuggestedMoviesSeries';
+import Search from './Search';
+import CatalogHeader from './CatalogHeader';
+import MovieCard from './MovieCard';
 
 export {
   Footer,
@@ -33,5 +36,8 @@ export {
   Genre,
   Casts,
   VideoSection,
-  SuggestedMoviesSeries
+  SuggestedMoviesSeries,
+  Search,
+  CatalogHeader,
+  MovieCard
 };

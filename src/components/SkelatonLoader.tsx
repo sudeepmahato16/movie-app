@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/context";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-const SkelatonLoader = ({ classes }: { classes?: string }) => {
+const SkelatonLoader = ({ classes }: { classes?: string }) => { 
   const { theme } = useGlobalContext();
 
   const isThemeLight = theme === "Light";

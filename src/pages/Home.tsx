@@ -11,12 +11,12 @@ import {
 } from "../components";
 
 import { maxWidth } from "./../styles/styles";
+import { useGetShowsQuery } from "../services/TMDB";
 
 const Home = () => {
-  const { data, isError, error, isLoading, isFetching } = useFetch({
+  const { data, isLoading, error } = useGetShowsQuery({
     category: "movie",
     type: "popular",
-    key: "trending-movies"
   });
 
   if (isLoading) {

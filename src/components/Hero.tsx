@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { useGlobalContext } from "../context/context";
@@ -6,6 +6,9 @@ import HeroSlide from "./HeroSlide";
 
 const Hero = ({ movies }: { movies: any }) => {
   const { theme } = useGlobalContext();
+
+  useEffect(() => {}, []);
+  
   return (
     <Swiper
       className="mySwiper h-screen w-full"
@@ -20,7 +23,7 @@ const Hero = ({ movies }: { movies: any }) => {
       {movies.map((movie: any) => {
         return (
           <SwiperSlide
-          key={movie.id}
+            key={movie.id}
             style={{
               backgroundImage: `${
                 theme === "Dark"
@@ -32,11 +35,9 @@ const Hero = ({ movies }: { movies: any }) => {
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
-
             className="transition-all duration-300 ease-in h-full w-full "
           >
-            {({ isActive }) => (isActive ? <HeroSlide movie={movie}/> : "")}
-            
+            {({ isActive }) => (isActive ? <HeroSlide movie={movie} /> : "")}
           </SwiperSlide>
         );
       })}

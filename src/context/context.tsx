@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { API_KEY, ROOT_URL } from "./../utils/config";
+import { API_KEY, TMDB_API_BASE_URL } from "./../utils/config";
 
 const context = React.createContext({
   showThemeOptions: false,
@@ -66,7 +66,7 @@ const GlobalContextProvider = ({ children }: Props) => {
   const getTrailerId = async (id: number) => {
     try {
       const res = await fetch(
-        `${ROOT_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+        `${TMDB_API_BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
       );
       const data = await res.json();
       setVideoId(data.results[0].key);
