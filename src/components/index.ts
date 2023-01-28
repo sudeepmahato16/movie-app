@@ -6,18 +6,16 @@ import Overlay from "./Overlay";
 import Hero from "./Hero";
 import HeroSlide from "./HeroSlide";
 import Modal from "./Modal";
-import TrendingMovies from "./TrendingMovies";
-import TopRatedMovies from "./TopRatedMovies";
-import TrendingSeries from "./TrendingSeries";
-import TopRatedSeries from './TopRatedTvSeries';
-import Poster from './Poster';
-import Genre from './Genre';
-import Casts from './Casts';
-import VideoSection from './VideoSection';
-import SuggestedMoviesSeries from './SuggestedMoviesSeries';
-import Search from './Search';
-import CatalogHeader from './CatalogHeader';
-import MovieCard from './MovieCard';
+import Poster from "./Poster";
+import Genre from "./Genre";
+import Casts from "./Casts";
+import VideoSection from "./VideoSection";
+import Search from "./Search";
+import CatalogHeader from "./CatalogHeader";
+import MovieCard from "./MovieCard";
+import Section from "./Section";
+import ScrollToTop from "./ScrollToTop";
+import { SkelatonLoader, Loader } from "./Loader";
 
 export {
   Footer,
@@ -28,16 +26,15 @@ export {
   Hero,
   HeroSlide,
   Modal,
-  TrendingMovies,
-  TopRatedMovies,
-  TrendingSeries,
-  TopRatedSeries,
   Poster,
   Genre,
   Casts,
   VideoSection,
-  SuggestedMoviesSeries,
+  ScrollToTop,
   Search,
   CatalogHeader,
-  MovieCard
+  MovieCard,
+  Section,
+  SkelatonLoader,
+  Loader,
 };

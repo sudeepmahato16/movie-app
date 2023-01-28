@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -31,7 +30,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         variants={staggerContainer(0.2, 0.4)}
         initial="hidden"
         animate="show"
-        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col gap-6 mb-8"
+        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col gap-5 mb-8"
       >
         <motion.h2
           variants={slideDown}

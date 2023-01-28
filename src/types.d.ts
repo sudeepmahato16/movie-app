@@ -9,33 +9,44 @@ export interface navLinkType extends themeTypes {
   path: string;
 }
 
-export interface fetchPropsType {
-  category: string;
-  type?: string;
-  getDetail?: boolean;
-  id?: number;
-  getCredits?: boolean;
-  key: string;
-  getVideo?: boolean;
-  getSimilar?: boolean;
-}
-
-export interface moviesType {
+export interface moviesSlideProps {
   movies: any;
   category: string;
 }
 
-export interface sectionPropsType extends moviesType {
+
+
+export interface sectionPropsType {
   title: string;
   category: string;
   classes?: string;
-  type?:string
+  type?: string;
+  id?: number;
+  showSimilarShows?: boolean;
+}
+
+export interface getShowsPropsType {
+  category: string | undefined;
+  type?: string;
+  page?: number;
+  searchQuery?: string;
+  showSimilarShows?: boolean;
+  id?: number;
+}
+
+export interface skelatonLoaderPropsTypes {
+  classes?: string;
+  isMoviesSliderLoader?: boolean;
+}
+
+export interface getShowPropsType {
+  category: string,
+  id: number
 }
 
 
-export interface showTypes {
-  category: string | undefined,
-  type?: string,
-  page?:number,
-  searchQuery?:string
+export interface sectionsType {
+  category: string,
+  type: string,
+  title: string
 }

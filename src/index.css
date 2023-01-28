@@ -14,11 +14,9 @@ body {
   overflow-x: hidden;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -99,7 +97,6 @@ body {
 }
 
 .overlay {
-  /* background: linear-gradient(to right,rgba(0,0,0, 0.6) 60%,  transparent 40%) */
   background: rgba(0, 0, 0, 0.075);
 }
 
@@ -122,7 +119,7 @@ body {
   transform: translate(-50%, -50%) !important;
 }
 
-.header-bg--dark{
+.header-bg--dark {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.4),
@@ -133,11 +130,83 @@ body {
   -webkit-backdrop-filter: blur(5px);
 }
 
-.header-bg--light{
+.header-bg--light {
   background: rgba(255, 255, 255, 0.65);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.075);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+}
+
+.loader {
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  transform: rotate(165deg);
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before {
+  animation: before 2s infinite;
+}
+
+.loader:after {
+  animation: after 2s infinite;
+}
+
+@keyframes before {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+      -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+  35% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75),
+      0 0.5em rgba(111, 202, 220, 0.75);
+  }
+  70% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75),
+      1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+  100% {
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+      -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+}
+
+@keyframes after {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+      -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+  35% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75),
+      -0.5em 0 rgba(233, 169, 32, 0.75);
+  }
+  70% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75),
+      -0.5em 1em rgba(233, 169, 32, 0.75);
+  }
+  100% {
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+      -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
 }
 
 

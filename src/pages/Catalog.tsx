@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { MovieCard, Search, CatalogHeader } from "./../components";
+import { useGetShowsQuery } from "../services/TMDB";
 
-import { SkeletonTheme } from "react-loading-skeleton";
+import { MovieCard, Search, CatalogHeader, SkelatonLoader } from "./../components";
 
 import { smallMaxWidth } from "./../styles/styles";
 import { slideUp, staggerContainer } from "../utils/motion";
-import Skeleton from "react-loading-skeleton";
-import { useGlobalContext } from "../context/context";
-import { useGetShowsQuery } from "../services/TMDB";
+
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -48,34 +46,6 @@ const Catalog = () => {
     }
   }, [data]);
 
-  const { theme } = useGlobalContext();
-
-  const isThemeLight = theme === "Light";
-
-  const Loader = () => {
-    return (
-      <SkeletonTheme
-        baseColor={isThemeLight ? "#f5f5f5" : "#333"}
-        highlightColor={isThemeLight ? "#eee" : "#444"}
-      >
-        <div className="flex flex-row flex-wrap items-center gap-4 justify-center">
-          {Array.from({ length: 20 }).map((_item, index) => {
-            return (
-              <div key={index}>
-                <Skeleton height={250} width={170} />
-                <div className="text-center">
-                  <Skeleton className="mt-4 w-[80%] " />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </SkeletonTheme>
-    );
-  };
-
-
-
   return (
     <>
       <CatalogHeader category={String(category)} />
@@ -83,7 +53,7 @@ const Catalog = () => {
         <Search />
 
         {isLoading || isCategoryChanged ? (
-          <Loader />
+          <SkelatonLoader isMoviesSliderLoader={false} />
         ) : (
           <motion.div
             variants={staggerContainer(0.2, 0)}
@@ -107,8 +77,8 @@ const Catalog = () => {
           </motion.div>
         )}
 
-        {isLoading || isFetching ? (
-          <Loader />
+        {isFetching && !isCategoryChanged ? (
+          <SkelatonLoader isMoviesSliderLoader={false} classes="pt-8" />
         ) : (
           <div className="w-full flex items-center justify-center">
             <button
@@ -116,6 +86,7 @@ const Catalog = () => {
               onClick={() => {
                 setPage(page + 1);
               }}
+              disabled={isFetching}
               className="py-2 px-4 bg-[#ff0000] text-gray-50 rounded-full text-[15.25px] shadow-md hover:-translate-y-1 transition-all duration-300 font-medium font-nunito mt-8 "
             >
               Load more

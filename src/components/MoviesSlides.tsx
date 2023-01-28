@@ -1,9 +1,9 @@
 import React from "react";
-import { moviesType } from "../types";
+import { moviesSlideProps } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "./MovieCard";
 
-const MoviesSlides: React.FC<moviesType> = ({ movies, category }) => {
+const MoviesSlides: React.FC<moviesSlideProps> = ({ movies, category }) => {
   return (
     <>
       <Swiper

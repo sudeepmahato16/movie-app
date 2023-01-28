@@ -47,4 +47,4 @@ const MovieCard = ({
   );
 };
 
-export default React.memo(MovieCard);
+export default MovieCard;

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import LazyLoad from "react-lazyload";
 import { useParams } from "react-router-dom";
 
+import { useGetShowQuery } from "../services/TMDB";
 import { useGlobalContext } from "../context/context";
-import { useFetch } from "./../utils/useFetch";
 
 import {
   Casts,
   Genre,
   Poster,
-  SuggestedMoviesSeries,
+  Section,
   VideoSection,
+  Loader,
 } from "../components";
 
 import { mainHeading, maxWidth } from "./../styles/styles";
@@ -20,29 +21,30 @@ import { staggerContainer, slideDown } from "../utils/motion";
 const Detail = () => {
   const { category, id } = useParams();
   const [show, setShow] = useState<Boolean>(false);
+  const { theme } = useGlobalContext();
+
   const {
     data: movie,
     isLoading,
-    isError,
-    error,
-  } = useFetch({
-    getDetail: true,
+    isFetching,
+  } = useGetShowQuery({
     category: String(category),
     id: Number(id),
-    key: `detail-${id}`,
   });
 
-  const { theme } = useGlobalContext();
-
-  // if(isError){
-  //   return <h4>{error}</h4>
-  // }
-
-  if (isLoading) {
-    return <></>;
+  if (isLoading || isFetching) {
+    return <Loader />;
   }
 
-  const { title, poster_path: posterPath, overview, name, genres } = movie;
+  const {
+    title,
+    poster_path: posterPath,
+    overview,
+    name,
+    genres,
+    videos,
+    credits,
+  } = movie;
 
   return (
     <>
@@ -97,7 +99,7 @@ const Detail = () => {
                 type="button"
                 className={`${
                   overview.length > 280 ? "inline-block" : "hidden"
-                } font-semibold ml-1`}
+                } font-bold ml-1 hover:underline transition-all duration-300`}
                 onClick={() => setShow((prev) => !prev)}
               >
                 {!show ? "show more" : "show less"}
@@ -108,20 +110,26 @@ const Detail = () => {
               variants={slideDown}
               className="dark:text-secColor font-bold text-[18px]"
             >
-              Casts
+              Top Casts
             </motion.h3>
 
-            <Casts id={Number(id)} category={String(category)} />
+            <Casts casts={credits.cast} />
           </motion.div>
         </div>
       </section>
 
       <LazyLoad height={800} once>
-        <VideoSection category={String(category)} id={Number(id)} />
+        <VideoSection videos={videos.results} />
       </LazyLoad>
 
       <LazyLoad height={320} once>
-        <SuggestedMoviesSeries category={String(category)} id={Number(id)} />
+        <Section
+          title={`Similar ${category === "movie" ? "movies" : "series"}`}
+          category={String(category)}
+          classes={`${maxWidth}`}
+          id={Number(id)}
+          showSimilarShows={true}
+        />
       </LazyLoad>
     </>
   );

@@ -9,7 +9,7 @@ const CatalogHeader = ({ category }: { category: string }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="h-[25vh] relative"
+      className="h-[140px] relative"
     >
       <h2 className="text-white font-nunito capitalize font-semibold text-xl absolute top-[50%] left-1/2 -translate-x-1/2 translate-y-8 ">
         {category === "movie" ? "movies" : "TV series"}

@@ -1,15 +1,42 @@
-import React from "react";
-
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { Catalog, Home, Detail } from "./pages";
-import { Header, Footer, SideBar, Overlay, Modal } from "./components";
-
-import 'react-loading-skeleton/dist/skeleton.css'
-
+import "react-loading-skeleton/dist/skeleton.css";
 import "swiper/css";
 
+import { Catalog, Home, Detail } from "./pages";
+import {
+  Header,
+  Footer,
+  SideBar,
+  Overlay,
+  Modal,
+  ScrollToTop,
+  Loader,
+} from "./components";
+
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  
+
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <Overlay />
@@ -17,11 +44,13 @@ const App = () => {
       <Header />
       <SideBar />
       <main className="dark:bg-black bg-mainColor pb-20">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:category/:id" element={<Detail />} />
-          <Route path="/:category" element={<Catalog />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:category/:id" element={<Detail />} />
+            <Route path="/:category" element={<Catalog />} />
+          </Routes>
+        </ScrollToTop>
       </main>
       <Footer />
     </>

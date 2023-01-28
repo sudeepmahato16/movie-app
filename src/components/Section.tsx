@@ -1,23 +1,34 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../context/context";
+import { useGetShowsQuery } from "../services/TMDB";
 
 import { sectionPropsType } from "../types";
-import MoviesSlides from "./MoviesSlides";
 
-const Section: React.FC<sectionPropsType> = ({
-  movies,
+import MoviesSlides from "./MoviesSlides";
+import { SkelatonLoader } from "./Loader";
+
+const Section = ({
   title,
   category,
   classes,
   type,
-}) => {
-  const { theme } = useGlobalContext();
+  id,
+  showSimilarShows,
+}: sectionPropsType) => {
+  const { data: movies, isLoading } = useGetShowsQuery({
+    category,
+    type,
+    page: 1,
+    showSimilarShows,
+    id,
+  });
 
+  const { theme } = useGlobalContext();
+  
   return (
     <section className={`py-6 font-nunito ${classes}`}>
-      <div className={`flex flex-row justify-between items-center mb-8`}>
+      <div className={`flex flex-row justify-between items-center mb-6`}>
         <h3 className="text-[22.25px] dark:text-gray-50 font-bold relative">
           <span>{title}</span>
           <div className="line" />
@@ -31,7 +42,11 @@ const Section: React.FC<sectionPropsType> = ({
           View all
         </Link>
       </div>
-      <MoviesSlides movies={movies} category={category} />
+      {isLoading ? (
+        <SkelatonLoader />
+      ) : (
+        <MoviesSlides movies={movies.results} category={category} />
+      )}
     </section>
   );
 };

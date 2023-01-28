@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { useGlobalContext } from "../context/context";
@@ -6,8 +6,6 @@ import HeroSlide from "./HeroSlide";
 
 const Hero = ({ movies }: { movies: any }) => {
   const { theme } = useGlobalContext();
-
-  useEffect(() => {}, []);
   
   return (
     <Swiper
