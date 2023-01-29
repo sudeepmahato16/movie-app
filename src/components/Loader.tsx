@@ -10,10 +10,16 @@ export const SkelatonLoader = ({
   const isThemeLight = theme === "Light";
 
   const classNames = isMoviesSliderLoader
-    ? `flex flex-row items-center gap-[20px] overflow-hidden`
-    : `flex flex-row flex-wrap items-center gap-4 justify-center ${classes}`;
+    ? `flex flex-row items-center gap-[15px] overflow-hidden `
+    : `flex flex-row flex-wrap items-center xs:gap-4 gap-[14px] justify-center ${classes}`;
 
-  const arrSize = isMoviesSliderLoader ? Math.floor(screen.width / 170) : 20;
+  const isScreenSmall = window.innerWidth < 380;
+
+  const arrSize = isMoviesSliderLoader
+    ? Math.floor(
+        isScreenSmall ? window.innerWidth / 124 : window.innerWidth / 170
+      ) + 1
+    : 20;
 
   return (
     <SkeletonTheme
@@ -27,9 +33,12 @@ export const SkelatonLoader = ({
               key={index}
               className={`${!isMoviesSliderLoader ? "mb-6" : ""}`}
             >
-              <Skeleton height={250} width={170} />
+              <Skeleton
+                height={isScreenSmall ? 216 : 250}
+                width={isScreenSmall ? 124 : 170}
+              />
               <div className="text-center">
-                <Skeleton className="mt-4 w-[80%] " />
+                <Skeleton className="xs:mt-4 mt-3 w-[80%] " />
               </div>
             </div>
           );
@@ -46,4 +55,3 @@ export const Loader = () => {
     </div>
   );
 };
-

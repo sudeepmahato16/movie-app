@@ -11,9 +11,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@types/react-icons": "^3.0.0",
-    "@types/react-query": "^1.2.9",
     "@types/swiper": "^6.0.0",
-    "axios": "^1.2.3",
     "framer-motion": "^8.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -22,7 +20,6 @@
     "react-lazy-load": "^4.0.1",
     "react-lazyload": "^3.2.0",
     "react-loading-skeleton": "^3.1.0",
-    "react-query": "^3.39.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "swiper": "^8.4.5"

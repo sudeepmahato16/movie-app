@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "380px",
+      },
       colors: {
         black: "#191624",
       },
+
       textColor: {
         lightGray: "#F1EFEE",
         primary: "#FAFAFA",
@@ -22,10 +23,9 @@ module.exports = {
         blackOverlay: "rgba(0, 0 ,0 ,0.3)",
       },
       boxShadow: {
-        glow: "0 0 18px rgb(255, 0, 0);",
-        glowLight: "0 0 24px rgb(255, 0, 0, 0.5)"
+        glow: "0 0 18px rgb(255, 0, 0, 0.7);",
+        glowLight: "0 0 24px rgb(255, 0, 0, 0.5)",
       },
-      
     },
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],

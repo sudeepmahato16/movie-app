@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 import { useGetShowsQuery } from "../services/TMDB";
 
-import { MovieCard, Search, CatalogHeader, SkelatonLoader } from "./../components";
+import {
+  MovieCard,
+  Search,
+  CatalogHeader,
+  SkelatonLoader,
+} from "./../components";
 
 import { smallMaxWidth } from "./../styles/styles";
 import { slideUp, staggerContainer } from "../utils/motion";
-
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -55,30 +59,30 @@ const Catalog = () => {
         {isLoading || isCategoryChanged ? (
           <SkelatonLoader isMoviesSliderLoader={false} />
         ) : (
-          <motion.div
+          <m.div
             variants={staggerContainer(0.2, 0)}
             initial="hidden"
             animate="show"
-            className="flex flex-wrap gap-4 justify-center"
+            className="flex flex-wrap xs:gap-4 gap-[14px] justify-center"
           >
             {shows?.map((movie: any, index) => (
-              <motion.div
+              <m.div
                 variants={slideUp}
                 key={index}
-                className="flex flex-col gap-4 w-[170px] rounded-lg mb-6"
+                className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[124px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
               >
                 <MovieCard
                   movie={movie}
                   category={String(category)}
                   offset={1000}
                 />
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         )}
 
         {isFetching && !isCategoryChanged ? (
-          <SkelatonLoader isMoviesSliderLoader={false} classes="pt-8" />
+          <SkelatonLoader isMoviesSliderLoader={false} classes="md:pt-8 sm:pt-7 pt-6" />
         ) : (
           <div className="w-full flex items-center justify-center">
             <button
@@ -87,7 +91,7 @@ const Catalog = () => {
                 setPage(page + 1);
               }}
               disabled={isFetching}
-              className="py-2 px-4 bg-[#ff0000] text-gray-50 rounded-full text-[15.25px] shadow-md hover:-translate-y-1 transition-all duration-300 font-medium font-nunito mt-8 "
+              className="sm:py-2 xs:py-[6px] py-1 sm:px-4 xs:px-3 px-[10.75px] bg-[#ff0000] text-gray-50 rounded-full md:text-[15.25px] sm:text-[14.75px] xs:text-[14px] text-[12.75px] shadow-md hover:-translate-y-1 transition-all duration-300 font-medium font-nunito lg:my-8 my-7"
             >
               Load more
             </button>

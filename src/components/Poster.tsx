@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { zoomIn } from "./../utils/motion";
 
 const Poster = ({
@@ -13,7 +13,7 @@ const Poster = ({
 }) => {
   return (
     <div className={`${classes} md:block hidden `}>
-      <motion.img
+      <m.img
         variants={zoomIn(0.4, 0.8)}
         initial="hidden"
         animate="show"

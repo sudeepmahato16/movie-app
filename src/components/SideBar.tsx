@@ -11,9 +11,7 @@ import { activeListItem, listItem, sideBarHeading } from "../styles/styles";
 import { navLinkType, themeTypes } from "../types";
 import Logo from "./Logo";
 
-
-
-const SideBar:React.FC = () => {
+const SideBar: React.FC = () => {
   const {
     showSideBar,
     setShowSideBar,
@@ -25,7 +23,7 @@ const SideBar:React.FC = () => {
 
   return (
     <aside
-      className={`fixed top-0 right-0 w-[40%] h-screen z-20 ${
+      className={`fixed top-0 right-0 sm:w-[40%] xs:w-[50%] w-[65%] h-screen z-20 ${
         theme === "Dark" ? "dark-glass" : "light-glass"
       } shadow-md md:hidden drop-shadow-sm p-4 transition-all duration-300 ease-in ${
         showSideBar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
@@ -33,19 +31,19 @@ const SideBar:React.FC = () => {
     >
       <div className="flex  items-center w-full ">
         <div className="flex-1 flex justify-center relative">
-          <Logo classes="-translate-x-[50%] mr-[32px]" />
+          <Logo classes="-translate-x-[50%] xs:mr-[32px] mr-[36px] " />
         </div>
         <button
           type="button"
-          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay text-[22.75px] md:hidden dark:text-gray-400 text-gray-600`}
+          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-600`}
           onClick={() => setShowSideBar(false)}
         >
           <IoMdClose />
         </button>
       </div>
-      <div className="p-4 pt-8 h-full flex flex-col">
+      <div className="p-4 sm:pt-8  xs:pt-6 pt-[22px] h-full flex flex-col">
         <h3 className={sideBarHeading}>Menu</h3>
-        <ul className="flex flex-col gap-2 capitalize text-[14px] font-medium">
+        <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
           {navLinks.map((link: navLinkType, index) => {
             return (
               <li key={index}>
@@ -67,7 +65,7 @@ const SideBar:React.FC = () => {
         </ul>
 
         <h3 className={`${sideBarHeading} mt-6 `}>Theme</h3>
-        <ul className="flex flex-col gap-2 capitalize text-[14px] font-medium">
+        <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
           {themeOptions.map((theme: themeTypes, index) => {
             return (
               <li key={index}>
@@ -94,7 +92,7 @@ const SideBar:React.FC = () => {
           })}
         </ul>
 
-        <p className="text-[12px] mt-auto mb-4 dark:text-gray-400">
+        <p className="xs:text-[12px] text-[11.75px] mt-auto sm:mb-6 mb-[20px] dark:text-gray-200">
           &copy; 2023 by tMovies. All right reserved.
         </p>
       </div>

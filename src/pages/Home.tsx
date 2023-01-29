@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
       <Hero movies={popularMovies} />
-      <div className={`${maxWidth} mt-12 `}>
+      <div className={`${maxWidth} lg:mt-12 md:mt-8 sm:mt-6 xs:mt-4 mt-2  `}>
         {sections.map(({ title, category, type }: sectionsType) => (
           <LazyLoad height={320} once key={title}>
             <Section title={title} category={category} type={type} />

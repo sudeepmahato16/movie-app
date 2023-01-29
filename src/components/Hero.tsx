@@ -9,7 +9,7 @@ const Hero = ({ movies }: { movies: any }) => {
   
   return (
     <Swiper
-      className="mySwiper h-screen w-full"
+      className="mySwiper lg:h-screen sm:h-[640px] xs:h-[520px] h-[460px] w-full"
       loop={true}
       slidesPerView={1}
       autoplay={{
@@ -32,6 +32,7 @@ const Hero = ({ movies }: { movies: any }) => {
               }'`,
               backgroundPosition: "center",
               backgroundSize: "cover",
+        
             }}
             className="transition-all duration-300 ease-in h-full w-full "
           >

@@ -1,39 +1,39 @@
 import LazyLoad from "react-lazy-load";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { slideDown, staggerContainer } from "./../utils/motion";
 
 const Casts = ({ casts }: { casts: any }) => {
   const topCasts = casts.slice(0, 4);
 
   return (
-    <motion.div
+    <m.div
       variants={staggerContainer(0.2, 1)}
       initial="hidden"
       animate="show"
-      className="flex flex-wrap gap-4 -mt-2"
+      className="flex flex-wrap md:gap-4 sm:gap-[14px] xs:gap-2 gap-1 sm:-mt-2 xs:-mt-[6px] -mt-1"
     >
       {topCasts.map((cast: any) => {
         const { id, profile_path: profilePath, name } = cast;
         return (
-          <motion.figure
+          <m.figure
             variants={slideDown}
             key={id}
-            className="flex flex-col justify-start gap-1"
+            className="flex flex-col justify-start sm:gap-1 gap-0"
           >
             <LazyLoad height={100}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${profilePath}`}
                 alt={name}
-                className="h-[96px] w-[64px] object-cover rounded-md shadow-md"
+                className="sm:h-[96px] h-[86px] w-[56px] sm:w-[64px] object-cover rounded-md shadow-md"
               />
             </LazyLoad>
-            <h4 className="text-gray-300 text-[12px] max-w-[64px] text-center font-semibold">
+            <h4 className="text-gray-300 md:text-[12px] sm:text-[10.75px] text-[10px] max-w-[64px] text-center font-semibold sm:-mt-0 -mt-1 leading-snug">
               {name}
             </h4>
-          </motion.figure>
+          </m.figure>
         );
       })}
-    </motion.div>
+    </m.div>
   );
 };
 

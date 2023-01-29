@@ -23,25 +23,31 @@ const Section = ({
     showSimilarShows,
     id,
   });
-
-  const { theme } = useGlobalContext();
   
+  const { theme } = useGlobalContext();
+
   return (
-    <section className={`py-6 font-nunito ${classes}`}>
-      <div className={`flex flex-row justify-between items-center mb-6`}>
-        <h3 className="text-[22.25px] dark:text-gray-50 font-bold relative">
+    <section
+      className={`md:py-6 sm:py-[20.75px] xs:py-[18.75px] py-[16.75px] font-nunito ${classes}`}
+    >
+      <div
+        className={`flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]`}
+      >
+        <h3 className="sm:text-[22.25px] xs:text-[20px] text-[18.75px] dark:text-gray-50 sm:font-bold font-semibold relative">
           <span>{title}</span>
           <div className="line" />
         </h3>
-        <Link
-          to={`/${category}?type=${type}`}
-          className={`py-1 text-[14px] px-4 rounded-full  ${
-            theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
-          } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`}
-        >
-          View all
-        </Link>
-      </div>
+        {!showSimilarShows && (
+          <Link
+            to={`/${category}?type=${type}`}
+            className={`sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full  ${
+              theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
+            } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`}
+          >
+            View all
+          </Link>
+        )}
+      </div>  
       {isLoading ? (
         <SkelatonLoader />
       ) : (

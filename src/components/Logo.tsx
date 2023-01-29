@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoImg from "./../assets/tmovie.png";
+import LogoImg from "./../assets/tmovie.webp";
 
 interface logoProps {
   classes?: string;
@@ -10,10 +10,10 @@ const Logo: React.FC<logoProps> = ({ classes = "" }) => {
   return (
     <Link
       to="/"
-      className={`h-[28px] w-[28px] flex flex-row items-center gap-2 ${classes}`}
+      className={`sm:h-[28px] h-[24px] sm:w-[28px] w-[24px] flex flex-row items-center xs:gap-2 gap-[6px] ${classes}`}
     >
-      <img src={LogoImg} alt="logo" className="h-full" />
-      <h3 className="font-semibold text-[18px] text-black dark:text-primary">tMovies</h3>
+      <img src={LogoImg} alt="logo" className="sm:h-[28px] h-[24px]" />
+      <h3 className="font-semibold sm:text-[18px] text-[16.75px] text-black dark:text-primary">tMovies</h3>
     </Link>
   );
 };

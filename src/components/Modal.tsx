@@ -1,7 +1,7 @@
 import { IoMdClose } from "react-icons/io";
 
 import { useGlobalContext } from "../context/context";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { zoomIn } from "./../utils/motion";
 
 const Modal = () => {
@@ -13,12 +13,12 @@ const Modal = () => {
           className="fixed top-0 left-0 flex items-center w-screen h-screen justify-center z-10 bg-blackOverlay transition-all duration-300"
           onClick={closeModal}
         >
-          <motion.div
+          <m.div
             variants={zoomIn(0.9, 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className=" md:w-[570px] md:h-[370px] sm:w-[80vw] sm:h-[60vh] w-[80vw] h-[30vh] dark:bg-gray-900 bg-mainColor z-10  shadow-lg rounded-md relative"
+            className=" md:w-[570px] md:h-[370px] sm:w-[80vw] sm:h-[60vh] w-[80vw] xs:h-[30vh] h-[35vh] dark:bg-gray-900 bg-mainColor z-10  shadow-lg rounded-md relative"
           >
             <button
               type="button"
@@ -35,7 +35,7 @@ const Modal = () => {
               className="rounded-md"
               allowFullScreen
             />
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

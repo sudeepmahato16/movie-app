@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import { useGlobalContext } from "../context/context";
-import { mainHeading, maxWidth, watchBtn } from "./../styles/styles";
+import { mainHeading, maxWidth, paragraph, watchBtn } from "./../styles/styles";
 import { staggerContainer, slideDown } from "../utils/motion";
 
 import Poster from "./Poster";
@@ -24,26 +24,23 @@ const HeroSlide = ({ movie }: { movie: any }) => {
 
   return (
     <div
-      className={`${maxWidth} mx-auto flex items-center h-full  flex-row lg:gap-32 gap-16`}
+      className={`${maxWidth} mx-auto flex items-center h-full  flex-row lg:gap-32 sm:gap-20`}
     >
-      <motion.div
+      <m.div
         variants={staggerContainer(0.2, 0.4)}
         initial="hidden"
         animate="show"
-        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col gap-5 mb-8"
+        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col sm:gap-5 xs:gap-3 gap-[10px] sm:mb-8"
       >
-        <motion.h2
-          variants={slideDown}
-          className={`${mainHeading("text-4xl")}`}
-        >
+        <m.h2 variants={slideDown} className={`${mainHeading} `}>
           {title}
-        </motion.h2>
-        <motion.p variants={slideDown} className="text-base leading-relaxed">
+        </m.h2>
+        <m.p variants={slideDown} className={paragraph}>
           {overview.length > 180 ? `${overview.slice(0, 180)}...` : overview}
-        </motion.p>
-        <motion.div
+        </m.p>
+        <m.div
           variants={slideDown}
-          className="flex flex-row items-center gap-4 mt-6"
+          className="flex flex-row items-center  gap-4 sm:mt-6 xs:mt-5 mt-[18px] "
         >
           <button
             type="button"
@@ -65,8 +62,8 @@ const HeroSlide = ({ movie }: { movie: any }) => {
           >
             Watch trailer
           </button>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       <Poster title={title} posterPath={posterPath} classes="flex-1" />
     </div>

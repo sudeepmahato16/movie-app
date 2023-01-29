@@ -1,5 +1,5 @@
 import React from "react";
-import bgImg from "./../assets/footer-bg.jpg";
+import bgImg from "./../assets/footer-bg.webp";
 
 const CatalogHeader = ({ category }: { category: string }) => {
   return (
@@ -9,9 +9,9 @@ const CatalogHeader = ({ category }: { category: string }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="h-[140px] relative"
+      className="lg:h-[140px] md:h-[132px] sm:h-[114px] h-[96px] relative"
     >
-      <h2 className="text-white font-nunito capitalize font-semibold text-xl absolute top-[50%] left-1/2 -translate-x-1/2 translate-y-8 ">
+      <h2 className="text-white font-nunito capitalize font-semibold md:text-xl sm:text-lg absolute md:top-[70%] sm:top-[65%] xs:top-[60%] top-[57.75%]  left-1/2 -translate-x-1/2  ">
         {category === "movie" ? "movies" : "TV series"}
       </h2>
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import LazyLoad from "react-lazyload";
 import { useParams } from "react-router-dom";
 
@@ -15,7 +15,7 @@ import {
   Loader,
 } from "../components";
 
-import { mainHeading, maxWidth } from "./../styles/styles";
+import { mainHeading, maxWidth, paragraph } from "./../styles/styles";
 import { staggerContainer, slideDown } from "../utils/motion";
 
 const Detail = () => {
@@ -61,35 +61,32 @@ const Detail = () => {
         }}
       >
         <div
-          className={`${maxWidth} py-36 flex flex-row gap-12 justify-center `}
+          className={`${maxWidth} lg:py-36 sm:py-[136px] sm:pb-28 xs:py-28 xs:pb-12 pt-24 pb-8 flex flex-row lg:gap-12 md:gap-10 gap-8 justify-center `}
         >
           <Poster title={title} posterPath={posterPath} />
-          <motion.div
+          <m.div
             variants={staggerContainer(0.2, 0.4)}
             initial="hidden"
             animate="show"
-            className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col gap-5 mb-8 flex-1"
+            className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1"
           >
-            <motion.h2
+            <m.h2
               variants={slideDown}
-              className={`${mainHeading("text-4xl")} md:max-w-[420px]`}
+              className={`${mainHeading} md:max-w-[420px]`}
             >
               {title || name}
-            </motion.h2>
+            </m.h2>
 
-            <motion.ul
+            <m.ul
               variants={slideDown}
-              className="flex flex-row items-center gap-4 flex-wrap"
+              className="flex flex-row items-center md:gap-4 sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap"
             >
               {genres.map((genre: { name: string; id: number }) => {
                 return <Genre key={genre.id} name={genre.name} />;
               })}
-            </motion.ul>
+            </m.ul>
 
-            <motion.p
-              variants={slideDown}
-              className="text-base leading-relaxed"
-            >
+            <m.p variants={slideDown} className={paragraph}>
               <span>
                 {overview.length > 280
                   ? `${show ? overview : `${overview.slice(0, 280)}...`}`
@@ -104,17 +101,17 @@ const Detail = () => {
               >
                 {!show ? "show more" : "show less"}
               </button>
-            </motion.p>
+            </m.p>
 
-            <motion.h3
+            <m.h3
               variants={slideDown}
-              className="dark:text-secColor font-bold text-[18px]"
+              className="dark:text-secColor font-bold md:text-[18px] sm:text-[16.75px] xs:text-[15.75px] text-[14.75px]"
             >
               Top Casts
-            </motion.h3>
+            </m.h3>
 
             <Casts casts={credits.cast} />
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

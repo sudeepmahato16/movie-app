@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+
 html,
 body {
   scroll-behavior: smooth;
@@ -101,7 +102,7 @@ body {
 }
 
 .text-shadow {
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.731);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.56);
 }
 
 .watch-trailer--dark,
