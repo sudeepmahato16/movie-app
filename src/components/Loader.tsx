@@ -50,7 +50,7 @@ export const SkelatonLoader = ({
 
 export const Loader = () => {
   return (
-    <div className="relative top-0 left-0 w-screen h-screen flex justify-center items-center">
+    <div className="relative dark:bg-black bg-mainColor top-0 left-0 w-screen h-screen flex justify-center items-center">
       <div className="loader" />
     </div>
   );

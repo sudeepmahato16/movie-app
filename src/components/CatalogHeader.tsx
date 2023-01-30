@@ -5,7 +5,7 @@ const CatalogHeader = ({ category }: { category: string }) => {
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${bgImg})`,
+        backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.075), rgba(0,0,0,0.075)), url(${bgImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

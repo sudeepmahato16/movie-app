@@ -28,16 +28,17 @@ const Header: React.FC = () => {
   const [showBg, setShowBg] = useState<boolean>(false);
 
   useEffect(() => {
-    const checkScrollY = setInterval(() => {
+    const changeHeaderBg = () => {
       if (window.scrollY > 0) {
         if (!showBg) setShowBg(true);
       } else {
         if (showBg) setShowBg(false);
       }
-    }, 0);
+    };
+    window.addEventListener("scroll", changeHeaderBg);
 
     return () => {
-      clearInterval(checkScrollY);
+      window.removeEventListener("scroll", changeHeaderBg);
     };
   }, [showBg]);
 
@@ -55,30 +56,29 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`py-[14px] fixed top-0 left-0 w-full z-10 ${
+      className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${
         showBg && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
       } transition-all duration-300`}
     >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
-        <Logo />
+        <Logo showBg={showBg} isHeaderLogo/>
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
             {navLinks.map((link: { title: string; path: string }, index) => {
               return (
-                <li
-                  key={index}
-                  className={`${
-                    theme === "Dark"
-                      ? "hover:text-secColor"
-                      : "hover:text-black"
-                  }`}
-                >
+                <li key={index}>
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => {
                       return isActive
-                        ? `nav-link active ${textColor}`
-                        : "nav-link ;";
+                        ? `nav-link active ${
+                            showBg ? textColor : `text-secColor`
+                          }`
+                        : `nav-link ${
+                            showBg
+                              ? "text-[#444] dark:text-gray-300 dark:hover:text-secColor hover:text-black"
+                              : "text-gray-300 hover:text-secColor"
+                          }`;
                     }}
                     end
                   >
@@ -92,7 +92,11 @@ const Header: React.FC = () => {
             <button
               type="button"
               onClick={toogleThemeOptions}
-              className={`flex items-center justify-center mb-[2px] dark:hover:text-secColor hover:text-black transition-all duration-300 hover:scale-110 active:scale-75`}
+              className={`flex items-center justify-center mb-[2px] transition-all text-gray-300 duration-300 hover:scale-110 active:scale-75 ${
+                showBg
+                  ? `${textColor} dark:hover:text-secColor hover:text-black `
+                  : ` dark:hover:text-secColor `
+              } `}
             >
               {activeTheme === "Dark" ? (
                 <BsMoonStarsFill />
@@ -114,7 +118,7 @@ const Header: React.FC = () => {
                       theme === "Light" ? "#FAFAFA" : "rgba(0,0,0,0.4)"
                     }`,
                   }}
-                  className="absolute top-[110%] right-[25%] bg-primary shadow-md backdrop-blur-sm  rounded-md overflow-hidden dark:dark-glass light-glass"
+                  className="absolute top-[200%] right-[25%] bg-primary shadow-md backdrop-blur-sm  rounded-md overflow-hidden dark:dark-glass light-glass"
                 >
                   {themeOptions.map((option, index) => (
                     <li
@@ -147,7 +151,11 @@ const Header: React.FC = () => {
 
         <button
           type="button"
-          className={`inline-block text-[22.75px] md:hidden ${textColor}`}
+          className={`inline-block text-[22.75px] md:hidden ${
+            showBg
+              ? `${textColor} dark:hover:text-secColor hover:text-black `
+              : ` dark:hover:text-secColor text-secColor`
+          } active:scale-75 transition-all duration-300`}
           onClick={() => setShowSideBar(true)}
         >
           <AiOutlineMenu />

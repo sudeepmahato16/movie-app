@@ -30,7 +30,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         variants={staggerContainer(0.2, 0.4)}
         initial="hidden"
         animate="show"
-        className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col sm:gap-5 xs:gap-3 gap-[10px] sm:mb-8"
+        className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col sm:gap-5 xs:gap-3 gap-[10px] sm:mb-8"
       >
         <m.h2 variants={slideDown} className={`${mainHeading} `}>
           {title}
@@ -44,9 +44,8 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         >
           <button
             type="button"
-            className={`${watchBtn} bg-[#ff0000] ${
-              theme === "Dark" ? "shadow-glow" : "shadow-glowLight"
-            } text-shadow text-secColor `}
+            className={`${watchBtn} bg-[#ff0000] shadow-glow
+             text-shadow text-secColor `}
             onClick={() => {
               navigate(`/movie/${id}`);
             }}
@@ -55,9 +54,8 @@ const HeroSlide = ({ movie }: { movie: any }) => {
           </button>
           <button
             type="button"
-            className={`${watchBtn} text-shadow ${
-              theme === "Dark" ? "watch-trailer--dark" : "watch-trailer--light"
-            } `}
+            className={`${watchBtn} text-shadow watch-trailer
+             `}
             onClick={() => showTrailer(id)}
           >
             Watch trailer

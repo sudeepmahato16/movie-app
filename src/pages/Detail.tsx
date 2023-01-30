@@ -51,11 +51,7 @@ const Detail = () => {
       <section
         className="w-full"
         style={{
-          backgroundImage: `${
-            theme === "Dark"
-              ? "linear-gradient(to top, rgba(0,0,0), rgba(0,0,0,0.98),rgba(0,0,0,0.8) ,rgba(0,0,0,0.4))"
-              : "linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.6))"
-          },url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}'`,
+          backgroundImage: `linear-gradient(to top, rgba(0,0,0), rgba(0,0,0,0.98),rgba(0,0,0,0.8) ,rgba(0,0,0,0.4)),url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}'`,
           backgroundPosition: "top",
           backgroundSize: "cover",
         }}
@@ -68,7 +64,7 @@ const Detail = () => {
             variants={staggerContainer(0.2, 0.4)}
             initial="hidden"
             animate="show"
-            className="dark:text-gray-300 text-[#555] sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1"
+            className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1"
           >
             <m.h2
               variants={slideDown}
@@ -105,7 +101,7 @@ const Detail = () => {
 
             <m.h3
               variants={slideDown}
-              className="dark:text-secColor font-bold md:text-[18px] sm:text-[16.75px] xs:text-[15.75px] text-[14.75px]"
+              className="text-secColor font-bold md:text-[18px] sm:text-[16.75px] xs:text-[15.75px] text-[14.75px]"
             >
               Top Casts
             </m.h3>

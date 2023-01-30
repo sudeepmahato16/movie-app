@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { useGlobalContext } from "../context/context";
@@ -6,7 +5,7 @@ import HeroSlide from "./HeroSlide";
 
 const Hero = ({ movies }: { movies: any }) => {
   const { theme } = useGlobalContext();
-  
+
   return (
     <Swiper
       className="mySwiper lg:h-screen sm:h-[640px] xs:h-[520px] h-[460px] w-full"
@@ -23,16 +22,10 @@ const Hero = ({ movies }: { movies: any }) => {
           <SwiperSlide
             key={movie.id}
             style={{
-              backgroundImage: `${
-                theme === "Dark"
-                  ? "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.5))"
-                  : "linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.6))"
-              },url('https://image.tmdb.org/t/p/original/${
-                movie.backdrop_path
-              }'`,
+              backgroundImage: `
+              linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.5)),url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}'`,
               backgroundPosition: "center",
               backgroundSize: "cover",
-        
             }}
             className="transition-all duration-300 ease-in h-full w-full "
           >

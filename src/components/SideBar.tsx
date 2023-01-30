@@ -27,7 +27,7 @@ const SideBar: React.FC = () => {
         theme === "Dark" ? "dark-glass" : "light-glass"
       } shadow-md md:hidden drop-shadow-sm p-4 transition-all duration-300 ease-in ${
         showSideBar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
-      } dark:text-navColor text-gray-600`}
+      } dark:text-gray-200 text-gray-600`}
     >
       <div className="flex  items-center w-full ">
         <div className="flex-1 flex justify-center relative">
@@ -35,7 +35,7 @@ const SideBar: React.FC = () => {
         </div>
         <button
           type="button"
-          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-600`}
+          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-900`}
           onClick={() => setShowSideBar(false)}
         >
           <IoMdClose />
@@ -52,7 +52,7 @@ const SideBar: React.FC = () => {
                   className={({ isActive }) => {
                     return isActive
                       ? `${listItem} ${activeListItem}`
-                      : `${listItem}`;
+                      : `${listItem} `;
                   }}
                   onClick={() => setShowSideBar(false)}
                 >
@@ -64,8 +64,8 @@ const SideBar: React.FC = () => {
           })}
         </ul>
 
-        <h3 className={`${sideBarHeading} mt-6 `}>Theme</h3>
-        <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
+        <h3 className={`${sideBarHeading} mt-4 `}>Theme</h3>
+        <ul className="flex flex-col sm:gap-2 xs:gap-[4px] gap-[2px] capitalize xs:text-[14px] text-[13.5px] font-medium">
           {themeOptions.map((theme: themeTypes, index) => {
             return (
               <li key={index}>
@@ -92,7 +92,7 @@ const SideBar: React.FC = () => {
           })}
         </ul>
 
-        <p className="xs:text-[12px] text-[11.75px] mt-auto sm:mb-6 mb-[20px] dark:text-gray-200">
+        <p className="xs:text-[12px] text-[11.75px] mt-auto sm:mb-6 mb-[20px] text-center font-nunito dark:text-gray-200">
           &copy; 2023 by tMovies. All right reserved.
         </p>
       </div>

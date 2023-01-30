@@ -1,7 +1,5 @@
-import React from "react";
-import { maxWidth } from "./../styles/styles";
 
-import { useGlobalContext } from "../context/context";
+import { maxWidth } from "./../styles/styles";
 
 const VideoSection = ({ videos }: { videos: any }) => {
   const youtubeVideos = videos.slice(0, 2);
@@ -16,7 +14,7 @@ const VideoSection = ({ videos }: { videos: any }) => {
             key={video.id}
             className={`sm:w-[80%] w-[90%] mx-auto flex flex-col md:gap-2 sm:gap-[6px] xs:gap-1 gap-[2px]`}
           >
-            <h2 className="text-secColor font-nunito font-semibold lg:text-[24px] md:text-[22.75px] sm:text-[18.75px] xs:text-[18px] text-[16.75px] mb-1">
+            <h2 className="dark:text-secColor text-gray-800 font-nunito font-semibold lg:text-[24px] md:text-[22.75px] sm:text-[18.75px] xs:text-[18px] text-[16.75px] mb-1">
               {video.name}
             </h2>
             <div className="w-[100%] lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg">

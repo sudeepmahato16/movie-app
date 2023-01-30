@@ -8,7 +8,6 @@
   box-sizing: border-box;
 }
 
-
 html,
 body {
   scroll-behavior: smooth;
@@ -77,10 +76,10 @@ body {
 }
 
 .light-glass {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.65);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -91,8 +90,8 @@ body {
     rgba(255, 255, 255, 0)
   );
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid
     linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
@@ -105,14 +104,13 @@ body {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.56);
 }
 
-.watch-trailer--dark,
+.watch-trailer,
 .view-all-btn--dark,
-.genre--dark {
+.genre {
   box-shadow: inset 0 0 0 1px #fff;
 }
-.watch-trailer--light,
-.view-all-btn--light,
-.genre--light {
+
+.view-all-btn--light{
   box-shadow: inset 0 0 0 1px black;
 }
 
@@ -132,10 +130,10 @@ body {
 }
 
 .header-bg--light {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.075);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .loader {
@@ -209,5 +207,3 @@ body {
       -0.5em -1em rgba(233, 169, 32, 0.75);
   }
 }
-
-
