@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "tmovies",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@types/react-icons": "^3.0.0",
-    "@types/swiper": "^6.0.0",
     "framer-motion": "^8.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -27,7 +25,9 @@
   "devDependencies": {
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/react-icons": "^3.0.0",
     "@types/react-lazyload": "^3.2.0",
+    "@types/swiper": "^6.0.0",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

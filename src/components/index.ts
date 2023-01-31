@@ -16,6 +16,7 @@ import MovieCard from "./MovieCard";
 import Section from "./Section";
 import ScrollToTop from "./ScrollToTop";
 import { SkelatonLoader, Loader } from "./Loader";
+import Error from './Error';
 
 export {
   Footer,
@@ -37,4 +38,5 @@ export {
   Section,
   SkelatonLoader,
   Loader,
+  Error
 };

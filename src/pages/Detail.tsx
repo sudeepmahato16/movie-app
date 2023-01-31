@@ -4,7 +4,6 @@ import LazyLoad from "react-lazyload";
 import { useParams } from "react-router-dom";
 
 import { useGetShowQuery } from "../services/TMDB";
-import { useGlobalContext } from "../context/context";
 
 import {
   Casts,
@@ -13,6 +12,7 @@ import {
   Section,
   VideoSection,
   Loader,
+  Error,
 } from "../components";
 
 import { mainHeading, maxWidth, paragraph } from "./../styles/styles";
@@ -21,12 +21,12 @@ import { staggerContainer, slideDown } from "../utils/motion";
 const Detail = () => {
   const { category, id } = useParams();
   const [show, setShow] = useState<Boolean>(false);
-  const { theme } = useGlobalContext();
 
   const {
     data: movie,
     isLoading,
     isFetching,
+    isError,
   } = useGetShowQuery({
     category: String(category),
     id: Number(id),
@@ -34,6 +34,10 @@ const Detail = () => {
 
   if (isLoading || isFetching) {
     return <Loader />;
+  }
+
+  if (isError) {
+    return <Error error="Something went wrong!" />;
   }
 
   const {

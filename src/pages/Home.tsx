@@ -2,14 +2,15 @@ import LazyLoad from "react-lazyload";
 
 import { useGetShowsQuery } from "../services/TMDB";
 
-import { Hero, Loader, Section } from "../components";
+import { Hero, Loader, Section, Error } from "../components";
 
 import { maxWidth } from "./../styles/styles";
 import { sections } from "../constants/constants";
 import { sectionsType } from "../types";
 
+
 const Home = () => {
-  const { data, isLoading } = useGetShowsQuery({
+  const { data, isLoading, isError } = useGetShowsQuery({
     category: "movie",
     type: "popular",
     page: 1,
@@ -17,6 +18,10 @@ const Home = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (isError) {
+    return <Error error="Unable to fetch the movies! " />;
   }
 
   const popularMovies = data?.results.slice(0, 5);

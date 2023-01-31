@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiSun } from "react-icons/fi";
@@ -21,11 +21,13 @@ const Header: React.FC = () => {
     activeTheme,
     setTheme,
     setActiveTheme,
-    checkSystemTheme,
+    checkTheme,
     setShowSideBar,
     theme,
   } = useGlobalContext();
   const [showBg, setShowBg] = useState<boolean>(false);
+  const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
+  const location = useLocation();
 
   useEffect(() => {
     const changeHeaderBg = () => {
@@ -42,9 +44,17 @@ const Header: React.FC = () => {
     };
   }, [showBg]);
 
+  useEffect(() => {
+    if (location.pathname.split("/").length > 3) {
+      setIsPageNotFound(true);
+    } else {
+      setIsPageNotFound(false);
+    }
+  }, [location]);
+
   const changeTheme = (theme: string) => {
     if (theme === "System") {
-      checkSystemTheme();
+      checkTheme();
     } else {
       setTheme(theme);
     }
@@ -58,10 +68,10 @@ const Header: React.FC = () => {
     <header
       className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${
         showBg && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
-      } transition-all duration-300`}
+      } transition-all duration-50`}
     >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
-        <Logo showBg={showBg} isHeaderLogo/>
+        <Logo showBg={showBg} isHeaderLogo={!isPageNotFound} />
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
             {navLinks.map((link: { title: string; path: string }, index) => {
@@ -75,7 +85,7 @@ const Header: React.FC = () => {
                             showBg ? textColor : `text-secColor`
                           }`
                         : `nav-link ${
-                            showBg
+                            isPageNotFound || showBg
                               ? "text-[#444] dark:text-gray-300 dark:hover:text-secColor hover:text-black"
                               : "text-gray-300 hover:text-secColor"
                           }`;
@@ -90,10 +100,11 @@ const Header: React.FC = () => {
           </ul>
           <div className="button relative">
             <button
+              name="theme-menu"
               type="button"
               onClick={toogleThemeOptions}
               className={`flex items-center justify-center mb-[2px] transition-all text-gray-300 duration-300 hover:scale-110 active:scale-75 ${
-                showBg
+                isPageNotFound || showBg
                   ? `${textColor} dark:hover:text-secColor hover:text-black `
                   : ` dark:hover:text-secColor `
               } `}
@@ -130,6 +141,7 @@ const Header: React.FC = () => {
                       }`}
                     >
                       <button
+                        name="theme"
                         type="button"
                         className={`flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px] ${
                           activeTheme === option.title ? `${textColor} ` : ""
@@ -151,8 +163,9 @@ const Header: React.FC = () => {
 
         <button
           type="button"
+          name="menu"
           className={`inline-block text-[22.75px] md:hidden ${
-            showBg
+            isPageNotFound || showBg
               ? `${textColor} dark:hover:text-secColor hover:text-black `
               : ` dark:hover:text-secColor text-secColor`
           } active:scale-75 transition-all duration-300`}

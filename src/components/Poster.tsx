@@ -1,16 +1,13 @@
-import React from "react";
 import { m } from "framer-motion";
 import { zoomIn } from "./../utils/motion";
 
-const Poster = ({
-  posterPath,
-  title,
-  classes
-}: {
+interface PosterPropsType {
   posterPath: string;
   title: string;
   classes?: string;
-}) => {
+}
+
+const Poster = ({ posterPath, title, classes }: PosterPropsType) => {
   return (
     <div className={`${classes} md:block hidden `}>
       <m.img

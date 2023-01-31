@@ -1,4 +1,3 @@
-import React from "react";
 import { useGlobalContext } from "../context/context";
 
 const Genre = ({ name }: { name: string }) => {

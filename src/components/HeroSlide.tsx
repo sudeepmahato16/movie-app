@@ -14,7 +14,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
     poster_path: posterPath,
     id,
   } = movie;
-  const { theme, getTrailerId, openModal } = useGlobalContext();
+  const { getTrailerId, openModal } = useGlobalContext();
   const navigate = useNavigate();
 
   const showTrailer = (id: number) => {
@@ -44,6 +44,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
         >
           <button
             type="button"
+            name="watch-now"
             className={`${watchBtn} bg-[#ff0000] shadow-glow
              text-shadow text-secColor `}
             onClick={() => {
@@ -54,6 +55,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
           </button>
           <button
             type="button"
+            name="watch-trailer"
             className={`${watchBtn} text-shadow watch-trailer
              `}
             onClick={() => showTrailer(id)}

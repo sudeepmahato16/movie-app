@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { saveTheme, getTheme } from "../utils/helper";
 import { API_KEY, TMDB_API_BASE_URL } from "./../utils/config";
 
 const context = React.createContext({
@@ -8,30 +9,38 @@ const context = React.createContext({
   activeTheme: "System",
   setActiveTheme: (newTheme: string) => {},
   setTheme: (newTheme: string) => {},
-  checkSystemTheme: () => {},
+  checkTheme: () => {},
   setShowSideBar: (prevValue: boolean) => {},
   theme: "",
   getTrailerId: (id: number) => {},
-  videoId: '',
+  videoId: "",
   openModal: () => {},
   closeModal: () => {},
-  isModalOpen: false
+  isModalOpen: false,
 });
 
 interface Props {
   children: React.ReactNode;
 }
 
+const initialTheme = getTheme();
+
 const GlobalContextProvider = ({ children }: Props) => {
   const [showThemeOptions, setShowThemeOptions] = useState<boolean>(false);
   const [showSideBar, setShowSideBar] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>("");
-  const [activeTheme, setActiveTheme] = useState<string>("System");
-  const [videoId, setVideoId] = useState('');
+  const [theme, setTheme] = useState<string>(initialTheme);
+  const [activeTheme, setActiveTheme] = useState<string>(
+    initialTheme || "System"
+  );
+  const [videoId, setVideoId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const checkSystemTheme = () => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  const checkTheme = () => {
+    if (
+      (window.matchMedia("(prefers-color-scheme: dark)").matches &&
+        theme === "") ||
+      theme === "Dark"
+    ) {
       setTheme("Dark");
     } else {
       setTheme("Light");
@@ -39,14 +48,16 @@ const GlobalContextProvider = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    checkSystemTheme();
+    checkTheme();
   }, []);
 
   useEffect(() => {
     if (theme === "Dark") {
       document.documentElement.classList.add("dark");
+      saveTheme("Dark");
     } else if (theme === "Light") {
       document.documentElement.classList.remove("dark");
+      saveTheme("Light");
     }
   }, [theme]);
 
@@ -56,12 +67,12 @@ const GlobalContextProvider = ({ children }: Props) => {
 
   const openModal = () => {
     setIsModalOpen(true);
-  }
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setVideoId('');
-  }
+    setVideoId("");
+  };
 
   const getTrailerId = async (id: number) => {
     try {
@@ -85,13 +96,13 @@ const GlobalContextProvider = ({ children }: Props) => {
         setActiveTheme,
         setTheme,
         theme,
-        checkSystemTheme,
+        checkTheme,
         setShowSideBar,
         getTrailerId,
         videoId,
         openModal,
         closeModal,
-        isModalOpen
+        isModalOpen,
       }}
     >
       {children}

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 import { useGetShowsQuery } from "../services/TMDB";
 
-import { sectionPropsType } from "../types";
-
 import MoviesSlides from "./MoviesSlides";
 import { SkelatonLoader } from "./Loader";
+import Error from "./Error";
+
+import { sectionPropsType } from "../types";
+import { getErrorMessage } from "../utils/helper";
 
 const Section = ({
   title,
@@ -16,15 +18,26 @@ const Section = ({
   id,
   showSimilarShows,
 }: sectionPropsType) => {
-  const { data: movies, isLoading } = useGetShowsQuery({
+  const {
+    data: movies,
+    isLoading,
+    isError,
+    error,
+  } = useGetShowsQuery({
     category,
     type,
     page: 1,
     showSimilarShows,
     id,
   });
-  
+
   const { theme } = useGlobalContext();
+
+  let errorMessage;
+
+  if (isError) {
+    errorMessage = getErrorMessage(error);
+  }
 
   return (
     <section
@@ -47,9 +60,11 @@ const Section = ({
             View all
           </Link>
         )}
-      </div>  
+      </div>
       {isLoading ? (
         <SkelatonLoader />
+      ) : isError ? (
+        <Error error={String(errorMessage)} classes="h-[250px] text-[18px]" />
       ) : (
         <MoviesSlides movies={movies.results} category={category} />
       )}

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 import { FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&family=Montserrat:wght@300;400;500;600;700&&family=Roboto+Condensed:wght@400;700&display=swap");
 
 *,
 *::after,
@@ -110,7 +110,7 @@ body {
   box-shadow: inset 0 0 0 1px #fff;
 }
 
-.view-all-btn--light{
+.view-all-btn--light {
   box-shadow: inset 0 0 0 1px black;
 }
 

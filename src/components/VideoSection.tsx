@@ -1,4 +1,3 @@
-
 import { maxWidth } from "./../styles/styles";
 
 const VideoSection = ({ videos }: { videos: any }) => {

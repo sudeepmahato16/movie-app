@@ -30,6 +30,7 @@ module.exports = {
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],
       roboto: ["Roboto", "sans-serif"],
+      robotoCondensed: ["Roboto Condensed", "sans-serif"],
     },
   },
   plugins: [],
