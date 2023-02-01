@@ -6,7 +6,7 @@ export const listItem =
   "flex flex-row gap-3 py-1 px-[10px] items-center w-full dark:hover:text-primary hover:text-black transition-all duration-300 font-nunito font-semibold ";
 
 export const sideBarHeading =
-  "xs:mb-[6px] mb-1 font-nunito font-bold xs:text-[15.75px] text-[14.75px] dark:text-gray-50 text-[#333]";
+  "xs:mb-[6px] mb-1 font-nunito font-bold  text-[15.75px] dark:text-gray-50 text-[#333]";
 
 export const activeListItem = "dark:text-secColor text-black font-semibold";
 

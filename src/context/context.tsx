@@ -9,7 +9,7 @@ const context = React.createContext({
   activeTheme: "System",
   setActiveTheme: (newTheme: string) => {},
   setTheme: (newTheme: string) => {},
-  checkTheme: () => {},
+  checkSystemTheme: () => {},
   setShowSideBar: (prevValue: boolean) => {},
   theme: "",
   getTrailerId: (id: number) => {},
@@ -35,16 +35,18 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [videoId, setVideoId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const checkTheme = () => {
-    if (
-      (window.matchMedia("(prefers-color-scheme: dark)").matches &&
-        theme === "") ||
-      theme === "Dark"
-    ) {
+  const checkSystemTheme = () => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("Dark");
     } else {
       setTheme("Light");
     }
+  };
+
+  // check theme stored in local storage;
+  const checkTheme = () => {
+    if (initialTheme) return;
+    checkSystemTheme();
   };
 
   useEffect(() => {
@@ -96,7 +98,7 @@ const GlobalContextProvider = ({ children }: Props) => {
         setActiveTheme,
         setTheme,
         theme,
-        checkTheme,
+        checkSystemTheme,
         setShowSideBar,
         getTrailerId,
         videoId,

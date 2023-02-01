@@ -21,8 +21,8 @@ const Header: React.FC = () => {
     activeTheme,
     setTheme,
     setActiveTheme,
-    checkTheme,
     setShowSideBar,
+    checkSystemTheme,
     theme,
   } = useGlobalContext();
   const [showBg, setShowBg] = useState<boolean>(false);
@@ -54,10 +54,11 @@ const Header: React.FC = () => {
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {
-      checkTheme();
+      checkSystemTheme();
     } else {
       setTheme(theme);
     }
+
     setActiveTheme(theme);
     toogleThemeOptions();
   };
@@ -71,7 +72,14 @@ const Header: React.FC = () => {
       } transition-all duration-50`}
     >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
-        <Logo showBg={showBg} isHeaderLogo={!isPageNotFound} />
+        <Logo
+          logoColor={
+            !isPageNotFound && showBg
+              ? "text-black dark:text-primary"
+              : "text-primary"
+          }
+        />
+
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
             {navLinks.map((link: { title: string; path: string }, index) => {

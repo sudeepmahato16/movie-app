@@ -35,7 +35,7 @@ const SideBar: React.FC = () => {
         </div>
         <button
           type="button"
-          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-900`}
+          className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-900 `}
           onClick={() => setShowSideBar(false)}
         >
           <IoMdClose />
@@ -65,7 +65,7 @@ const SideBar: React.FC = () => {
         </ul>
 
         <h3 className={`${sideBarHeading} mt-4 `}>Theme</h3>
-        <ul className="flex flex-col sm:gap-2 xs:gap-[4px] gap-[2px] capitalize xs:text-[14px] text-[13.5px] font-medium">
+        <ul className="flex flex-col sm:gap-2 xs:gap-[4px] gap-[2px] capitalize text-[14.75px] font-medium">
           {themeOptions.map((theme: themeTypes, index) => {
             return (
               <li key={index}>

@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
       <div
         className={`${maxWidth} flex flex-col items-center lg:gap-14 md:gap-12 sm:gap-8 xs:gap-[30px] gap-6`}
       >
-        <Logo classes="mr-20" />
+        <Logo classes="mr-20" logoColor="text-primary" />
         <ul className="grid grid-cols-3 items-center justify-start font-medium text-gray-300 capitalize md:gap-x-16 md:gap-y-4 md:gap-4 sm:gap-2  xs:gap-[6px] gap-1">
           {footerLinks.map((title, index) => {
             return (
