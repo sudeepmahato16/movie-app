@@ -14,12 +14,12 @@ const HeroSlide = ({ movie }: { movie: any }) => {
     poster_path: posterPath,
     id,
   } = movie;
-  const { getTrailerId, openModal } = useGlobalContext();
+  const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
 
   const showTrailer = (id: number) => {
     getTrailerId(id);
-    openModal();
+    toggleModal();
   };
 
   return (

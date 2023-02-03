@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import { saveTheme, getTheme } from "../utils/helper";
 import { API_KEY, TMDB_API_BASE_URL } from "./../utils/config";
 
@@ -11,11 +11,11 @@ const context = React.createContext({
   setTheme: (newTheme: string) => {},
   checkSystemTheme: () => {},
   setShowSideBar: (prevValue: boolean) => {},
+  setVideoId: (prevValue: string) => {},
   theme: "",
   getTrailerId: (id: number) => {},
   videoId: "",
-  openModal: () => {},
-  closeModal: () => {},
+  toggleModal: () => {},
   isModalOpen: false,
 });
 
@@ -35,23 +35,25 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [videoId, setVideoId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const checkSystemTheme = () => {
+  const checkSystemTheme = useCallback(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("Dark");
     } else {
       setTheme("Light");
     }
-  };
+  }, []);
 
   // check theme stored in local storage;
-  const checkTheme = () => {
+  const checkTheme = useCallback(() => {
     if (initialTheme) return;
     checkSystemTheme();
-  };
+  }, [checkSystemTheme]);
+
 
   useEffect(() => {
     checkTheme();
   }, []);
+
 
   useEffect(() => {
     if (theme === "Dark") {
@@ -63,20 +65,16 @@ const GlobalContextProvider = ({ children }: Props) => {
     }
   }, [theme]);
 
-  const toogleThemeOptions = () => {
+  const toogleThemeOptions = useCallback(() => {
     setShowThemeOptions((prev) => !prev);
-  };
+  }, []);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  const toggleModal = useCallback(() => {
+    setIsModalOpen((prev) => !prev);
+  }, []);
+  
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setVideoId("");
-  };
-
-  const getTrailerId = async (id: number) => {
+  const getTrailerId = useCallback(async (id: number) => {
     try {
       const res = await fetch(
         `${TMDB_API_BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
@@ -86,7 +84,7 @@ const GlobalContextProvider = ({ children }: Props) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   return (
     <context.Provider
@@ -102,9 +100,9 @@ const GlobalContextProvider = ({ children }: Props) => {
         setShowSideBar,
         getTrailerId,
         videoId,
-        openModal,
-        closeModal,
+        toggleModal,
         isModalOpen,
+        setVideoId,
       }}
     >
       {children}

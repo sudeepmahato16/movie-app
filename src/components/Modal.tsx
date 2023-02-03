@@ -1,3 +1,5 @@
+import React, { useCallback } from "react";
+
 import { IoMdClose } from "react-icons/io";
 
 import { useGlobalContext } from "../context/context";
@@ -5,7 +7,17 @@ import { m, AnimatePresence } from "framer-motion";
 import { zoomIn } from "./../utils/motion";
 
 const Modal = () => {
-  const { videoId, closeModal, isModalOpen } = useGlobalContext();
+  const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
+
+  const closeModal = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      e.stopPropagation();
+      toggleModal();
+      setVideoId("");
+    },
+    [toggleModal]
+  );
+
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -22,7 +34,7 @@ const Modal = () => {
           >
             <button
               type="button"
-              className="absolute -right-8 -top-6 dark:text-gray-300 text-gray-600 text-[28px] z-20"
+              className="absolute -right-8 -top-6 dark:text-gray-300 text-gray-600 text-[28px] z-50 "
               onClick={closeModal}
             >
               <IoMdClose />

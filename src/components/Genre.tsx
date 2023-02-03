@@ -1,7 +1,6 @@
-import { useGlobalContext } from "../context/context";
+import { memo } from "react";
 
 const Genre = ({ name }: { name: string }) => {
-  const { theme } = useGlobalContext();
   return (
     <span
       className={`genre
@@ -12,4 +11,4 @@ const Genre = ({ name }: { name: string }) => {
   );
 };
 
-export default Genre;
+export default memo(Genre);

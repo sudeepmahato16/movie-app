@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { m, AnimatePresence } from "framer-motion";
 
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiSun } from "react-icons/fi";
 import { GoDeviceDesktop } from "react-icons/go";
 
-import { maxWidth } from "./../styles/styles";
-import { navLinks, themeOptions } from "../constants/constants";
-import { zoomIn } from "./../utils/motion";
+import { maxWidth, textColor } from "./../styles/styles";
+import { navLinks } from "../constants/constants";
 
 import Logo from "./Logo";
+import HeaderNavItem from "./HeaderNavItem";
+
 import { useGlobalContext } from "../context/context";
+import Themes from "./Themes";
 
 const Header: React.FC = () => {
-  const {
-    toogleThemeOptions,
-    showThemeOptions,
-    activeTheme,
-    setTheme,
-    setActiveTheme,
-    setShowSideBar,
-    checkSystemTheme,
-    theme,
-  } = useGlobalContext();
+  const { toogleThemeOptions, activeTheme, setShowSideBar, theme } =
+    useGlobalContext();
+    
   const [showBg, setShowBg] = useState<boolean>(false);
   const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
   const location = useLocation();
@@ -37,6 +31,7 @@ const Header: React.FC = () => {
         if (showBg) setShowBg(false);
       }
     };
+
     window.addEventListener("scroll", changeHeaderBg);
 
     return () => {
@@ -51,19 +46,6 @@ const Header: React.FC = () => {
       setIsPageNotFound(false);
     }
   }, [location]);
-
-  const changeTheme = (theme: string) => {
-    if (theme === "System") {
-      checkSystemTheme();
-    } else {
-      setTheme(theme);
-    }
-
-    setActiveTheme(theme);
-    toogleThemeOptions();
-  };
-
-  const textColor = "dark:text-secColor text-black";
 
   return (
     <header
@@ -82,30 +64,18 @@ const Header: React.FC = () => {
 
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
-            {navLinks.map((link: { title: string; path: string }, index) => {
+            {navLinks.map((link: { title: string; path: string }) => {
               return (
-                <li key={index}>
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) => {
-                      return isActive
-                        ? `nav-link active ${
-                            showBg ? textColor : `text-secColor`
-                          }`
-                        : `nav-link ${
-                            isPageNotFound || showBg
-                              ? "text-[#444] dark:text-gray-300 dark:hover:text-secColor hover:text-black"
-                              : "text-gray-300 hover:text-secColor"
-                          }`;
-                    }}
-                    end
-                  >
-                    {link.title}
-                  </NavLink>
-                </li>
+                <HeaderNavItem
+                  key={link.title}
+                  link={link}
+                  isPageNotFound={isPageNotFound}
+                  showBg={showBg}
+                />
               );
             })}
           </ul>
+
           <div className="button relative">
             <button
               name="theme-menu"
@@ -125,47 +95,7 @@ const Header: React.FC = () => {
                 <GoDeviceDesktop />
               )}
             </button>
-            <AnimatePresence>
-              {showThemeOptions && (
-                <m.ul
-                  variants={zoomIn(0.9, 0.2)}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  style={{
-                    background: `${
-                      theme === "Light" ? "#FAFAFA" : "rgba(0,0,0,0.4)"
-                    }`,
-                  }}
-                  className="absolute top-[200%] right-[25%] bg-primary shadow-md backdrop-blur-sm  rounded-md overflow-hidden dark:dark-glass light-glass"
-                >
-                  {themeOptions.map((option, index) => (
-                    <li
-                      key={index}
-                      className={`hover:bg-gray-200 dark:hover:bg-black transition-all duration-300 ${
-                        activeTheme === option.title
-                          ? "bg-gray-200 dark:bg-black "
-                          : ""
-                      }`}
-                    >
-                      <button
-                        name="theme"
-                        type="button"
-                        className={`flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px] ${
-                          activeTheme === option.title ? `${textColor} ` : ""
-                        }`}
-                        onClick={() => {
-                          changeTheme(option.title);
-                        }}
-                      >
-                        {<option.icon />}
-                        <span>{option.title}</span>
-                      </button>
-                    </li>
-                  ))}
-                </m.ul>
-              )}
-            </AnimatePresence>
+            <Themes />
           </div>
         </div>
 

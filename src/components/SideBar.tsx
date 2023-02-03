@@ -1,25 +1,26 @@
-import React from "react";
-
-import { NavLink } from "react-router-dom";
+import React, { useCallback } from "react";
 import { IoMdClose } from "react-icons/io";
-import { ImMobile2 } from "react-icons/im";
 
 import { useGlobalContext } from "../context/context";
 
 import { navLinks, themeOptions } from "../constants/constants";
-import { activeListItem, listItem, sideBarHeading } from "../styles/styles";
+import { sideBarHeading } from "../styles/styles";
 import { navLinkType, themeTypes } from "../types";
+
 import Logo from "./Logo";
+import NavItem from "./NavItem";
+import ThemeOption from "./ThemeOption";
 
 const SideBar: React.FC = () => {
   const {
     showSideBar,
     setShowSideBar,
-    setActiveTheme,
-    setTheme,
-    theme,
-    activeTheme,
+    theme
   } = useGlobalContext();
+
+  const closeSideBar = useCallback(() => {
+    setShowSideBar(false);
+  }, []);
 
   return (
     <aside
@@ -36,7 +37,7 @@ const SideBar: React.FC = () => {
         <button
           type="button"
           className={`flex justify-center items-center h-[32px] w-[32px] transition-all duration-300 rounded-full hover:bg-[rgba(256,256,256)] hover:bg-opacity-30 dark:hover:bg-blackOverlay sm:text-[22.75px] text-[20.75px] md:hidden dark:text-gray-400 text-gray-900 `}
-          onClick={() => setShowSideBar(false)}
+          onClick={closeSideBar}
         >
           <IoMdClose />
         </button>
@@ -44,51 +45,21 @@ const SideBar: React.FC = () => {
       <div className="p-4 sm:pt-8  xs:pt-6 pt-[22px] h-full flex flex-col">
         <h3 className={sideBarHeading}>Menu</h3>
         <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
-          {navLinks.map((link: navLinkType, index) => {
+          {navLinks.map((link: navLinkType) => {
             return (
-              <li key={index}>
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) => {
-                    return isActive
-                      ? `${listItem} ${activeListItem}`
-                      : `${listItem} `;
-                  }}
-                  onClick={() => setShowSideBar(false)}
-                >
-                  {<link.icon className="text-[18px]" />}
-                  <span>{link.title}</span>
-                </NavLink>
-              </li>
+              <NavItem
+                link={link}
+                closeSideBar={closeSideBar}
+                key={link.title.replaceAll(" ", "")}
+              />
             );
           })}
         </ul>
 
         <h3 className={`${sideBarHeading} mt-4 `}>Theme</h3>
         <ul className="flex flex-col sm:gap-2 xs:gap-[4px] gap-[2px] capitalize text-[14.75px] font-medium">
-          {themeOptions.map((theme: themeTypes, index) => {
-            return (
-              <li key={index}>
-                <button
-                  type="button"
-                  className={`${listItem} ${
-                    theme.title === activeTheme ? activeListItem : ""
-                  }`}
-                  onClick={() => {
-                    setShowSideBar(false);
-                    setActiveTheme(theme.title);
-                    setTheme(theme.title);
-                  }}
-                >
-                  {theme.title === "System" ? (
-                    <ImMobile2 />
-                  ) : (
-                    <theme.icon className="" />
-                  )}
-                  <span>{theme.title}</span>
-                </button>
-              </li>
-            );
+          {themeOptions.map((theme: themeTypes) => {
+            return <ThemeOption theme={theme} key={theme.title} />;
           })}
         </ul>
 
