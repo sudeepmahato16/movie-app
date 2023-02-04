@@ -7,7 +7,7 @@ interface Props {
   isPageNotFound: boolean;
   showBg: boolean;
 }
-
+ 
 const HeaderNavItem = ({ link, showBg, isPageNotFound }: Props) => {
   return (
     <li>

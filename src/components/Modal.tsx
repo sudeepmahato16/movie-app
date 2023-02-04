@@ -8,7 +8,7 @@ import { zoomIn } from "./../utils/motion";
 
 const Modal = () => {
   const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
-
+ 
   const closeModal = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();

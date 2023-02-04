@@ -18,4 +18,4 @@ export const mainHeading = `sm:text-4xl xs:text-3xl text-[28.75px] font-extrabol
 
 export const paragraph = `sm:text-base xs:text-[15.75px] text-[14.25px] leading-relaxed`;
 
-export const textColor = "dark:text-secColor text-black";
+export const textColor = "dark:text-secColor text-black"; 

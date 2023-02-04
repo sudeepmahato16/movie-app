@@ -9,6 +9,6 @@ const Genre = ({ name }: { name: string }) => {
       {name}
     </span>
   );
-};
+}; 
 
 export default memo(Genre);

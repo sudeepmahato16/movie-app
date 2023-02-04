@@ -11,7 +11,7 @@ const Themes = () => {
     setTheme,
     checkSystemTheme,
     toogleThemeOptions,
-    setActiveTheme,
+    setActiveTheme, 
     showThemeOptions,
     activeTheme,
   } = useGlobalContext();
