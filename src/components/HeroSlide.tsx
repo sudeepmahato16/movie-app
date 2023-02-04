@@ -1,3 +1,4 @@
+import { useCallback, memo } from "react";
 import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -14,13 +15,19 @@ const HeroSlide = ({ movie }: { movie: any }) => {
     poster_path: posterPath,
     id,
   } = movie;
+
   const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
 
-  const showTrailer = (id: number) => {
+  const showTrailer = useCallback(() => {
     getTrailerId(id);
     toggleModal();
-  };
+  }, [getTrailerId, toggleModal]);
+
+  const handleWatchNow = useCallback(() => {
+    navigate(`/movie/${id}`);
+  }, [navigate]);
+
 
   return (
     <div
@@ -47,9 +54,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
             name="watch-now"
             className={`${watchBtn} bg-[#ff0000] shadow-glow
              text-shadow text-secColor `}
-            onClick={() => {
-              navigate(`/movie/${id}`);
-            }}
+            onClick={handleWatchNow}
           >
             Watch now
           </button>
@@ -58,7 +63,7 @@ const HeroSlide = ({ movie }: { movie: any }) => {
             name="watch-trailer"
             className={`${watchBtn} text-shadow watch-trailer
              `}
-            onClick={() => showTrailer(id)}
+            onClick={showTrailer}
           >
             Watch trailer
           </button>
@@ -70,4 +75,4 @@ const HeroSlide = ({ movie }: { movie: any }) => {
   );
 };
 
-export default HeroSlide;
+export default memo(HeroSlide);

@@ -81,8 +81,8 @@ const GlobalContextProvider = ({ children }: Props) => {
       );
       const data = await res.json();
       setVideoId(data.results[0].key);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.error(error.message);
     }
   }, []);
 

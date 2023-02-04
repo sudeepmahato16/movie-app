@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 
 import { FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -50,4 +50,6 @@ const MovieCard = ({
   );
 };
 
-export default MovieCard;
+export default memo(MovieCard, (prevProps, newProps) => {
+  return prevProps.movie.id === newProps.movie.id;
+});

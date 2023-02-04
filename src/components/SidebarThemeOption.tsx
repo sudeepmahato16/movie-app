@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useGlobalContext } from "../context/context";
-import { listItem, activeListItem } from "./../styles/styles";
-import { themeTypes } from "./../types.d";
+import { listItem, activeListItem } from "../styles/styles";
+import { themeTypes } from "../types";
 import { ImMobile2 } from "react-icons/im";
 
 const ThemeOption = ({ theme }: { theme: themeTypes }) => {

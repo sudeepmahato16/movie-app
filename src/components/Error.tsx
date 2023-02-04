@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BiError } from "react-icons/bi";
 
 interface ErrorProps {
@@ -5,7 +6,7 @@ interface ErrorProps {
   error: string;
 }
 
-const Error = ({ classes = "h-screen", error }: ErrorProps) => {
+const Error = memo(({ classes = "h-screen", error }: ErrorProps) => {
   return (
     <div
       className={`relative dark:bg-black bg-mainColor top-0 left-0 w-screen ${classes} flex justify-center items-center`}
@@ -16,6 +17,6 @@ const Error = ({ classes = "h-screen", error }: ErrorProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default Error;

@@ -2,7 +2,7 @@ import { maxWidth } from "./../styles/styles";
 
 const VideoSection = ({ videos }: { videos: any }) => {
   const youtubeVideos = videos.slice(0, 2);
-
+  
   return (
     <section
       className={` flex flex-col lg:gap-16 md:gap-14 sm:gap-12 xs:gap-10 gap-8 lg:py-24 md:py-16 sm:py-12 xs:py-10 py-8 ${maxWidth} `}

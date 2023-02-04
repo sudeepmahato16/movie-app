@@ -21,7 +21,7 @@ const Home = () => {
   }
 
   if (isError) {
-    return <Error error="Unable to fetch the movies! " />;
+    return <Error error="Unable to fetch the movies! "/>;
   }
 
   const popularMovies = data?.results.slice(0, 5);
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <>
       <Hero movies={popularMovies} />
-      <div className={`${maxWidth} lg:mt-12 md:mt-8 sm:mt-6 xs:mt-4 mt-2  `}>
+      <div className={`${maxWidth} lg:mt-12 md:mt-8 sm:mt-6 xs:mt-4 mt-2`}>
         {sections.map(({ title, category, type }: sectionsType) => (
           <LazyLoad height={320} once key={title}>
             <Section title={title} category={category} type={type} />

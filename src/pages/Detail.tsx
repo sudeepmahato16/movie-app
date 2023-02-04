@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { m } from "framer-motion";
 import LazyLoad from "react-lazyload";
 import { useParams } from "react-router-dom";
@@ -32,13 +32,17 @@ const Detail = () => {
     id: Number(id),
   });
 
+  const toggleShow = useCallback(() => setShow((prev) => !prev), []);
+
+  
   if (isLoading || isFetching) {
     return <Loader />;
   }
-
+  
   if (isError) {
     return <Error error="Something went wrong!" />;
   }
+
 
   const {
     title,
@@ -50,16 +54,15 @@ const Detail = () => {
     credits,
   } = movie;
 
+  const backgroundStyle = {
+    backgroundImage: `linear-gradient(to top, rgba(0,0,0), rgba(0,0,0,0.98),rgba(0,0,0,0.8) ,rgba(0,0,0,0.4)),url('https://image.tmdb.org/t/p/original/${posterPath}'`,
+    backgroundPosition: "top",
+    backgroundSize: "cover",
+  };
+
   return (
     <>
-      <section
-        className="w-full"
-        style={{
-          backgroundImage: `linear-gradient(to top, rgba(0,0,0), rgba(0,0,0,0.98),rgba(0,0,0,0.8) ,rgba(0,0,0,0.4)),url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}'`,
-          backgroundPosition: "top",
-          backgroundSize: "cover",
-        }}
-      >
+      <section className="w-full" style={backgroundStyle}>
         <div
           className={`${maxWidth} lg:py-36 sm:py-[136px] sm:pb-28 xs:py-28 xs:pb-12 pt-24 pb-8 flex flex-row lg:gap-12 md:gap-10 gap-8 justify-center `}
         >
@@ -97,7 +100,7 @@ const Detail = () => {
                 className={`${
                   overview.length > 280 ? "inline-block" : "hidden"
                 } font-bold ml-1 hover:underline transition-all duration-300`}
-                onClick={() => setShow((prev) => !prev)}
+                onClick={toggleShow}
               >
                 {!show ? "show more" : "show less"}
               </button>

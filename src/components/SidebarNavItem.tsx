@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { navLinkType } from "../types";
-import { listItem, activeListItem } from "./../styles/styles";
+import { listItem, activeListItem } from "../styles/styles";
 
-interface navItemProps {
+interface SidebarNavItemProps {
   link: navLinkType;
   closeSideBar: () => void;
 }
 
-const NavItem = ({ link, closeSideBar }: navItemProps) => {
+const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
   return (
     <li>
       <NavLink
@@ -25,4 +25,4 @@ const NavItem = ({ link, closeSideBar }: navItemProps) => {
   );
 };
 
-export default NavItem;
+export default SidebarNavItem;

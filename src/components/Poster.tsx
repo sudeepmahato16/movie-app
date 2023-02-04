@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { zoomIn } from "./../utils/motion";
+import { memo } from "react";
 
 interface PosterPropsType {
   posterPath: string;
@@ -22,4 +23,4 @@ const Poster = ({ posterPath, title, classes }: PosterPropsType) => {
   );
 };
 
-export default Poster;
+export default memo(Poster);

@@ -8,7 +8,7 @@ const Hero = ({ movies }: { movies: any }) => (
     loop={true}
     slidesPerView={1}
     autoplay={{
-      delay: 12000,
+      delay: 10000,
       disableOnInteraction: false,
     }}
     modules={[Autoplay]}
@@ -25,7 +25,7 @@ const Hero = ({ movies }: { movies: any }) => (
           }}
           className="transition-all duration-300 ease-in h-full w-full "
         >
-          {({ isActive }) => (isActive ? <HeroSlide movie={movie} /> : "")}
+          {({ isActive }) => (isActive ? <HeroSlide movie={movie} /> : null)}
         </SwiperSlide>
       );
     })}

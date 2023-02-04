@@ -17,6 +17,10 @@ import Section from "./Section";
 import ScrollToTop from "./ScrollToTop";
 import { SkelatonLoader, Loader } from "./Loader";
 import Error from './Error';
+import Themes from "./Themes";
+import HeaderNavItem from "./HeaderNavItem";
+import SidebarNavItem from './SidebarNavItem';
+import ThemeOption from './SidebarThemeOption';
 
 export {
   Footer,
@@ -38,5 +42,9 @@ export {
   Section,
   SkelatonLoader,
   Loader,
-  Error
+  Error,
+  Themes,
+  HeaderNavItem,
+  SidebarNavItem,
+  ThemeOption
 };

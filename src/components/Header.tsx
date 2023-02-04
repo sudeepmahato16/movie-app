@@ -9,16 +9,14 @@ import { GoDeviceDesktop } from "react-icons/go";
 import { maxWidth, textColor } from "./../styles/styles";
 import { navLinks } from "../constants/constants";
 
-import Logo from "./Logo";
-import HeaderNavItem from "./HeaderNavItem";
+import { Themes, Logo, HeaderNavItem } from "./../components";
 
 import { useGlobalContext } from "../context/context";
-import Themes from "./Themes";
 
 const Header: React.FC = () => {
   const { toogleThemeOptions, activeTheme, setShowSideBar, theme } =
     useGlobalContext();
-    
+
   const [showBg, setShowBg] = useState<boolean>(false);
   const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
   const location = useLocation();
@@ -95,6 +93,7 @@ const Header: React.FC = () => {
                 <GoDeviceDesktop />
               )}
             </button>
+
             <Themes />
           </div>
         </div>

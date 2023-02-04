@@ -8,15 +8,11 @@ import { sideBarHeading } from "../styles/styles";
 import { navLinkType, themeTypes } from "../types";
 
 import Logo from "./Logo";
-import NavItem from "./NavItem";
-import ThemeOption from "./ThemeOption";
+import SidebarNavItem from "./SidebarNavItem";
+import ThemeOption from "./SidebarThemeOption";
 
 const SideBar: React.FC = () => {
-  const {
-    showSideBar,
-    setShowSideBar,
-    theme
-  } = useGlobalContext();
+  const { showSideBar, setShowSideBar, theme } = useGlobalContext();
 
   const closeSideBar = useCallback(() => {
     setShowSideBar(false);
@@ -47,7 +43,7 @@ const SideBar: React.FC = () => {
         <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
           {navLinks.map((link: navLinkType) => {
             return (
-              <NavItem
+              <SidebarNavItem
                 link={link}
                 closeSideBar={closeSideBar}
                 key={link.title.replaceAll(" ", "")}

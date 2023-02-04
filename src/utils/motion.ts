@@ -48,6 +48,8 @@ export const slideDown = {
     },
   },
 };
+
+
 export const slideUp = {
   hidden: {
     y: 50,
@@ -61,8 +63,7 @@ export const slideUp = {
     transition: {
       duration: 0.4,
       ease: "easeOut",
-      type: 'tween',
-      
+      type: 'tween', 
     },
   },
 };

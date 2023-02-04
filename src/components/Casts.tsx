@@ -1,10 +1,10 @@
+import { memo } from "react";
 import LazyLoad from "react-lazy-load";
 import { m } from "framer-motion";
 import { slideDown, staggerContainer } from "./../utils/motion";
 
 const Casts = ({ casts }: { casts: any }) => {
   const topCasts = casts.slice(0, 4);
-
   return (
     <m.div
       variants={staggerContainer(0.2, 1)}
@@ -37,4 +37,6 @@ const Casts = ({ casts }: { casts: any }) => {
   );
 };
 
-export default Casts;
+export default memo(Casts, (prevProps, newProps) => {
+  return prevProps.casts[0].id === newProps.casts[0].id;
+});
