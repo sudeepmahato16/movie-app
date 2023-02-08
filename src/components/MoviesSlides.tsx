@@ -1,13 +1,19 @@
 import React from "react";
 import { moviesSlideProps } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { FreeMode } from "swiper";
 
 import MovieCard from "./MovieCard";
 
 const MoviesSlides: React.FC<moviesSlideProps> = ({ movies, category }) => (
   <>
-    <Swiper slidesPerView="auto" spaceBetween={15} className="mySwiper">
+    <Swiper
+      slidesPerView="auto"
+      spaceBetween={15}
+      className="mySwiper"
+      freeMode={true}
+      modules={[FreeMode]}
+    >
       {movies.map((movie: any) => {
         return (
           <SwiperSlide
