@@ -14,7 +14,7 @@ Check out a live demo and try it for yourself: [Live demo](https://tmovies-blush
 
   <kbd><img width="955" alt="movies slide" src="https://user-images.githubusercontent.com/122378993/218236543-a33ec859-a0ee-4073-97bd-021f8401a00e.png"></kbd>
 
-  <kbd><img width="937" alt="movie detail" src="https://user-images.githubusercontent.com/122378993/218236527-fbf494ef-d62c-45c3-81cf-7fbeb1c0c3b5.png"></kbd>
+  <kbd><img width="953" alt="movie" src="https://user-images.githubusercontent.com/122378993/218257506-40efd922-0525-4620-81f4-eb03cdc661c8.png"></kbd>
 
   <kbd><img width="957" alt="search movie" src="https://user-images.githubusercontent.com/122378993/218236559-2424a745-eef7-4835-8311-e5cd3030e921.png"></kbd>
 
