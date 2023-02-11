@@ -6,6 +6,20 @@ A Simple Movie Application using React JS, Typescript and Tailwind css, allows u
 
 Check out a live demo and try it for yourself: [Live demo](https://tmovies-blush.vercel.app/)
 
+## Screenshots
+
+  <kbd><img width="931" alt="hero section" src="https://user-images.githubusercontent.com/122378993/218236029-9bcf16a3-6cb7-47c1-83a0-fcb795343e82.png"></kbd>
+
+  <kbd><img width="950" alt="youtube video" src="https://user-images.githubusercontent.com/122378993/218236507-d55ca04d-2d6c-414b-9316-3817ae1a6cd7.png"></kbd>
+
+  <kbd><img width="955" alt="movies slide" src="https://user-images.githubusercontent.com/122378993/218236543-a33ec859-a0ee-4073-97bd-021f8401a00e.png"></kbd>
+
+  <kbd><img width="937" alt="movie detail" src="https://user-images.githubusercontent.com/122378993/218236527-fbf494ef-d62c-45c3-81cf-7fbeb1c0c3b5.png"></kbd>
+
+  <kbd><img width="957" alt="search movie" src="https://user-images.githubusercontent.com/122378993/218236559-2424a745-eef7-4835-8311-e5cd3030e921.png"></kbd>
+
+
+
 ### **Getting Started**
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
