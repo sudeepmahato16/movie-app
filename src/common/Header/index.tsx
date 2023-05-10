@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { useLocation } from "react-router-dom";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -18,16 +17,16 @@ const Header: React.FC = () => {
   const { toogleThemeOptions, activeTheme, setShowSideBar, theme } =
     useGlobalContext();
 
-  const [showBg, setShowBg] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
   const location = useLocation();
 
   useEffect(() => {
     const changeHeaderBg = () => {
       if (window.scrollY > 0) {
-        if (!showBg) setShowBg(true);
+        if (!isActive) setIsActive(true);
       } else {
-        if (showBg) setShowBg(false);
+        if (isActive) setIsActive(false);
       }
     };
 
@@ -36,7 +35,7 @@ const Header: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", changeHeaderBg);
     };
-  }, [showBg]);
+  }, [isActive]);
 
   useEffect(() => {
     if (location.pathname.split("/").length > 3) {
@@ -44,18 +43,20 @@ const Header: React.FC = () => {
     } else {
       setIsPageNotFound(false);
     }
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <header
       className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${
-        showBg && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
+        isActive && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
       } transition-all duration-50`}
     >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
         <Logo
           logoColor={
-            !isPageNotFound && showBg
+            isPageNotFound
+              ? "text-black dark:text-primary"
+              : !isPageNotFound && isActive
               ? "text-black dark:text-primary"
               : "text-primary"
           }
@@ -69,7 +70,7 @@ const Header: React.FC = () => {
                   key={link.title}
                   link={link}
                   isPageNotFound={isPageNotFound}
-                  showBg={showBg}
+                  showBg={isActive}
                 />
               );
             })}
@@ -80,10 +81,10 @@ const Header: React.FC = () => {
               name="theme-menu"
               type="button"
               onClick={toogleThemeOptions}
-              className={`flex items-center justify-center mb-[2px] transition-all text-gray-300 duration-300 hover:scale-110 active:scale-75 ${
-                isPageNotFound || showBg
-                  ? `${textColor} dark:hover:text-secColor hover:text-black `
-                  : ` dark:hover:text-secColor `
+              className={`flex items-center justify-center mb-[2px] transition-all duration-300 hover:scale-110 active:scale-75 ${
+                isPageNotFound || isActive
+                  ? ` ${textColor} dark:hover:text-secColor hover:text-black `
+                  : ` dark:hover:text-secColor text-gray-300 `
               } `}
             >
               {activeTheme === "Dark" ? (
@@ -103,7 +104,7 @@ const Header: React.FC = () => {
           type="button"
           name="menu"
           className={`inline-block text-[22.75px] md:hidden ${
-            isPageNotFound || showBg
+            isPageNotFound || isActive
               ? `${textColor} dark:hover:text-secColor hover:text-black `
               : ` dark:hover:text-secColor text-secColor`
           } active:scale-75 transition-all duration-300`}
