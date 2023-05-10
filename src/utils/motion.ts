@@ -4,7 +4,7 @@ export const zoomIn = (scale: number, duration: number) => ({
     scale,
     transition: {
       duration,
-      ease: "easeIn",
+      ease: "easeInOut",
     },
   },
   show: {
@@ -12,7 +12,7 @@ export const zoomIn = (scale: number, duration: number) => ({
     scale: 1,
     transition: {
       duration,
-      ease: "easeIn",
+      ease: "easeInOut",
     },
   },
 });
@@ -22,7 +22,7 @@ export const staggerContainer = (
   delayChildren: number
 ) => ({
   hidden: {
-    opacity: 0
+    opacity: 0,
   },
   show: {
     opacity: 1,
@@ -44,11 +44,10 @@ export const slideDown = {
     transition: {
       duration: 0.6,
       ease: "easeInOut",
-      type: 'tween',
+      type: "tween",
     },
   },
 };
-
 
 export const slideUp = {
   hidden: {
@@ -57,15 +56,13 @@ export const slideUp = {
     opacity: 0,
   },
   show: {
-    y:0,
-    x:0,
+    y: 0,
+    x: 0,
     opacity: 1,
     transition: {
       duration: 0.4,
       ease: "easeOut",
-      type: 'tween', 
+      type: "tween",
     },
   },
 };
-
-

@@ -1,9 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import "react-loading-skeleton/dist/skeleton.css";
-import "swiper/css";
-
 const Catalog = lazy(() => import("./pages/Catalog"));
 const Home = lazy(() => import("./pages/Home"));
 const Detail = lazy(() => import("./pages/Detail"));
@@ -17,15 +14,18 @@ import {
   Modal,
   ScrollToTop,
   Loader,
-} from "./components";
+} from "./common";
+
+import "react-loading-skeleton/dist/skeleton.css";
+import "swiper/css";
 
 const App = () => {
   return (
     <>
       <Overlay />
       <Modal />
-      <Header />
       <SideBar />
+      <Header />
       <main className="dark:bg-black bg-mainColor lg:pb-14 md:pb-4 sm:pb-2 xs:pb-1 pb-0">
         <ScrollToTop>
           <Routes>

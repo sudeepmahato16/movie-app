@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation } from "framer-motion";
 
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { tmdbApi } from "./services/TMDB";
-import GlobalContextProvider from "./context/context";
+import GlobalContextProvider from "./store";
 
 import App from "./App";
 import "./index.css";
