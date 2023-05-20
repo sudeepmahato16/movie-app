@@ -12,10 +12,16 @@ import { Themes, Logo } from "..";
 import HeaderNavItem from "./HeaderNavItem";
 
 import { useGlobalContext } from "../../store";
+import { AnimatePresence } from "framer-motion";
 
 const Header: React.FC = () => {
-  const { toogleThemeOptions, activeTheme, setShowSideBar, theme } =
-    useGlobalContext();
+  const {
+    toogleThemeOptions,
+    activeTheme,
+    setShowSideBar,
+    theme,
+    showThemeOptions,
+  } = useGlobalContext();
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
@@ -81,6 +87,7 @@ const Header: React.FC = () => {
               name="theme-menu"
               type="button"
               onClick={toogleThemeOptions}
+              id="theme"
               className={`flex items-center justify-center mb-[2px] transition-all duration-300 hover:scale-110 active:scale-75 ${
                 isPageNotFound || isActive
                   ? ` ${textColor} dark:hover:text-secColor hover:text-black `
@@ -95,8 +102,7 @@ const Header: React.FC = () => {
                 <GoDeviceDesktop />
               )}
             </button>
-
-            <Themes />
+            <AnimatePresence>{showThemeOptions && <Themes />}</AnimatePresence>
           </div>
         </div>
 

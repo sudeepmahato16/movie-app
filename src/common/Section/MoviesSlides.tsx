@@ -11,7 +11,7 @@ const MoviesSlides: React.FC<moviesSlideProps> = ({ movies, category }) => (
         return (
           <SwiperSlide
             key={movie.id}
-            className="flex flex-col sm:gap-4 xs:gap-3 gap-2 xs:max-w-[170px] max-w-[124px] rounded-lg"
+            className="flex flex-col sm:gap-4 xs:gap-3 gap-2 max-w-[170px]  rounded-lg"
           >
             <MovieCard movie={movie} category={category} />
           </SwiperSlide>

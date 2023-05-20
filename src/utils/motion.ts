@@ -33,7 +33,7 @@ export const staggerContainer = (
   },
 });
 
-export const slideDown = {
+export const fadeDown = {
   hidden: {
     opacity: 0,
     y: -25,
@@ -49,7 +49,7 @@ export const slideDown = {
   },
 };
 
-export const slideUp = {
+export const fadeUp = {
   hidden: {
     y: 50,
     x: 50,
@@ -66,3 +66,29 @@ export const slideUp = {
     },
   },
 };
+
+export const slideIn = (
+  direction: string,
+  type: string,
+  delay: number,
+  duration: number
+) => ({
+  hidden: {
+    x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+    y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+    transition: {
+      duration,
+      ease: "easeOut",
+    },
+  },
+  show: {
+    x: 0,
+    y: 0,
+    transition: {
+      type,
+      delay,
+      duration,
+      ease: "easeOut",
+    },
+  },
+});

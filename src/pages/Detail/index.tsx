@@ -8,7 +8,7 @@ import { Poster, Loader, Error, Section } from "../../common";
 import { Casts, VideoSection, Genre } from "./components";
 
 import { mainHeading, maxWidth, paragraph } from "../../styles";
-import { staggerContainer, slideDown } from "../../utils/motion";
+import { staggerContainer, fadeDown } from "../../utils/motion";
 
 const Detail = () => {
   const { category, id } = useParams();
@@ -64,14 +64,14 @@ const Detail = () => {
             className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1"
           >
             <m.h2
-              variants={slideDown}
+              variants={fadeDown}
               className={`${mainHeading} md:max-w-[420px]`}
             >
               {title || name}
             </m.h2>
 
             <m.ul
-              variants={slideDown}
+              variants={fadeDown}
               className="flex flex-row items-center md:gap-4 sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap"
             >
               {genres.map((genre: { name: string; id: number }) => {
@@ -79,7 +79,7 @@ const Detail = () => {
               })}
             </m.ul>
 
-            <m.p variants={slideDown} className={paragraph}>
+            <m.p variants={fadeDown} className={paragraph}>
               <span>
                 {overview.length > 280
                   ? `${show ? overview : `${overview.slice(0, 280)}...`}`
@@ -97,7 +97,7 @@ const Detail = () => {
             </m.p>
 
             <m.h3
-              variants={slideDown}
+              variants={fadeDown}
               className="text-secColor font-bold md:text-[18px] sm:text-[16.75px] xs:text-[15.75px] text-[14.75px]"
             >
               Top Casts
@@ -113,7 +113,7 @@ const Detail = () => {
       <Section
         title={`Similar ${category === "movie" ? "movies" : "series"}`}
         category={String(category)}
-        classes={`${maxWidth}`}
+        className={`${maxWidth}`}
         id={Number(id)}
         showSimilarShows={true}
       />

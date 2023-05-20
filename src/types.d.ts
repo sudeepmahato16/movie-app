@@ -17,7 +17,7 @@ export interface moviesSlideProps {
 export interface sectionPropsType {
   title: string;
   category: string;
-  classes?: string;
+  className?: string;
   type?: string;
   id?: number;
   showSimilarShows?: boolean;
@@ -33,7 +33,7 @@ export interface getShowsPropsType {
 }
 
 export interface skelatonLoaderPropsTypes {
-  classes?: string;
+  className?: string;
   isMoviesSliderLoader?: boolean;
 }
 

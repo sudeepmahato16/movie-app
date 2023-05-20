@@ -1,12 +1,12 @@
 import React, { memo, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { useGlobalContext } from "../../store";
-import { useGetShowsQuery } from "../../services/TMDB";
-
 import MoviesSlides from "./MoviesSlides";
 import { SkelatonLoader } from "../Loader";
 import Error from "../Error";
+
+import { useGlobalContext } from "../../store";
+import { useGetShowsQuery } from "../../services/TMDB";
 
 import { sectionPropsType } from "../../types";
 import { getErrorMessage } from "../../utils/helper";
@@ -14,7 +14,7 @@ import { getErrorMessage } from "../../utils/helper";
 const Section = ({
   title,
   category,
-  classes,
+  className,
   type,
   id,
   showSimilarShows,
@@ -62,7 +62,7 @@ const Section = ({
 
   const errorMessage = isError ? getErrorMessage(error) : "";
 
-  const sectionClass = `md:py-6 sm:py-[20.75px] xs:py-[18.75px] py-[16.75px] font-nunito ${classes}`;
+  const sectionClass = `md:py-6 sm:py-[20.75px] xs:py-[18.75px] py-[16.75px] font-nunito ${className}`;
   const linkClass = `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full ${
     theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
   } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`;
@@ -85,7 +85,7 @@ const Section = ({
       {isLoading || !data ? (
         <SkelatonLoader />
       ) : isError ? (
-        <Error error={String(errorMessage)} classes="h-[250px] text-[18px]" />
+        <Error error={String(errorMessage)} className="h-[250px] text-[18px]" />
       ) : (
         <MoviesSlides movies={data.results.slice(0, 12)} category={category} />
       )}

@@ -17,6 +17,7 @@ const context = React.createContext({
   videoId: "",
   toggleModal: () => {},
   isModalOpen: false,
+  setShowThemeOptions: (prev: boolean) => {}
 });
 
 interface Props {
@@ -100,6 +101,7 @@ const GlobalContextProvider = ({ children }: Props) => {
         toggleModal,
         isModalOpen,
         setVideoId,
+        setShowThemeOptions
       }}
     >
       {children}

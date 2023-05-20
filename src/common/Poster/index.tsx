@@ -5,16 +5,16 @@ import { memo } from "react";
 interface PosterPropsType {
   posterPath: string;
   title: string;
-  classes?: string;
+  className?: string;
 }
 
-const Poster = ({ posterPath, title, classes }: PosterPropsType) => {
+const Poster = ({ posterPath, title, className }: PosterPropsType) => {
   return (
     <m.div
       variants={zoomIn(0.6, 0.8)}
       initial="hidden"
       animate="show"
-      className={`${classes} md:block hidden h-[380px] w-[254px]`}
+      className={`${className} md:block hidden h-[380px] w-[254px]`}
     >
       <img
         src={`https://image.tmdb.org/t/p/original/${posterPath}`}

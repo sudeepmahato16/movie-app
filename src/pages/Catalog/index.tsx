@@ -8,7 +8,7 @@ import { MovieCard, SkelatonLoader } from "../../common";
 import { Search, CatalogHeader } from "./components";
 
 import { smallMaxWidth } from "../../styles";
-import { slideUp, staggerContainer } from "../../utils/motion";
+import { fadeUp, staggerContainer } from "../../utils/motion";
 
 
 const Catalog = () => {
@@ -64,7 +64,7 @@ const Catalog = () => {
           >
             {shows?.map((movie: any, index) => (
               <m.div
-                variants={slideUp}
+                variants={fadeUp}
                 key={index}
                 className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[124px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
               >
@@ -81,7 +81,7 @@ const Catalog = () => {
         {isFetching && !isCategoryChanged ? (
           <SkelatonLoader
             isMoviesSliderLoader={false}
-            classes="md:pt-8 sm:pt-7 pt-6"
+            className="md:pt-8 sm:pt-7 pt-6"
           />
         ) : (
           <div className="w-full flex items-center justify-center">

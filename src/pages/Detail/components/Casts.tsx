@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { m } from "framer-motion";
-import { slideDown, staggerContainer } from "../../../utils/motion";
+import { fadeDown, staggerContainer } from "../../../utils/motion";
 
 const Casts = ({ casts }: { casts: any }) => {
   const topCasts = casts.slice(0, 4);
@@ -15,7 +15,7 @@ const Casts = ({ casts }: { casts: any }) => {
         const { id, profile_path: profilePath, name } = cast;
         return (
           <m.figure
-            variants={slideDown}
+            variants={fadeDown}
             key={id}
             className="flex flex-col justify-start sm:gap-1 gap-0"
           >
