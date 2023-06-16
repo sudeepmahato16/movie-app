@@ -1,4 +1,4 @@
-import { memo, useState, useRef, useEffect } from "react";
+import { memo, useState, useRef, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 import MoviesSlides from "./MoviesSlides";
@@ -21,7 +21,14 @@ const Section = ({
 }: sectionPropsType) => {
   const [isInView, setIsInView] = useState<boolean>(false);
   const ref = useRef(null);
-  const { data, isLoading, isError, error } = useGetShowsQuery(
+  const { theme } = useTheme();
+  
+  const {
+    data = { results: [] },
+    isLoading,
+    isError,
+    error,
+  } = useGetShowsQuery(
     {
       category,
       type,
@@ -34,8 +41,6 @@ const Section = ({
     }
   );
 
-  const { theme } = useTheme();
-
   useEffect(() => {
     const observerHandler = (
       entries: IntersectionObserverEntry[],
@@ -46,6 +51,7 @@ const Section = ({
       setIsInView(true);
       observer.unobserve(entry.target);
     };
+
     const observer = new IntersectionObserver(observerHandler, {
       root: null,
       rootMargin: "120px",
@@ -61,10 +67,13 @@ const Section = ({
     };
   }, []);
 
-  const errorMessage = isError ? getErrorMessage(error) : "";
+  const errorMessage = useMemo(
+    () => (isError ? getErrorMessage(error) : ""),
+    [error, isError]
+  );
 
   const sectionStyle = `md:py-6 sm:py-[20.75px] xs:py-[18.75px] py-[16.75px] font-nunito ${className}`;
-  const linkClass = `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full ${
+  const linkStyle = `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full ${
     theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
   } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`;
 
@@ -78,12 +87,12 @@ const Section = ({
           <div className="line" />
         </h3>
         {!showSimilarShows && (
-          <Link to={`/${category}?type=${type}`} className={linkClass}>
+          <Link to={`/${category}?type=${type}`} className={linkStyle}>
             View all
           </Link>
         )}
       </div>
-      {isLoading || !data ? (
+      {isLoading ? (
         <SkelatonLoader />
       ) : isError ? (
         <Error error={String(errorMessage)} className="h-[250px] text-[18px]" />
@@ -94,6 +103,4 @@ const Section = ({
   );
 };
 
-export default memo(Section, (prevProps, newProps) => {
-  return prevProps.title === newProps.title;
-});
+export default memo(Section);

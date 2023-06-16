@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -15,7 +15,7 @@ import HeaderNavItem from "./HeaderNavItem";
 import { useGlobalContext } from "../../context/globalContext";
 import { useTheme } from "../../context/themeContext";
 
-const Header: React.FC = () => {
+const Header = () => {
   const { toogleThemeOptions, activeTheme, theme, showThemeOptions } =
     useTheme();
   const { setShowSidebar } = useGlobalContext();
@@ -27,9 +27,9 @@ const Header: React.FC = () => {
   useEffect(() => {
     const changeHeaderBg = () => {
       if (window.scrollY > 0) {
-        if (!isActive) setIsActive(true);
+        setIsActive(true);
       } else {
-        if (isActive) setIsActive(false);
+        setIsActive(false);
       }
     };
 
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", changeHeaderBg);
     };
-  }, [isActive]);
+  }, []);
 
   useEffect(() => {
     if (location.pathname.split("/").length > 3) {

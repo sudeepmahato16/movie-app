@@ -23,7 +23,7 @@ const Hero = ({ movies }: { movies: any }) => (
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}
-          className="transition-all duration-300 ease-in h-full w-full "
+          className=" h-full w-full "
         >
           {({ isActive }) => (isActive ? <HeroSlide movie={movie} /> : null)}
         </SwiperSlide>

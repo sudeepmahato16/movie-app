@@ -10,6 +10,9 @@ import { mainHeading, maxWidth, paragraph, watchBtn } from "../../../styles";
 import { staggerContainer, fadeDown } from "../../../utils/motion";
 
 const HeroSlide = ({ movie }: { movie: any }) => {
+  const { getTrailerId, toggleModal } = useGlobalContext();
+  const navigate = useNavigate();
+  
   const {
     overview,
     original_title: title,
@@ -17,8 +20,6 @@ const HeroSlide = ({ movie }: { movie: any }) => {
     id,
   } = movie;
 
-  const { getTrailerId, toggleModal } = useGlobalContext();
-  const navigate = useNavigate();
 
   const showTrailer = () => {
     getTrailerId(id);

@@ -30,4 +30,4 @@ const HeaderNavItem = ({ link, showBg, isPageNotFound }: Props) => {
   );
 };
 
-export default React.memo(HeaderNavItem);
+export default HeaderNavItem;

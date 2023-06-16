@@ -1,4 +1,4 @@
-import { memo, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { m } from "framer-motion";
 
 import { useTheme } from "../../context/themeContext";
@@ -49,6 +49,8 @@ const Themes = () => {
     return () => window.removeEventListener("click", handleClick);
   }, [setShowThemeOptions]);
 
+  console.log('hello');
+
   return (
     <m.ul
       ref={ref}
@@ -87,4 +89,4 @@ const Themes = () => {
   );
 };
 
-export default memo(Themes);
+export default Themes;
