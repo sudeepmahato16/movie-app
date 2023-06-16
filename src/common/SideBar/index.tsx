@@ -1,10 +1,12 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { AnimatePresence, m } from "framer-motion";
 
 import SidebarNavItem from "./SidebarNavItem";
 import ThemeOption from "./SidebarThemeOption";
 import Logo from "../Logo";
-import { useGlobalContext } from "../../store";
+
+import { useGlobalContext } from "../../context/globalContext";
+import { useTheme } from "../../context/themeContext";
 
 import { navLinks, themeOptions } from "../../constants";
 import { sideBarHeading } from "../../styles";
@@ -12,15 +14,16 @@ import { navLinkType, themeTypes } from "../../types";
 import { slideIn } from "../../utils/motion";
 
 const SideBar: React.FC = () => {
-  const { showSideBar, setShowSideBar, theme } = useGlobalContext();
+  const { showSidebar, setShowSidebar } = useGlobalContext();
+  const { theme } = useTheme();
 
-  const closeSideBar = useCallback(() => {
-    setShowSideBar(false);
-  }, []);
+  const closeSideBar = () => {
+    setShowSidebar(false);
+  };
 
   return (
     <AnimatePresence>
-      {showSideBar && (
+      {showSidebar && (
         <m.nav
           variants={slideIn("right", "tween", 0, 0.1)}
           initial="hidden"

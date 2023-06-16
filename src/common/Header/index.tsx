@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
+import { AnimatePresence } from "framer-motion";
 import { FiSun } from "react-icons/fi";
 import { GoDeviceDesktop } from "react-icons/go";
 
@@ -11,17 +12,13 @@ import { navLinks } from "../../constants";
 import { Themes, Logo } from "..";
 import HeaderNavItem from "./HeaderNavItem";
 
-import { useGlobalContext } from "../../store";
-import { AnimatePresence } from "framer-motion";
+import { useGlobalContext } from "../../context/globalContext";
+import { useTheme } from "../../context/themeContext";
 
 const Header: React.FC = () => {
-  const {
-    toogleThemeOptions,
-    activeTheme,
-    setShowSideBar,
-    theme,
-    showThemeOptions,
-  } = useGlobalContext();
+  const { toogleThemeOptions, activeTheme, theme, showThemeOptions } =
+    useTheme();
+  const { setShowSidebar } = useGlobalContext();
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
@@ -114,7 +111,7 @@ const Header: React.FC = () => {
               ? `${textColor} dark:hover:text-secColor hover:text-black `
               : ` dark:hover:text-secColor text-secColor`
           } active:scale-75 transition-all duration-300`}
-          onClick={() => setShowSideBar(true)}
+          onClick={() => setShowSidebar(true)}
         >
           <AiOutlineMenu />
         </button>

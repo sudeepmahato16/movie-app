@@ -45,7 +45,7 @@ const Catalog = () => {
         setIsCategoryChanged(false);
       }
     }
-  }, [data]);
+  }, [data, isFetching, isLoading, page]);
 
   return (
     <>

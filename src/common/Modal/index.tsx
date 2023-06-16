@@ -1,22 +1,19 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import { IoMdClose } from "react-icons/io";
-
-import { useGlobalContext } from "../../store";
 import { m, AnimatePresence } from "framer-motion";
+
+import { useGlobalContext } from "../../context/globalContext";
 import { zoomIn } from "../../utils/motion";
 
 const Modal = () => {
   const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
- 
-  const closeModal = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      e.stopPropagation();
-      toggleModal();
-      setVideoId("");
-    },
-    [toggleModal]
-  );
+
+  const closeModal = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    toggleModal();
+    setVideoId("");
+  };
 
   return (
     <AnimatePresence>

@@ -1,7 +1,7 @@
 import { memo, useRef, useEffect } from "react";
 import { m } from "framer-motion";
 
-import { useGlobalContext } from "../../store";
+import { useTheme } from "../../context/themeContext";
 import { zoomIn } from "../../utils/motion";
 import { themeOptions } from "../../constants";
 import { textColor } from "../../styles";
@@ -16,7 +16,7 @@ const Themes = () => {
     setActiveTheme,
     activeTheme,
     setShowThemeOptions,
-  } = useGlobalContext();
+  } = useTheme();
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {
@@ -47,7 +47,7 @@ const Themes = () => {
     window.addEventListener("click", handleClick);
 
     return () => window.removeEventListener("click", handleClick);
-  }, []);
+  }, [setShowThemeOptions]);
 
   return (
     <m.ul

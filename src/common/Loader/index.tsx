@@ -1,11 +1,12 @@
 import { memo } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useGlobalContext } from "../../store";
+
+import { useTheme } from "../../context/themeContext";
 import { skelatonLoaderPropsTypes } from "../../types";
 
 export const SkelatonLoader = memo(
   ({ className, isMoviesSliderLoader = true }: skelatonLoaderPropsTypes) => {
-    const { theme } = useGlobalContext();
+    const { theme } = useTheme();
     const isThemeLight = theme === "Light";
 
     const classNames = isMoviesSliderLoader
@@ -16,7 +17,7 @@ export const SkelatonLoader = memo(
 
     const arrSize = isMoviesSliderLoader
       ? Math.floor(window.innerWidth / 170) + 1
-      : 12;
+      : 10;
 
     return (
       <SkeletonTheme

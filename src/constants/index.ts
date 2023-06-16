@@ -1,5 +1,3 @@
-import React from "react";
-
 import { FiSun } from "react-icons/fi";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { GoDeviceDesktop } from "react-icons/go";

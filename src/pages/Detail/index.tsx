@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { m } from "framer-motion";
 import { useParams } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Detail = () => {
     id: Number(id),
   });
 
-  const toggleShow = useCallback(() => setShow((prev) => !prev), []);
+  const toggleShow = () => setShow((prev) => !prev);
 
   if (isLoading || isFetching) {
     return <Loader />;

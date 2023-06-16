@@ -1,8 +1,8 @@
-import { useCallback, memo } from "react";
+import { memo } from "react";
 import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import { useGlobalContext } from "../../../store";
+import { useGlobalContext } from "../../../context/globalContext";
 
 import { Poster } from "../../../common";
 
@@ -20,14 +20,14 @@ const HeroSlide = ({ movie }: { movie: any }) => {
   const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
 
-  const showTrailer = useCallback(() => {
+  const showTrailer = () => {
     getTrailerId(id);
     toggleModal();
-  }, [getTrailerId, toggleModal]);
+  };
 
-  const handleWatchNow = useCallback(() => {
+  const handleWatchNow = () => {
     navigate(`/movie/${id}`);
-  }, [navigate]);
+  };
 
   return (
     <div

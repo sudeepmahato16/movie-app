@@ -1,29 +1,27 @@
-import React, { useCallback } from "react";
-import { useGlobalContext } from "../../store";
-import { listItem, activeListItem } from "../../styles";
-import { themeTypes } from "../../types";
 import { ImMobile2 } from "react-icons/im";
 
+import { useGlobalContext } from "../../context/globalContext";
+import { useTheme } from "../../context/themeContext";
+
+import { listItem, activeListItem } from "../../styles";
+import { themeTypes } from "../../types";
+
 const ThemeOption = ({ theme }: { theme: themeTypes }) => {
-  const {
-    setShowSideBar,
-    setActiveTheme,
-    setTheme,
-    activeTheme,
-    checkSystemTheme,
-  } = useGlobalContext();
+  const { setActiveTheme, setTheme, activeTheme, checkSystemTheme } =
+    useTheme();
+  const { setShowSidebar } = useGlobalContext();
 
   const { title } = theme;
 
-  const changeTheme = useCallback(() => {
+  const changeTheme = () => {
     if (title === "System") {
       checkSystemTheme();
     } else {
       setTheme(title);
     }
-    setShowSideBar(false);
+    setShowSidebar(false);
     setActiveTheme(title);
-  }, [title]);
+  };
 
   return (
     <li>
