@@ -22,7 +22,7 @@ const Section = ({
   const [isInView, setIsInView] = useState<boolean>(false);
   const ref = useRef(null);
   const { theme } = useTheme();
-  
+
   const {
     data = { results: [] },
     isLoading,
@@ -92,13 +92,21 @@ const Section = ({
           </Link>
         )}
       </div>
-      {isLoading ? (
-        <SkelatonLoader />
-      ) : isError ? (
-        <Error error={String(errorMessage)} className="h-[250px] text-[18px]" />
-      ) : (
-        <MoviesSlides movies={data.results.slice(0, 12)} category={category} />
-      )}
+      <div className="xs:min-h-[250px] min-h-[216px]">
+        {isLoading ? (
+          <SkelatonLoader />
+        ) : isError ? (
+          <Error
+            error={String(errorMessage)}
+            className="xs:h-[250px] h-[216px] text-[18px]"
+          />
+        ) : (
+          <MoviesSlides
+            movies={data.results.slice(0, 12)}
+            category={category}
+          />
+        )}
+      </div>
     </section>
   );
 };

@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 
-const Search = () => {
+interface SearchProps {
+  setQuery: (val: {}) => void;
+}
+
+const Search: React.FC<SearchProps> = ({ setQuery }) => {
   const { category } = useParams();
   const [search, setSearch] = useState<string>("");
-  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!search) return;
-    navigate(`/${category}?search=${search}`);
+    setQuery({ search });
     setSearch("");
   };
 

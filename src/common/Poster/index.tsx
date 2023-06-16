@@ -19,9 +19,11 @@ const Poster = ({ posterPath, title, className }: PosterPropsType) => {
       className={`${className} md:block hidden h-[380px] w-[254px]`}
     >
       <Image
+        width={254}
+        height={380}
         src={`https://image.tmdb.org/t/p/original/${posterPath}`}
         alt={title}
-        className="h-[380px] w-[254px] object-cover rounded-xl  shadow-lg transition-all duration-300 "
+        className="h-[380px] w-[254px] object-cover rounded-xl  shadow-lg transition-all duration-300"
       />
     </m.div>
   );

@@ -1,34 +1,42 @@
 import React from "react";
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface ImageProps {
   src: string;
   className: string;
   alt: string;
-  zoomIn?: boolean;
+  width: string | number;
+  height: string | number;
+  zoomInEffect?: boolean;
 }
 
 const Image: React.FC<ImageProps> = ({
   src,
   className,
+  width,
   alt,
-  zoomIn = false,
+  height,
+  zoomInEffect = false,
 }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleLoad = () => {
     setIsImageLoaded(true);
   };
+
   return (
-    <img
+    <LazyLoadImage
       src={src}
       alt={alt}
+      height={height}
+      width={width}
       className={`${
         !isImageLoaded
-          ? `opacity-0 ${zoomIn ? "scale-95" : ""}`
-          : `opacity-100 ${zoomIn ? "scale-100" : ""}`
+          ? `opacity-0 ${zoomInEffect ? "scale-95" : ""}`
+          : `opacity-100 ${zoomInEffect ? "scale-100" : ""}`
       } ${className}`}
-      onLoad={handleLoad}
+      afterLoad={handleLoad}
     />
   );
 };

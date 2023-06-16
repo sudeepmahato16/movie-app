@@ -115,7 +115,7 @@ const Detail = () => {
         category={String(category)}
         className={`${maxWidth}`}
         id={Number(id)}
-        showSimilarShows={true}
+        showSimilarShows
       />
     </>
   );
