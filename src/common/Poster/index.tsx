@@ -1,6 +1,8 @@
-import { m } from "framer-motion";
-import { zoomIn } from "../../utils/motion";
 import { memo } from "react";
+import { m } from "framer-motion";
+
+import Image from "../Image";
+import { zoomIn } from "../../utils/motion";
 
 interface PosterPropsType {
   posterPath: string;
@@ -16,10 +18,10 @@ const Poster = ({ posterPath, title, className }: PosterPropsType) => {
       animate="show"
       className={`${className} md:block hidden h-[380px] w-[254px]`}
     >
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/original/${posterPath}`}
         alt={title}
-        className="h-full w-full object-cover rounded-xl  shadow-lg"
+        className="h-[380px] w-[254px] object-cover rounded-xl  shadow-lg transition-all duration-300 "
       />
     </m.div>
   );

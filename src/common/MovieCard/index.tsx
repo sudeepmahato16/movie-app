@@ -3,6 +3,8 @@ import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
+import Image from "../Image";
+
 const MovieCard = ({
   movie,
   category,
@@ -13,23 +15,24 @@ const MovieCard = ({
   offset?: number;
 }) => {
   const { poster_path, original_title: title, name, id } = movie;
-
   return (
     <>
       <Link
         to={`/${category}/${id}`}
-        className="dark:bg-[#1f1f1f] bg-[#f5f5f5] rounded-lg relative group w-[170px]"
+        className="dark:bg-[#1f1f1f] bg-[#f5f5f5] rounded-lg relative group w-[170px] select-none"
       >
         <LazyLoad
           height={window.innerWidth > 380 ? 250 : 216}
           offset={offset ? offset : 100}
           width={170}
         >
-          <img
+          <Image
             src={`https://image.tmdb.org/t/p/original/${poster_path}`}
             alt={movie.original_title}
-            className="xs:h-[250px] h-[216px] w-full object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300"
+            className={`xs:h-[250px] h-[216px] w-full object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out`}
+            zoomIn
           />
+
         </LazyLoad>
 
         <div className="absolute top-0 left-0 w-[170px]  h-full group-hover:opacity-100 opacity-0 bg-[rgba(0,0,0,0.6)] transition-all duration-300 rounded-lg flex items-center justify-center">
@@ -39,7 +42,6 @@ const MovieCard = ({
         </div>
       </Link>
 
-      
       <h4 className="dark:text-gray-300 text-center sm:text-base xs:text-[14.75px] text-[14px] font-medium ">
         {(title?.length > 50 ? title.split(":")[0] : title) || name}
       </h4>

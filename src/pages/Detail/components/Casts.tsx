@@ -1,5 +1,7 @@
 import { memo } from "react";
 import { m } from "framer-motion";
+
+import Image from "../../../common/Image";
 import { fadeDown, staggerContainer } from "../../../utils/motion";
 
 const Casts = ({ casts }: { casts: any }) => {
@@ -19,10 +21,10 @@ const Casts = ({ casts }: { casts: any }) => {
             key={id}
             className="flex flex-col justify-start sm:gap-1 gap-0"
           >
-            <img
+            <Image
               src={`https://image.tmdb.org/t/p/original/${profilePath}`}
               alt={name}
-              className="sm:h-[96px] h-[86px] w-[56px] sm:w-[64px] object-cover rounded-md shadow-md"
+              className="sm:h-[96px] h-[86px] w-[56px] sm:w-[64px] object-cover rounded-md shadow-md transition-all duration-300"
             />
 
             <h4 className="text-gray-300 md:text-[12px] sm:text-[10.75px] text-[10px] max-w-[64px] text-center font-semibold sm:-mt-0 -mt-1 leading-snug">
