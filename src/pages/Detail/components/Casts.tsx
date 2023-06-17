@@ -21,13 +21,15 @@ const Casts = ({ casts }: { casts: any }) => {
             key={id}
             className="flex flex-col justify-start gap-2"
           >
-            <Image
-              width={window.innerWidth >= 768 ? 64 : 40}
-              height={window.innerWidth >= 768 ? 96 : 54}
-              src={`https://image.tmdb.org/t/p/original/${profilePath}`}
-              alt={name}
-              className=" object-cover rounded-md shadow-md transition-all duration-300"
-            />
+            <div className="md:h-[96px] md:w-[64px] h-[54px] w-[40px]">
+              <Image
+                width={window.innerWidth >= 768 ? 64 : 40}
+                height={window.innerWidth >= 768 ? 96 : 54}
+                src={`https://image.tmdb.org/t/p/original/${profilePath}`}
+                alt={name}
+                className=" object-cover rounded-md shadow-md transition-all duration-300"
+              />
+            </div>
 
             <h4 className="text-gray-300 md:text-[12px] sm:text-[10.75px] text-[10px] md:max-w-[64px] text-center font-semibold sm:-mt-0 leading-snug max-w-[40px]">
               {name}

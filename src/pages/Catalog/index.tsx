@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { m } from "framer-motion";
 import { useParams, useSearchParams } from "react-router-dom";
 
 import { useGetShowsQuery } from "../../services/TMDB";
@@ -8,7 +7,6 @@ import { MovieCard, SkelatonLoader } from "../../common";
 import { CatalogHeader, Search } from "./components";
 
 import { smallMaxWidth } from "../../styles";
-import { fadeUp, staggerContainer } from "../../utils/motion";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -54,22 +52,19 @@ const Catalog = () => {
         {isLoading || isCategoryChanged ? (
           <SkelatonLoader isMoviesSliderLoader={false} />
         ) : (
-          <m.div
-            variants={staggerContainer(0.2, 0)}
-            initial="hidden"
-            animate="show"
+          <div
+          
             className="flex flex-wrap xs:gap-4 gap-[14px] justify-center"
           >
             {shows?.map((movie: any, index) => (
-              <m.div
-                variants={fadeUp}
+              <div
                 key={index}
                 className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[124px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
               >
                 <MovieCard movie={movie} category={String(category)} />
-              </m.div>
+              </div>
             ))}
-          </m.div>
+          </div>
         )}
 
         {isFetching && !isCategoryChanged ? (

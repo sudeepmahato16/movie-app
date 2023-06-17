@@ -25,7 +25,7 @@ const SideBar: React.FC = () => {
     <AnimatePresence>
       {showSidebar && (
         <m.nav
-          variants={slideIn("right", "tween", 0, 0.1)}
+          variants={slideIn("right", "tween", 0, 0.2)}
           initial="hidden"
           animate="show"
           exit="hidden"

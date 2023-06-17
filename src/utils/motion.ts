@@ -1,3 +1,4 @@
+const isMobile = window.innerWidth < 768;
 export const zoomIn = (scale: number, duration: number) => ({
   hidden: {
     opacity: 0,
@@ -20,52 +21,59 @@ export const zoomIn = (scale: number, duration: number) => ({
 export const staggerContainer = (
   staggerChildren: number,
   delayChildren: number
-) => ({
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren,
-      delayChildren,
-    },
-  },
-});
+) =>
+  isMobile
+    ? undefined
+    : {
+        hidden: {
+          opacity: 0,
+        },
+        show: {
+          opacity: 1,
+          transition: {
+            staggerChildren,
+            delayChildren,
+          },
+        },
+      };
 
-export const fadeDown = {
-  hidden: {
-    opacity: 0,
-    y: -25,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-      type: "tween",
-    },
-  },
-};
+export const fadeDown = isMobile
+  ? undefined
+  : {
+      hidden: {
+        opacity: 0,
+        y: -25,
+      },
+      show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: "easeInOut",
+          type: "tween",
+        },
+      },
+    };
 
-export const fadeUp = {
-  hidden: {
-    y: 50,
-    x: 50,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-      type: "tween",
-    },
-  },
-};
+export const fadeUp = isMobile
+  ? undefined
+  : {
+      hidden: {
+        y: 50,
+        x: 50,
+        opacity: 0,
+      },
+      show: {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.4,
+          ease: "easeOut",
+          type: "tween",
+        },
+      },
+    };
 
 export const slideIn = (
   direction: string,

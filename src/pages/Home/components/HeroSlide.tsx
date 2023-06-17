@@ -12,7 +12,7 @@ import { staggerContainer, fadeDown } from "../../../utils/motion";
 const HeroSlide = ({ movie }: { movie: any }) => {
   const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
-  
+
   const {
     overview,
     original_title: title,
