@@ -1,11 +1,15 @@
-import { memo } from "react";
+import { memo, FC } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import { useTheme } from "../../context/themeContext";
-import { skelatonLoaderPropsTypes } from "../../types";
 
-export const SkelatonLoader = memo(
-  ({ className, isMoviesSliderLoader = true }: skelatonLoaderPropsTypes) => {
+interface SkelatonLoaderProps {
+  className?: string;
+  isMoviesSliderLoader?: boolean;
+}
+
+export const SkelatonLoader: FC<SkelatonLoaderProps> = memo(
+  ({ className, isMoviesSliderLoader = true }) => {
     const { theme } = useTheme();
     const isThemeLight = theme === "Light";
 

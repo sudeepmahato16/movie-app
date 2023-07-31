@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { API_KEY, TMDB_API_BASE_URL } from "../utils/config";
 
 const context = React.createContext({
   videoId: "",
   setVideoId: (prevValue: string) => {},
-  getTrailerId: (id: number) => {},
+  getTrailerId: (id: number | string) => {},
   toggleModal: () => {},
   isModalOpen: false,
   showSidebar: false,
@@ -20,11 +20,11 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [videoId, setVideoId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = () => {
+  const toggleModal = useCallback(() => {
     setIsModalOpen((prev) => !prev);
-  };
+  }, []);
 
-  const getTrailerId = async (id: number) => {
+  const getTrailerId = async (id: number | string) => {
     try {
       const res = await fetch(
         `${TMDB_API_BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`

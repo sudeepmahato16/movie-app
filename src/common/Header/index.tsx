@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
-import { AnimatePresence } from "framer-motion";
 import { FiSun } from "react-icons/fi";
-import { GoDeviceDesktop } from "react-icons/go";
 
-import { maxWidth, textColor } from "../../styles";
-import { navLinks } from "../../constants";
-
-import { Themes, Logo } from "..";
+import { ThemeMenu, Logo } from "..";
 import HeaderNavItem from "./HeaderNavItem";
 
 import { useGlobalContext } from "../../context/globalContext";
 import { useTheme } from "../../context/themeContext";
+import { maxWidth, textColor } from "../../styles";
+import { navLinks } from "../../constants";
 
 const Header = () => {
-  const { toogleThemeOptions, activeTheme, theme, showThemeOptions } =
-    useTheme();
+  const { openMenu, theme, showThemeOptions } = useTheme();
   const { setShowSidebar } = useGlobalContext();
 
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -83,23 +80,19 @@ const Header = () => {
             <button
               name="theme-menu"
               type="button"
-              onClick={toogleThemeOptions}
+              onClick={openMenu}
               id="theme"
-              className={`flex items-center justify-center mb-[2px] transition-all duration-300 hover:scale-110 active:scale-75 ${
+              className={`flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75 ${
                 isPageNotFound || isActive
                   ? ` ${textColor} dark:hover:text-secColor hover:text-black `
                   : ` dark:hover:text-secColor text-gray-300 `
               } `}
             >
-              {activeTheme === "Dark" ? (
-                <BsMoonStarsFill />
-              ) : activeTheme === "Light" ? (
-                <FiSun />
-              ) : (
-                <GoDeviceDesktop />
-              )}
+              {theme === "Dark" ? <BsMoonStarsFill /> : <FiSun />}
             </button>
-            <AnimatePresence>{showThemeOptions && <Themes />}</AnimatePresence>
+            <AnimatePresence>
+              {showThemeOptions && <ThemeMenu />}
+            </AnimatePresence>
           </div>
         </div>
 

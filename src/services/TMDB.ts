@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { API_KEY, TMDB_API_BASE_URL } from "../utils/config";
-import { getShowPropsType, getShowsPropsType } from "../types";
 
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",
@@ -16,7 +15,14 @@ export const tmdbApi = createApi({
         page,
         showSimilarShows,
         id,
-      }: getShowsPropsType) => {
+      }: {
+        category: string | undefined;
+        type?: string;
+        page?: number;
+        searchQuery?: string;
+        showSimilarShows?: boolean;
+        id?: number;
+      }) => {
         if (searchQuery) {
           return `search/${category}?api_key=${API_KEY}&query=${searchQuery}&page=${page}`;
         }
@@ -30,7 +36,7 @@ export const tmdbApi = createApi({
     }),
 
     getShow: builder.query({
-      query: ({ category, id }: getShowPropsType) =>
+      query: ({ category, id }: { category: string; id: number }) =>
         `${category}/${id}?append_to_response=videos,credits&api_key=${API_KEY}`,
     }),
   }),

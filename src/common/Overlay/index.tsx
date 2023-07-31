@@ -1,16 +1,39 @@
-import { useGlobalContext } from "../../context/globalContext";
+import { FC, ReactNode } from "react";
+import { m } from "framer-motion";
 
-const Overlay = () => {
-  const { showSidebar, setShowSidebar } = useGlobalContext();
+interface OverlayProps {
+  className?: string;
+  children: ReactNode;
+}
+
+const variants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const Overlay: FC<OverlayProps> = ({ className, children }) => {
   return (
-    <div
-      className={`${
-        showSidebar
-          ? "opacity-100 visible w-screen h-screen"
-          : "opacity-0 invisible"
-      } overlay fixed top-0 left-0 z-[15] drop-shadow-sm transition-all duration-300`}
-      onClick={() => setShowSidebar(false)}
-    ></div>
+    <m.div
+      variants={variants}
+      initial="hidden"
+      animate="show"
+      exit="hidden"
+      className={`fixed top-0 left-0 z-[20] bg-blackOverlay w-screen h-screen ${className}`}
+    >
+      {children}
+    </m.div>
   );
 };
 

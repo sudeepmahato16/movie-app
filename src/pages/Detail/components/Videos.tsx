@@ -1,13 +1,18 @@
+import { FC } from "react";
 import { maxWidth } from "../../../styles";
 
-const VideoSection = ({ videos }: { videos: any }) => {
+interface VideosProps {
+  videos: { id: string; name: string; key: string }[];
+}
+
+const Videos: FC<VideosProps> = ({ videos }) => {
   const youtubeVideos = videos.slice(0, 2);
-  
+
   return (
     <section
       className={` flex flex-col lg:gap-16 md:gap-14 sm:gap-12 xs:gap-10 gap-8 lg:py-24 md:py-16 sm:py-12 xs:py-10 py-8 ${maxWidth} `}
     >
-      {youtubeVideos.map((video: any) => {
+      {youtubeVideos.map((video) => {
         return (
           <div
             key={video.id}
@@ -33,4 +38,4 @@ const VideoSection = ({ videos }: { videos: any }) => {
   );
 };
 
-export default VideoSection;
+export default Videos;

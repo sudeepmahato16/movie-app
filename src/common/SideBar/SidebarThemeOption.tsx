@@ -4,10 +4,10 @@ import { useGlobalContext } from "../../context/globalContext";
 import { useTheme } from "../../context/themeContext";
 
 import { listItem, activeListItem } from "../../styles";
-import { themeTypes } from "../../types";
+import { ITheme } from "../../types";
 
-const ThemeOption = ({ theme }: { theme: themeTypes }) => {
-  const { setActiveTheme, setTheme, activeTheme, checkSystemTheme } =
+const ThemeOption = ({ theme }: { theme: ITheme }) => {
+  const { setTheme, theme: currTheme, checkSystemTheme } =
     useTheme();
   const { setShowSidebar } = useGlobalContext();
 
@@ -20,7 +20,6 @@ const ThemeOption = ({ theme }: { theme: themeTypes }) => {
       setTheme(title);
     }
     setShowSidebar(false);
-    setActiveTheme(title);
   };
 
   return (
@@ -28,7 +27,7 @@ const ThemeOption = ({ theme }: { theme: themeTypes }) => {
       <button
         type="button"
         className={`${listItem} ${
-          theme.title === activeTheme ? activeListItem : ""
+          theme.title === currTheme ? activeListItem : ""
         }`}
         onClick={changeTheme}
       >

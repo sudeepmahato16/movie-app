@@ -5,9 +5,9 @@ import { AiOutlineHome } from "react-icons/ai";
 import { TbMovie } from "react-icons/tb";
 import { MdOutlineLiveTv } from "react-icons/md";
 
-import { themeTypes, navLinkType } from "../types";
+import { ITheme, INavLink } from "../types";
 
-export const navLinks: navLinkType[] = [
+export const navLinks: INavLink[] = [
   {
     title: "home",
     path: "/",
@@ -25,7 +25,7 @@ export const navLinks: navLinkType[] = [
   },
 ];
 
-export const themeOptions: themeTypes[] = [
+export const themeOptions: ITheme[] = [
   {
     title: "Dark",
     icon: BsMoonStarsFill,
@@ -39,7 +39,6 @@ export const themeOptions: themeTypes[] = [
     icon: GoDeviceDesktop,
   },
 ];
-
 
 export const footerLinks = [
   "home",
@@ -55,26 +54,25 @@ export const footerLinks = [
   "Privacy policy",
 ];
 
-
 export const sections = [
   {
     title: "Trending movies",
-    category:"movie",
+    category: "movie",
     type: "popular",
   },
   {
     title: "Top rated movies",
-    category:"movie",
+    category: "movie",
     type: "top_rated",
   },
   {
     title: "Trending series",
-    category:"tv",
+    category: "tv",
     type: "popular",
   },
   {
     title: "Top rated series",
-    category:"tv",
+    category: "tv",
     type: "top_rated",
   },
-]
+];

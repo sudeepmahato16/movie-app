@@ -1,49 +1,17 @@
-export interface themeTypes {
+export interface ITheme {
   title: string;
   icon: IconType;
 }
 
-export interface navLinkType extends themeTypes {
+export interface INavLink extends ITheme {
   path: string;
 }
 
-export interface moviesSlideProps {
-  movies: any;
-  category: string;
+export interface IMovie {
+  id: string;
+  poster_path: string;
+  original_title: string;
+  name: string;
+  overview: string;
 }
-
-export interface sectionPropsType {
-  title: string;
-  category: string;
-  className?: string;
-  type?: string;
-  id?: number;
-  showSimilarShows?: boolean;
-}
-
-export interface getShowsPropsType {
-  category: string | undefined;
-  type?: string;
-  page?: number;
-  searchQuery?: string;
-  showSimilarShows?: boolean;
-  id?: number;
-}
-
-export interface skelatonLoaderPropsTypes {
-  className?: string;
-  isMoviesSliderLoader?: boolean;
-}
-
-export interface getShowPropsType {
-  category: string;
-  id: number;
-}
-
-export interface sectionsType {
-  category: string;
-  type: string;
-  title: string;
-}
-
 

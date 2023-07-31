@@ -75,11 +75,11 @@ body {
   width: 70%;
 }
 
-.light-glass {
-  background: rgba(255, 255, 255, 0.65);
+.light-sidebar {
+  background: rgba(255, 255, 255);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -95,10 +95,6 @@ body {
 
   border: 1px solid
     linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-}
-
-.overlay {
-  background: rgba(0, 0, 0, 0.075);
 }
 
 .text-shadow {
@@ -131,10 +127,8 @@ body {
 }
 
 .header-bg--light {
-  background: rgba(255, 255, 255, 0.9);
+  background: #fff;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.075);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
 }
 
 .loader {

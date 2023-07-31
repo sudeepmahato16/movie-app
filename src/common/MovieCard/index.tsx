@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
 import Image from "../Image";
+import { IMovie } from "../../types";
 
 const MovieCard = ({
   movie,
   category,
 }: {
-  movie: any;
+  movie: IMovie;
   category: string;
 }) => {
   const { poster_path, original_title: title, name, id } = movie;

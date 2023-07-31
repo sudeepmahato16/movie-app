@@ -1,4 +1,4 @@
-import { memo, useState, useRef, useEffect, useMemo } from "react";
+import { memo, useState, useRef, useEffect, useMemo, FC } from "react";
 import { Link } from "react-router-dom";
 
 import MoviesSlides from "./MoviesSlides";
@@ -8,19 +8,27 @@ import Error from "../Error";
 import { useGetShowsQuery } from "../../services/TMDB";
 import { useTheme } from "../../context/themeContext";
 
-import { sectionPropsType } from "../../types";
 import { getErrorMessage } from "../../utils/helper";
 
-const Section = ({
+interface SectionProps {
+  title: string;
+  category: string;
+  className?: string;
+  type?: string;
+  id?: number;
+  showSimilarShows?: boolean;
+}
+
+const Section: FC<SectionProps> = ({
   title,
   category,
   className,
   type,
   id,
   showSimilarShows,
-}: sectionPropsType) => {
+}) => {
   const [isInView, setIsInView] = useState<boolean>(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const { theme } = useTheme();
 
   const {
@@ -54,7 +62,7 @@ const Section = ({
 
     const observer = new IntersectionObserver(observerHandler, {
       root: null,
-      rootMargin: "120px",
+      rootMargin: "580px",
       threshold: 0.1,
     });
 

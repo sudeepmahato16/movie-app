@@ -2,11 +2,10 @@ import { useState } from "react";
 import { m } from "framer-motion";
 import { useParams } from "react-router-dom";
 
-import { useGetShowQuery } from "../../services/TMDB";
-
 import { Poster, Loader, Error, Section } from "../../common";
-import { Casts, VideoSection, Genre } from "./components";
+import { Casts, Videos, Genre } from "./components";
 
+import { useGetShowQuery } from "../../services/TMDB";
 import { mainHeading, maxWidth, paragraph } from "../../styles";
 import { staggerContainer, fadeDown } from "../../utils/motion";
 
@@ -108,7 +107,7 @@ const Detail = () => {
         </div>
       </section>
 
-      <VideoSection videos={videos.results} />
+      <Videos videos={videos.results} />
 
       <Section
         title={`Similar ${category === "movie" ? "movies" : "series"}`}

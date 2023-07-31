@@ -1,10 +1,18 @@
-import { memo } from "react";
+import { memo, FC } from "react";
 import { m } from "framer-motion";
 
 import Image from "../../../common/Image";
 import { fadeDown, staggerContainer } from "../../../utils/motion";
 
-const Casts = ({ casts }: { casts: any }) => {
+interface CastsProps {
+  casts: {
+    id: string;
+    profile_path: string;
+    name: string;
+  }[];
+}
+
+const Casts: FC<CastsProps> = ({ casts }) => {
   const topCasts = casts.slice(0, 4);
   return (
     <m.div

@@ -8,8 +8,9 @@ import { Poster } from "../../../common";
 
 import { mainHeading, maxWidth, paragraph, watchBtn } from "../../../styles";
 import { staggerContainer, fadeDown } from "../../../utils/motion";
+import { IMovie } from "../../../types";
 
-const HeroSlide = ({ movie }: { movie: any }) => {
+const HeroSlide = ({ movie }: { movie: IMovie }) => {
   const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
 

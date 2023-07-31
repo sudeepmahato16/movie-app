@@ -1,22 +1,16 @@
-import { useRef, useEffect } from "react";
 import { m } from "framer-motion";
 
 import { useTheme } from "../../context/themeContext";
 import { zoomIn } from "../../utils/motion";
 import { themeOptions } from "../../constants";
 import { textColor } from "../../styles";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
-const Themes = () => {
-  const ref = useRef<null | HTMLUListElement>(null);
+const ThemeMenu = () => {
+  const { theme, setTheme, checkSystemTheme, setShowThemeOptions, closeMenu } =
+    useTheme();
 
-  const {
-    theme,
-    setTheme,
-    checkSystemTheme,
-    setActiveTheme,
-    activeTheme,
-    setShowThemeOptions,
-  } = useTheme();
+  const { ref } = useOnClickOutside(closeMenu);
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {
@@ -24,32 +18,8 @@ const Themes = () => {
     } else {
       setTheme(theme);
     }
-
-    setActiveTheme(theme);
     setShowThemeOptions(false);
   };
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as Node;
-      const el = ref.current;
-
-      if (
-        !(
-          (el && el.contains(target)) ||
-          document.getElementById("theme")?.contains(target)
-        )
-      ) {
-        setShowThemeOptions(false);
-      }
-    };
-
-    window.addEventListener("click", handleClick);
-
-    return () => window.removeEventListener("click", handleClick);
-  }, [setShowThemeOptions]);
-
-  console.log('hello');
 
   return (
     <m.ul
@@ -67,14 +37,14 @@ const Themes = () => {
         <li
           key={index}
           className={`hover:bg-gray-200 dark:hover:bg-black transition-all duration-300 ${
-            activeTheme === option.title ? "bg-gray-200 dark:bg-black " : ""
+            theme === option.title ? "bg-gray-200 dark:bg-black " : ""
           }`}
         >
           <button
             name="theme"
             type="button"
             className={`flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px] ${
-              activeTheme === option.title ? `${textColor} ` : ""
+              theme === option.title ? `${textColor} ` : ""
             }`}
             onClick={() => {
               changeTheme(option.title);
@@ -89,4 +59,4 @@ const Themes = () => {
   );
 };
 
-export default Themes;
+export default ThemeMenu;

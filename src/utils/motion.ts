@@ -86,7 +86,7 @@ export const slideIn = (
     y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
     transition: {
       duration,
-      ease: "easeOut",
+      ease: "easeInOut",
     },
   },
   show: {
@@ -96,7 +96,7 @@ export const slideIn = (
       type,
       delay,
       duration,
-      ease: "easeOut",
+      ease: "easeInOut",
     },
   },
 });

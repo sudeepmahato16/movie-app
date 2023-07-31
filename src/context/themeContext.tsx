@@ -4,9 +4,9 @@ import { saveTheme, getTheme } from "../utils/helper";
 const context = React.createContext({
   setShowThemeOptions: (prev: boolean) => {},
   showThemeOptions: false,
-  toogleThemeOptions: () => {},
-  activeTheme: "Dark",
-  setActiveTheme: (newTheme: string) => {},
+  openMenu: () => {},
+  closeMenu: () => {},
+
   setTheme: (newTheme: string) => {},
   checkSystemTheme: () => {},
   theme: "",
@@ -21,9 +21,6 @@ const initialTheme = getTheme();
 const ThemeProvider = ({ children }: Props) => {
   const [showThemeOptions, setShowThemeOptions] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>(initialTheme);
-  const [activeTheme, setActiveTheme] = useState<string>(
-    initialTheme || "System"
-  );
 
   const checkSystemTheme = () => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -53,17 +50,20 @@ const ThemeProvider = ({ children }: Props) => {
     }
   }, [theme]);
 
-  const toogleThemeOptions = () => {
-    setShowThemeOptions((prev) => !prev);
+  const openMenu = () => {
+    setShowThemeOptions(true);
   };
+
+  const closeMenu = useCallback(() => {
+    setShowThemeOptions(false);
+  }, []);
 
   return (
     <context.Provider
       value={{
         showThemeOptions,
-        toogleThemeOptions,
-        activeTheme,
-        setActiveTheme,
+        openMenu,
+        closeMenu,
         setTheme,
         theme,
         checkSystemTheme,

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { navLinkType } from "../../types";
+import { INavLink } from "../../types";
 import { listItem, activeListItem } from "../../styles";
 
 interface SidebarNavItemProps {
-  link: navLinkType;
+  link: INavLink;
   closeSideBar: () => void;
 }
 

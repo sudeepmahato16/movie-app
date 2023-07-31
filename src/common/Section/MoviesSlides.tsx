@@ -1,10 +1,15 @@
-import React from "react";
-import { moviesSlideProps } from "../../types";
+import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import MovieCard from "../MovieCard";
+import { IMovie } from "../../types";
 
-const MoviesSlides: React.FC<moviesSlideProps> = ({ movies, category }) => (
+interface MoviesSlidesProps {
+  movies: IMovie[];
+  category: string;
+}
+
+const MoviesSlides: FC<MoviesSlidesProps> = ({ movies, category }) => (
   <Swiper slidesPerView="auto" spaceBetween={15} className="mySwiper">
     {movies.map((movie: any) => {
       return (
