@@ -8,18 +8,23 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html, body{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll
+}
+
+.no-scroll{
+  position: fixed;
+  inline-size: 100%;
 }
 
 ::-webkit-scrollbar {

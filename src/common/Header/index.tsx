@@ -23,7 +23,9 @@ const Header = () => {
 
   useEffect(() => {
     const changeHeaderBg = () => {
-      if (window.scrollY > 0) {
+      const body = document.body;
+      
+      if (window.scrollY > 0 || (body.classList.contains("no-scroll") && parseFloat(body.style.top) * -1 > 0)) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -47,9 +49,8 @@ const Header = () => {
 
   return (
     <header
-      className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${
-        isActive && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
-      } transition-all duration-50`}
+      className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${isActive && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
+        } transition-all duration-50`}
     >
       <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
         <Logo
@@ -57,8 +58,8 @@ const Header = () => {
             isPageNotFound
               ? "text-black dark:text-primary"
               : !isPageNotFound && isActive
-              ? "text-black dark:text-primary"
-              : "text-primary"
+                ? "text-black dark:text-primary"
+                : "text-primary"
           }
         />
 
@@ -82,11 +83,10 @@ const Header = () => {
               type="button"
               onClick={openMenu}
               id="theme"
-              className={`flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75 ${
-                isPageNotFound || isActive
-                  ? ` ${textColor} dark:hover:text-secColor hover:text-black `
-                  : ` dark:hover:text-secColor text-gray-300 `
-              } `}
+              className={`flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75 ${isPageNotFound || isActive
+                ? ` ${textColor} dark:hover:text-secColor hover:text-black `
+                : ` dark:hover:text-secColor text-gray-300 `
+                } `}
             >
               {theme === "Dark" ? <BsMoonStarsFill /> : <FiSun />}
             </button>
@@ -99,11 +99,10 @@ const Header = () => {
         <button
           type="button"
           name="menu"
-          className={`inline-block text-[22.75px] md:hidden ${
-            isPageNotFound || isActive
-              ? `${textColor} dark:hover:text-secColor hover:text-black `
-              : ` dark:hover:text-secColor text-secColor`
-          } active:scale-75 transition-all duration-300`}
+          className={`inline-block text-[22.75px] md:hidden ${isPageNotFound || isActive
+            ? `${textColor} dark:hover:text-secColor hover:text-black `
+            : ` dark:hover:text-secColor text-secColor`
+            } active:scale-75 transition-all duration-300`}
           onClick={() => setShowSidebar(true)}
         >
           <AiOutlineMenu />

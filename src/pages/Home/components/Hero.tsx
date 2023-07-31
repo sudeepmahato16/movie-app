@@ -1,8 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
-import HeroSlide from "./HeroSlide";
 
-const Hero = ({ movies }: { movies: any }) => (
+import HeroSlide from "./HeroSlide";
+import { IMovie } from "../../../types";
+
+const Hero = ({ movies }: { movies: IMovie[] }) => (
   <Swiper
     className="mySwiper lg:h-screen sm:h-[640px] xs:h-[520px] h-[460px] w-full"
     loop={true}
@@ -13,7 +15,7 @@ const Hero = ({ movies }: { movies: any }) => (
     }}
     modules={[Autoplay]}
   >
-    {movies.map((movie: any) => {
+    {movies.map((movie) => {
       return (
         <SwiperSlide
           key={movie.id}
