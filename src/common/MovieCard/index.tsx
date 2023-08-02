@@ -17,7 +17,7 @@ const MovieCard = ({
     <>
       <Link
         to={`/${category}/${id}`}
-        className="dark:bg-[#1f1f1f] bg-[#f5f5f5] rounded-lg relative group w-[170px] select-none xs:h-[250px] h-[216px]"
+        className="dark:bg-[#1f1f1f] bg-[#f5f5f5] rounded-lg relative group w-[170px] select-none xs:h-[250px] h-[216px] overflow-hidden"
       >
         <Image
           height={window.innerWidth > 380 ? 250 : 216}
@@ -35,7 +35,7 @@ const MovieCard = ({
         </div>
       </Link>
 
-      <h4 className="dark:text-gray-300 text-center sm:text-base xs:text-[14.75px] text-[14px] font-medium ">
+      <h4 className="dark:text-gray-300 text-center cursor-default sm:text-base xs:text-[14.75px] text-[14px] font-medium ">
         {(title?.length > 50 ? title.split(":")[0] : title) || name}
       </h4>
     </>

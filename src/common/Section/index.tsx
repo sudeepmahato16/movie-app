@@ -80,7 +80,7 @@ const Section: FC<SectionProps> = ({
     [error, isError]
   );
 
-  const sectionStyle = `md:py-6 sm:py-[20.75px] xs:py-[18.75px] py-[16.75px] font-nunito ${className}`;
+  const sectionStyle = `sm:py-[20px] xs:py-[18.75px] py-[16.75px] font-nunito ${className}`;
   const linkStyle = `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full ${
     theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
   } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`;
