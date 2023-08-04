@@ -12,6 +12,7 @@ import {
 
 import "react-loading-skeleton/dist/skeleton.css";
 import "swiper/css";
+import Cursor from "./styles/cursor/Cursor";
 
 const Catalog = lazy(() => import("./pages/Catalog"));
 const Home = lazy(() => import("./pages/Home"));
@@ -21,6 +22,9 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const App = () => {
   return (
     <>
+      <div>
+        <Cursor />
+      </div>
       <VideoModal />
       <SideBar />
       <Header />
