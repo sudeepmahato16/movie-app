@@ -36,7 +36,7 @@ const SideBar: React.FC = () => {
             exit="hidden"
             ref={ref}
             className={`fixed top-0 right-0 sm:w-[40%] xs:w-[220px] w-[195px] h-full z-[25] overflow-y-auto ${
-              theme === "Dark" ? "dark-glass" : "light-sidebar"
+              theme === "Dark" ? "dark-glass" : "light-glass"
             } shadow-md md:hidden p-4 pb-0 dark:text-gray-200 text-gray-600`}
           >
             <div className="flex items-center justify-center  ">
