@@ -4,6 +4,7 @@
   <img src="/public/logo-dark.png#gh-dark-mode-only" alt="logo" width="200" height="auto" />
   <img src="/public/logo-light.png#gh-light-mode-only" alt="logo" width="200" height="auto" />
   <br/>
+  <br/>
 
   <p >
 tMovies is a simple movie application built with React JS, Typescript, and Tailwind CSS, <br/> which allows users to search and view the trailer of both movies and TV series.
