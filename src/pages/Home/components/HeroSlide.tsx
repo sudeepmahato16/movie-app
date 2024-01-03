@@ -21,7 +21,6 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
     id,
   } = movie;
 
-
   const showTrailer = () => {
     getTrailerId(id);
     toggleModal();
@@ -53,21 +52,21 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
         >
           <button
             type="button"
-            name="watch-now"
-            className={`${watchBtn} bg-[#ff0000] shadow-glow
-             text-shadow text-secColor `}
-            onClick={handleWatchNow}
-          >
-            Watch now
-          </button>
-          <button
-            type="button"
             name="watch-trailer"
             className={`${watchBtn} text-shadow watch-trailer
              `}
             onClick={showTrailer}
           >
             Watch trailer
+          </button>
+          <button
+            type="button"
+            name="watch-now"
+            className={`${watchBtn} bg-[#ff0000] shadow-glow
+             text-shadow text-secColor `}
+            onClick={handleWatchNow}
+          >
+            Watch now
           </button>
         </m.div>
       </m.div>
