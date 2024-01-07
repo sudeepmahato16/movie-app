@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { m } from "framer-motion";
+import { cn } from "@/utils/helper";
 
 interface OverlayProps {
   className?: string;
@@ -30,7 +31,10 @@ const Overlay: FC<OverlayProps> = ({ className, children }) => {
       initial="hidden"
       animate="show"
       exit="hidden"
-      className={`fixed top-0 left-0 z-[20] bg-blackOverlay w-screen h-screen ${className}`}
+      className={cn(
+        `fixed top-0 left-0 z-[20] bg-blackOverlay w-screen h-screen `,
+        className
+      )}
     >
       {children}
     </m.div>

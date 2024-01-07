@@ -1,4 +1,4 @@
-import bgImg from "./../../../assets/images/footer-bg.webp";
+import bgImg from "@/assets/images/footer-bg.webp";
 
 const CatalogHeader = ({ category }: { category: string }) => {
   return (

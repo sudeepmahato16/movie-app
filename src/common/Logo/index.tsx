@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "./../../assets/svg/tmovie.svg";
+
+import logo from "@/assets/svg/tmovie.svg";
+import { cn } from "@/utils/helper";
 
 interface logoProps {
   className?: string;
@@ -13,7 +15,7 @@ const Logo: React.FC<logoProps> = ({
 }) => (
   <Link
     to="/"
-    className={`flex flex-row items-center xs:gap-2 gap-[6px] ${className}`}
+    className={cn(`flex flex-row items-center xs:gap-2 gap-[6px])`, className)}
   >
     <img
       src={logo}
@@ -21,7 +23,7 @@ const Logo: React.FC<logoProps> = ({
       className="sm:h-[28px] h-[24px] sm:w-[28px] w-[24px]"
     />
     <span
-      className={`font-semibold sm:text-[18px] text-[16.75px] ${logoColor} `}
+      className={cn(logoColor,`font-semibold sm:text-[18px] text-[16.75px]`)}
     >
       tMovies
     </span>

@@ -1,26 +1,29 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { textColor } from "../../styles";
+import { cn } from "../../utils/helper";
 
-interface Props {
+interface HeaderProps {
   link: { title: string; path: string };
-  isPageNotFound: boolean;
+  isNotFoundPage: boolean;
   showBg: boolean;
 }
- 
-const HeaderNavItem = ({ link, showBg, isPageNotFound }: Props) => {
+
+const HeaderNavItem = ({ link, showBg, isNotFoundPage }: HeaderProps) => {
   return (
     <li>
       <NavLink
         to={link.path}
         className={({ isActive }) => {
-          return isActive
-            ? `nav-link active ${showBg ? textColor : `text-secColor`}`
-            : `nav-link ${
-                isPageNotFound || showBg
-                  ? "text-[#444] dark:text-gray-300 dark:hover:text-secColor hover:text-black"
-                  : "text-gray-300 hover:text-secColor"
-              }`;
+          return cn(
+            "nav-link",
+            isActive
+              ? ` active ${showBg ? textColor : `text-secColor`}`
+              : ` ${
+                  isNotFoundPage || showBg
+                    ? "text-[#444] dark:text-gray-300 dark:hover:text-secColor hover:text-black"
+                    : "text-gray-300 hover:text-secColor"
+                }`
+          );
         }}
         end
       >

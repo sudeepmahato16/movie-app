@@ -1,15 +1,18 @@
-import { memo } from "react";
 import { BiError } from "react-icons/bi";
+import { cn } from "@/utils/helper";
 
 interface ErrorProps {
   className?: string | undefined;
   error: string;
 }
 
-const Error = memo(({ className = "h-screen", error }: ErrorProps) => {
+const Error = ({ className = "h-screen", error }: ErrorProps) => {
   return (
     <div
-      className={`relative dark:bg-black bg-mainColor top-0 left-0 w-screen ${className} flex justify-center items-center`}
+      className={cn(
+        `relative dark:bg-black bg-mainColor top-0 left-0 w-screen flex justify-center items-center`,
+        className
+      )}
     >
       <div className="flex flex-row gap-2 items-end ">
         <BiError className="text-[#ff0000] text-[32px]" />
@@ -17,6 +20,6 @@ const Error = memo(({ className = "h-screen", error }: ErrorProps) => {
       </div>
     </div>
   );
-});
+};
 
 export default Error;

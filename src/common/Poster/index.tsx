@@ -2,7 +2,8 @@ import { memo } from "react";
 import { m } from "framer-motion";
 
 import Image from "../Image";
-import { zoomIn } from "../../utils/motion";
+import { zoomIn } from "@/utils/motion";
+import { cn } from "@/utils/helper";
 
 interface PosterPropsType {
   posterPath: string;
@@ -16,7 +17,7 @@ const Poster = ({ posterPath, title, className }: PosterPropsType) => {
       variants={zoomIn(0.6, 0.8)}
       initial="hidden"
       animate="show"
-      className={`${className} md:block hidden h-[380px] w-[254px]`}
+      className={cn(`md:block hidden h-[380px] w-[254px]`, className)}
     >
       <Image
         width={254}

@@ -1,7 +1,9 @@
 import { memo, FC } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { useMediaQuery } from "usehooks-ts";
 
-import { useTheme } from "../../context/themeContext";
+import { useTheme } from "@/context/themeContext";
+import { cn } from "@/utils/helper";
 
 interface SkelatonLoaderProps {
   className?: string;
@@ -13,11 +15,14 @@ export const SkelatonLoader: FC<SkelatonLoaderProps> = memo(
     const { theme } = useTheme();
     const isThemeLight = theme === "Light";
 
-    const classNames = isMoviesSliderLoader
-      ? `flex flex-row items-center gap-[15px] overflow-hidden `
-      : `flex flex-row flex-wrap items-center xs:gap-4 gap-[14px] justify-center ${className}`;
+    const isScreenSmall = useMediaQuery("(max-width: 380px)");
 
-    const isScreenSmall = window.innerWidth < 380;
+    const classNames = cn(
+      isMoviesSliderLoader
+        ? `flex flex-row items-center gap-[15px] overflow-hidden `
+        : `flex flex-row flex-wrap items-center xs:gap-4 gap-[14px] justify-center `,
+      className
+    );
 
     const arrSize = isMoviesSliderLoader
       ? Math.floor(window.innerWidth / 170) + 1

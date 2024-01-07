@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
-import { API_KEY, TMDB_API_BASE_URL } from "../utils/config";
+import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 
 const context = React.createContext({
   videoId: "",

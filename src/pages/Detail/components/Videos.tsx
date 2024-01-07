@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { maxWidth } from "../../../styles";
+import { maxWidth } from "@/styles";
+import { cn } from "@/utils/helper";
 
 interface VideosProps {
   videos: { id: string; name: string; key: string }[];
@@ -10,13 +11,16 @@ const Videos: FC<VideosProps> = ({ videos }) => {
 
   return (
     <section
-      className={` flex flex-col lg:gap-16 md:gap-14 sm:gap-12 xs:gap-10 gap-8 lg:py-24 md:py-16 sm:py-12 xs:py-10 py-8 ${maxWidth} `}
+      className={cn(
+        maxWidth,
+        ` flex flex-col lg:gap-16 md:gap-14 sm:gap-12 xs:gap-10 gap-8 lg:py-24 md:py-16 sm:py-12 xs:py-10 py-8`
+      )}
     >
       {youtubeVideos.map((video) => {
         return (
           <div
             key={video.id}
-            className={`sm:w-[80%] w-[90%] mx-auto flex flex-col md:gap-2 sm:gap-[6px] xs:gap-1 gap-[2px]`}
+            className="sm:w-[80%] w-[90%] mx-auto flex flex-col md:gap-2 sm:gap-[6px] xs:gap-1 gap-[2px]"
           >
             <h2 className="dark:text-secColor text-gray-800 font-nunito font-semibold lg:text-[24px] md:text-[22.75px] sm:text-[18.75px] xs:text-[18px] text-[16.75px] mb-1">
               {video.name}

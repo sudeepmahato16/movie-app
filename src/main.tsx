@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { BrowserRouter } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
-
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
-import { tmdbApi } from "./services/TMDB";
-import GlobalContextProvider from "./context/globalContext";
-import ThemeProvider from "./context/themeContext";
 
+import { tmdbApi } from "@/services/TMDB";
+import GlobalContextProvider from "@/context/globalContext";
+import ThemeProvider from "@/context/themeContext";
 import App from "./App";
 import "./index.css";
 

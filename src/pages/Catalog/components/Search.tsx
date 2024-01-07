@@ -24,14 +24,14 @@ const Search: React.FC<SearchProps> = ({ setQuery }) => {
     >
       <input
         type="text"
-        className="py-[8px] pl-[20px] pr-[36px]  rounded-full outline-none w-[280px] shadow-md transition-all duration-300 focus:shadow-sm text-[#666] focus:bg-[#ffffff] bg-[#fdfdfd] font-medium dark:bg-[#302d3a] dark:text-primary dark:focus:bg-[#474550]"
+        className="py-[8px] pl-[20px] pr-[36px]  rounded-full outline-none w-[300px] md:w-[340px]  shadow-md transition-all duration-300 focus:shadow-sm text-[#666] focus:bg-[#ffffff] bg-[#fdfdfd] font-medium dark:bg-[#302d3a] dark:text-primary dark:focus:bg-[#474550]"
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        placeholder={`search ${category === "movie" ? "movies" : "series"}`}
+        placeholder={`Search ${category === "movie" ? "movies" : "tv series"}`}
       />
       <button
         type="submit"
-        className={`text-[18px] -ml-[32px] text-[#ff0000] z-[1]`}
+        className="text-[18px] -ml-[32px] text-[#ff0000] z-[1]"
       >
         <GoSearch />
       </button>

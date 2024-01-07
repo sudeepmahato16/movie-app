@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
-import { useGetShowsQuery } from "../../services/TMDB";
 
-import { MovieCard, SkelatonLoader } from "../../common";
+import { MovieCard, SkelatonLoader } from "@/common";
 import { CatalogHeader, Search } from "./components";
-
-import { smallMaxWidth } from "../../styles";
+import { useGetShowsQuery } from "@/services/TMDB";
+import { smallMaxWidth } from "@/styles";
+import { IMovie } from "@/types";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
-  const [shows, setShows] = useState<any[]>([]);
+  const [shows, setShows] = useState<IMovie[]>([]);
   const [isCategoryChanged, setIsCategoryChanged] = useState<boolean>(false);
   const [query, setQuery] = useSearchParams();
   const { category } = useParams();
@@ -35,7 +35,7 @@ const Catalog = () => {
 
     if (data?.results) {
       if (page > 1) {
-        setShows((prev: any) => [...prev, ...data.results]);
+        setShows((prev) => [...prev, ...data.results]);
       } else {
         setShows([...data.results]);
         setIsCategoryChanged(false);
@@ -56,9 +56,9 @@ const Catalog = () => {
           
             className="flex flex-wrap xs:gap-4 gap-[14px] justify-center"
           >
-            {shows?.map((movie: any, index) => (
+            {shows?.map((movie) => (
               <div
-                key={index}
+                key={movie.id}
                 className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[124px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
               >
                 <MovieCard movie={movie} category={String(category)} />

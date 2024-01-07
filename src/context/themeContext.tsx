@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { saveTheme, getTheme } from "../utils/helper";
+import { saveTheme, getTheme } from "@/utils/helper";
 
 const context = React.createContext({
   setShowThemeOptions: (prev: boolean) => {},

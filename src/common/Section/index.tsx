@@ -5,10 +5,9 @@ import MoviesSlides from "./MoviesSlides";
 import { SkelatonLoader } from "../Loader";
 import Error from "../Error";
 
-import { useGetShowsQuery } from "../../services/TMDB";
-import { useTheme } from "../../context/themeContext";
-
-import { getErrorMessage } from "../../utils/helper";
+import { useGetShowsQuery } from "@/services/TMDB";
+import { useTheme } from "@/context/themeContext";
+import { cn, getErrorMessage } from "@/utils/helper";
 
 interface SectionProps {
   title: string;
@@ -80,15 +79,19 @@ const Section: FC<SectionProps> = ({
     [error, isError]
   );
 
-  const sectionStyle = `sm:py-[20px] xs:py-[18.75px] py-[16.75px] font-nunito ${className}`;
-  const linkStyle = `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full ${
+  const sectionStyle = cn(
+    `sm:py-[20px] xs:py-[18.75px] py-[16.75px] font-nunito`,
+    className
+  );
+  const linkStyle = cn(
+    `sm:py-1 py-[2px] sm:text-[14px] xs:text-[12.75px] text-[12px] sm:px-4 px-3 rounded-full  dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`,
     theme === "Dark" ? "view-all-btn--dark" : "view-all-btn--light"
-  } dark:text-gray-300 hover:-translate-y-1 transition-all duration-300`;
+  );
 
   return (
     <section className={sectionStyle} ref={ref}>
       <div
-        className={`flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]`}
+        className="flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]"
       >
         <h3 className="sm:text-[22.25px] xs:text-[20px] text-[18.75px] dark:text-gray-50 sm:font-bold font-semibold relative">
           <span>{title}</span>

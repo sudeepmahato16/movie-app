@@ -2,12 +2,13 @@ import { useState } from "react";
 import { m } from "framer-motion";
 import { useParams } from "react-router-dom";
 
-import { Poster, Loader, Error, Section } from "../../common";
+import { Poster, Loader, Error, Section } from "@/common";
 import { Casts, Videos, Genre } from "./components";
 
-import { useGetShowQuery } from "../../services/TMDB";
-import { mainHeading, maxWidth, paragraph } from "../../styles";
-import { staggerContainer, fadeDown } from "../../utils/motion";
+import { useGetShowQuery } from "@/services/TMDB";
+import { mainHeading, maxWidth, paragraph } from "@/styles";
+import { staggerContainer, fadeDown } from "@/utils/motion";
+import { cn } from "@/utils/helper";
 
 const Detail = () => {
   const { category, id } = useParams();
@@ -64,7 +65,7 @@ const Detail = () => {
           >
             <m.h2
               variants={fadeDown}
-              className={`${mainHeading} md:max-w-[420px]`}
+              className={cn(mainHeading, " md:max-w-[420px]")}
             >
               {title || name}
             </m.h2>
@@ -86,9 +87,10 @@ const Detail = () => {
               </span>
               <button
                 type="button"
-                className={`${
+                className={cn(
+                  `font-bold ml-1 hover:underline transition-all duration-300`,
                   overview.length > 280 ? "inline-block" : "hidden"
-                } font-bold ml-1 hover:underline transition-all duration-300`}
+                )}
                 onClick={toggleShow}
               >
                 {!show ? "show more" : "show less"}

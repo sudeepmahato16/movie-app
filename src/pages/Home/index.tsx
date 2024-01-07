@@ -1,10 +1,10 @@
-import { useGetShowsQuery } from "../../services/TMDB";
-
-import { Loader, Error, Section } from "../../common";
+import { Loader, Error, Section } from "@/common";
 import { Hero } from "./components";
 
-import { maxWidth } from "../../styles";
-import { sections } from "../../constants";
+import { useGetShowsQuery } from "@/services/TMDB";
+import { maxWidth } from "@/styles";
+import { sections } from "@/constants";
+import { cn } from "@/utils/helper";
 
 const Home = () => {
   const { data, isLoading, isError } = useGetShowsQuery({
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <>
       <Hero movies={popularMovies} />
-      <div className={`${maxWidth} lg:mt-12 md:mt-8 sm:mt-6 xs:mt-4 mt-2`}>
+      <div className={cn(maxWidth, "lg:mt-12 md:mt-8 sm:mt-6 xs:mt-4 mt-2")}>
         {sections.map(({ title, category, type }) => (
           <Section title={title} category={category} type={type} key={title} />
         ))}

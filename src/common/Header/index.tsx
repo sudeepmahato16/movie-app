@@ -9,21 +9,23 @@ import throttle from "lodash.throttle";
 import { ThemeMenu, Logo } from "..";
 import HeaderNavItem from "./HeaderNavItem";
 
-import { useGlobalContext } from "../../context/globalContext";
-import { useTheme } from "../../context/themeContext";
-import { maxWidth, textColor } from "../../styles";
-import { navLinks } from "../../constants";
+import { useGlobalContext } from "@/context/globalContext";
+import { useTheme } from "@/context/themeContext";
+import { maxWidth, textColor } from "@/styles";
+import { navLinks } from "@/constants";
+import { THROTTLE_DELAY } from "@/utils/config";
+import { cn } from "@/utils/helper";
 
 const Header = () => {
   const { openMenu, theme, showThemeOptions } = useTheme();
   const { setShowSidebar } = useGlobalContext();
 
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [isPageNotFound, setIsPageNotFound] = useState<boolean>(false);
+  const [isNotFoundPage, setIsNotFoundPage] = useState<boolean>(false);
   const location = useLocation();
 
   useEffect(() => {
-    const changeHeaderBg = () => {
+    const handleBackgroundChange = () => {
       const body = document.body;
       if (
         window.scrollY > 0 ||
@@ -36,36 +38,44 @@ const Header = () => {
       }
     };
 
-    window.addEventListener("scroll", throttle(changeHeaderBg, 150));
+    const throttledHandleBackgroundChange = throttle(
+      handleBackgroundChange,
+      THROTTLE_DELAY
+    );
+
+    window.addEventListener("scroll", throttledHandleBackgroundChange);
 
     return () => {
-      window.removeEventListener("scroll", changeHeaderBg);
+      window.removeEventListener("scroll", throttledHandleBackgroundChange);
     };
   }, []);
 
   useEffect(() => {
     if (location.pathname.split("/").length > 3) {
-      setIsPageNotFound(true);
+      setIsNotFoundPage(true);
     } else {
-      setIsPageNotFound(false);
+      setIsNotFoundPage(false);
     }
   }, [location.pathname]);
 
   return (
     <header
-      className={`py-[14.75px] fixed top-0 left-0 w-full z-10 ${
+      className={cn(
+        `md:py-[16px] py-[14.5px]  fixed top-0 left-0 w-full z-10 transition-all duration-50`,
         isActive && (theme === "Dark" ? "header-bg--dark" : "header-bg--light")
-      } transition-all duration-50`}
+      )}
     >
-      <nav className={`${maxWidth} flex justify-between flex-row items-center`}>
+      <nav
+        className={cn(maxWidth,`flex justify-between flex-row items-center`)}
+      >
         <Logo
-          logoColor={
-            isPageNotFound
+          logoColor={cn(
+            isNotFoundPage
               ? "text-black dark:text-primary"
-              : !isPageNotFound && isActive
+              : !isNotFoundPage && isActive
               ? "text-black dark:text-primary"
               : "text-primary"
-          }
+          )}
         />
 
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
@@ -75,7 +85,7 @@ const Header = () => {
                 <HeaderNavItem
                   key={link.title}
                   link={link}
-                  isPageNotFound={isPageNotFound}
+                  isNotFoundPage={isNotFoundPage}
                   showBg={isActive}
                 />
               );
@@ -88,11 +98,12 @@ const Header = () => {
               type="button"
               onClick={openMenu}
               id="theme"
-              className={`flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75 ${
-                isPageNotFound || isActive
+              className={cn(
+                `flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75`,
+                isNotFoundPage || isActive
                   ? ` ${textColor} dark:hover:text-secColor hover:text-black `
                   : ` dark:hover:text-secColor text-gray-300 `
-              } `}
+              )}
             >
               {theme === "Dark" ? <BsMoonStarsFill /> : <FiSun />}
             </button>
@@ -105,11 +116,12 @@ const Header = () => {
         <button
           type="button"
           name="menu"
-          className={`inline-block text-[22.75px] md:hidden ${
-            isPageNotFound || isActive
+          className={cn(
+            `inline-block text-[22.75px] md:hidden  active:scale-75 transition-all duration-300`,
+            isNotFoundPage || isActive
               ? `${textColor} dark:hover:text-secColor hover:text-black `
               : ` dark:hover:text-secColor text-secColor`
-          } active:scale-75 transition-all duration-300`}
+          )}
           onClick={() => setShowSidebar(true)}
         >
           <AiOutlineMenu />

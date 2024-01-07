@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { cn } from "@/utils/helper";
 
 interface ImageProps {
   src: string;
@@ -31,11 +32,12 @@ const Image: React.FC<ImageProps> = ({
       alt={alt}
       height={height}
       width={width}
-      className={`${
+      className={cn(
+        className,
         !isImageLoaded
           ? `opacity-0 ${zoomInEffect ? "scale-95" : ""}`
           : `opacity-100 ${zoomInEffect ? "scale-100" : ""}`
-      } ${className}`}
+      )}
       afterLoad={handleLoad}
     />
   );

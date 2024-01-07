@@ -1,10 +1,11 @@
 import { m } from "framer-motion";
 
-import { useTheme } from "../../context/themeContext";
-import { zoomIn } from "../../utils/motion";
-import { themeOptions } from "../../constants";
-import { textColor } from "../../styles";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useTheme } from "@/context/themeContext";
+import { zoomIn } from "@/utils/motion";
+import { themeOptions } from "@/constants";
+import { textColor } from "@/styles";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { cn } from "@/utils/helper";
 
 const ThemeMenu = () => {
   const { theme, setTheme, checkSystemTheme, setShowThemeOptions, closeMenu } =
@@ -36,16 +37,18 @@ const ThemeMenu = () => {
       {themeOptions.map((option, index) => (
         <li
           key={index}
-          className={`hover:bg-gray-200 dark:hover:bg-black transition-all duration-300 ${
-            theme === option.title ? "bg-gray-200 dark:bg-black " : ""
-          }`}
+          className={cn(
+            "hover:bg-gray-200 dark:hover:bg-black transition-all duration-300",
+            theme === option.title && "bg-gray-200 dark:bg-black "
+          )}
         >
           <button
             name="theme"
             type="button"
-            className={`flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px] ${
-              theme === option.title ? `${textColor} ` : ""
-            }`}
+            className={cn(
+              "flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px]",
+              theme === option.title && textColor
+            )}
             onClick={() => {
               changeTheme(option.title);
             }}

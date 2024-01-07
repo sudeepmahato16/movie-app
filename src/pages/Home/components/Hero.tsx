@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
 import HeroSlide from "./HeroSlide";
-import { IMovie } from "../../../types";
+import { IMovie } from "@/types";
 
 const Hero = ({ movies }: { movies: IMovie[] }) => (
   <Swiper

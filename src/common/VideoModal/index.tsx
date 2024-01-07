@@ -3,9 +3,9 @@ import { m, AnimatePresence } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 
 import Overlay from "../Overlay";
-import { useGlobalContext } from "../../context/globalContext";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
-import { zoomIn } from "../../utils/motion";
+import { useGlobalContext } from "@/context/globalContext";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { zoomIn } from "@/utils/motion";
 
 const VideoModal = () => {
   const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { API_KEY, TMDB_API_BASE_URL } from "../utils/config";
+import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",

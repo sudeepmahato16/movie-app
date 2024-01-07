@@ -1,8 +1,9 @@
 import { memo, FC } from "react";
 import { m } from "framer-motion";
+import { useMediaQuery } from "usehooks-ts";
 
-import Image from "../../../common/Image";
-import { fadeDown, staggerContainer } from "../../../utils/motion";
+import Image from "@/common/Image";
+import { fadeDown, staggerContainer } from "@/utils/motion";
 
 interface CastsProps {
   casts: {
@@ -14,6 +15,7 @@ interface CastsProps {
 
 const Casts: FC<CastsProps> = ({ casts }) => {
   const topCasts = casts.slice(0, 4);
+  const isNotMobile = useMediaQuery("(min-width: 768px");
   return (
     <m.div
       variants={staggerContainer(0.2, 1)}
@@ -21,7 +23,7 @@ const Casts: FC<CastsProps> = ({ casts }) => {
       animate="show"
       className="flex flex-wrap md:gap-4 sm:gap-[14px] gap-2  sm:-mt-2 xs:-mt-[6px] -mt-1"
     >
-      {topCasts.map((cast: any) => {
+      {topCasts.map((cast) => {
         const { id, profile_path: profilePath, name } = cast;
         return (
           <m.figure
@@ -31,8 +33,8 @@ const Casts: FC<CastsProps> = ({ casts }) => {
           >
             <div className="md:h-[96px] md:w-[64px] h-[54px] w-[40px]">
               <Image
-                width={window.innerWidth >= 768 ? 64 : 40}
-                height={window.innerWidth >= 768 ? 96 : 54}
+                width={isNotMobile ? 64 : 40}
+                height={isNotMobile ? 96 : 54}
                 src={`https://image.tmdb.org/t/p/original/${profilePath}`}
                 alt={name}
                 className=" object-cover rounded-md shadow-md transition-all duration-300"

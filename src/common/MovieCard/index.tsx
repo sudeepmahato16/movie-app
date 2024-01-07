@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
 import Image from "../Image";
-import { IMovie } from "../../types";
+import { IMovie } from "@/types";
 
 const MovieCard = ({
   movie,
@@ -24,8 +24,8 @@ const MovieCard = ({
           width={170}
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt={movie.original_title}
-          className={` object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out`}
-          zoomInEffect
+          className=" object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out
+          zoomInEffect"
         />
 
         <div className="absolute top-0 left-0 w-[170px]  h-full group-hover:opacity-100 opacity-0 bg-[rgba(0,0,0,0.6)] transition-all duration-300 rounded-lg flex items-center justify-center">

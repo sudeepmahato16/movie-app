@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@types/react-lazy-load-image-component": "^1.5.3",
+    "clsx": "^2.1.0",
     "framer-motion": "^10.12.9",
     "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
@@ -21,10 +22,13 @@
     "react-loading-skeleton": "^3.1.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
-    "swiper": "^8.4.7"
+    "swiper": "^8.4.7",
+    "tailwind-merge": "^2.2.0",
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@types/lodash.throttle": "^4.1.9",
+    "@types/node": "^20.10.6",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",

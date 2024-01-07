@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const getErrorMessage = (error: any) => {
   let errorMessage;
 
@@ -25,3 +28,7 @@ export const getTheme = () => {
   const theme = localStorage.getItem("theme");
   return theme ? theme : "";
 };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
