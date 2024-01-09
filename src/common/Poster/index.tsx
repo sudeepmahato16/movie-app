@@ -2,8 +2,8 @@ import { memo } from "react";
 import { m } from "framer-motion";
 
 import Image from "../Image";
-import { zoomIn } from "@/utils/motion";
 import { cn } from "@/utils/helper";
+import { useMotion } from "@/hooks/useMotion";
 
 interface PosterPropsType {
   posterPath: string;
@@ -12,6 +12,7 @@ interface PosterPropsType {
 }
 
 const Poster = ({ posterPath, title, className }: PosterPropsType) => {
+  const { zoomIn } = useMotion();
   return (
     <m.div
       variants={zoomIn(0.6, 0.8)}

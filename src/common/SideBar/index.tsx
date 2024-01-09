@@ -9,15 +9,16 @@ import Overlay from "../Overlay";
 import { useGlobalContext } from "@/context/globalContext";
 import { useTheme } from "@/context/themeContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { useMotion } from "@/hooks/useMotion";
 import { navLinks, themeOptions } from "@/constants";
 import { sideBarHeading } from "@/styles";
-import { slideIn } from "@/utils/motion";
 import { INavLink } from "@/types";
 import { cn } from "@/utils/helper";
 
 const SideBar: React.FC = () => {
   const { showSidebar, setShowSidebar } = useGlobalContext();
   const { theme } = useTheme();
+  const { slideIn } = useMotion();
 
   const closeSideBar = useCallback(() => {
     setShowSidebar(false);

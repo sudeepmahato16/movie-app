@@ -3,7 +3,7 @@ import { m } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 
 import Image from "@/common/Image";
-import { fadeDown, staggerContainer } from "@/utils/motion";
+import { useMotion } from "@/hooks/useMotion";
 
 interface CastsProps {
   casts: {
@@ -15,6 +15,7 @@ interface CastsProps {
 
 const Casts: FC<CastsProps> = ({ casts }) => {
   const isNotMobile = useMediaQuery("(min-width: 768px");
+  const { fadeDown, staggerContainer } = useMotion();
   const topCasts = casts.slice(0, 4);
 
   if (topCasts.length === 0) return null;

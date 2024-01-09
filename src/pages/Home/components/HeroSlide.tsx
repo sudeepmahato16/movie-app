@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { Poster } from "@/common";
 import { useGlobalContext } from "@/context/globalContext";
 import { mainHeading, maxWidth, paragraph, watchBtn } from "@/styles";
-import { staggerContainer, fadeDown } from "@/utils/motion";
 import { IMovie } from "@/types";
 import { cn } from "@/utils/helper";
+import { useMotion } from "@/hooks/useMotion";
 
 const HeroSlide = ({ movie }: { movie: IMovie }) => {
   const { getTrailerId, toggleModal } = useGlobalContext();
   const navigate = useNavigate();
+  const { fadeDown, staggerContainer } = useMotion();
 
   const {
     overview,
@@ -37,7 +38,7 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
       )}
     >
       <m.div
-        variants={staggerContainer(0.2, 0.3)}
+        variants={staggerContainer(0.15, 0.3)}
         initial="hidden"
         animate="show"
         className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[420px] font-nunito flex flex-col sm:gap-5 xs:gap-3 gap-[10px] sm:mb-8"

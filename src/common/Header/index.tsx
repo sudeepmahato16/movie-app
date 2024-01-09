@@ -66,7 +66,7 @@ const Header = () => {
       )}
     >
       <nav
-        className={cn(maxWidth,`flex justify-between flex-row items-center`)}
+        className={cn(maxWidth, `flex justify-between flex-row items-center`)}
       >
         <Logo
           logoColor={cn(
@@ -99,7 +99,7 @@ const Header = () => {
               onClick={openMenu}
               id="theme"
               className={cn(
-                `flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110 active:scale-75`,
+                `flex items-center justify-center mb-[2px] transition-all duration-100 hover:scale-110`,
                 isNotFoundPage || isActive
                   ? ` ${textColor} dark:hover:text-secColor hover:text-black `
                   : ` dark:hover:text-secColor text-gray-300 `
@@ -117,7 +117,7 @@ const Header = () => {
           type="button"
           name="menu"
           className={cn(
-            `inline-block text-[22.75px] md:hidden  active:scale-75 transition-all duration-300`,
+            `inline-block text-[22.75px] md:hidden  transition-all duration-300`,
             isNotFoundPage || isActive
               ? `${textColor} dark:hover:text-secColor hover:text-black `
               : ` dark:hover:text-secColor text-secColor`

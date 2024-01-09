@@ -4,6 +4,7 @@ import { FaYoutube } from "react-icons/fa";
 
 import Image from "../Image";
 import { IMovie } from "@/types";
+import { useMediaQuery } from "usehooks-ts";
 
 const MovieCard = ({
   movie,
@@ -13,6 +14,7 @@ const MovieCard = ({
   category: string;
 }) => {
   const { poster_path, original_title: title, name, id } = movie;
+  const isMobile = useMediaQuery("(max-width: 380px)");
   return (
     <>
       <Link
@@ -20,7 +22,7 @@ const MovieCard = ({
         className="dark:bg-[#1f1f1f] bg-[#f5f5f5] rounded-lg relative group w-[170px] select-none xs:h-[250px] h-[216px] overflow-hidden"
       >
         <Image
-          height={window.innerWidth > 380 ? 250 : 216}
+          height={!isMobile ? 250 : 216}
           width={170}
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt={movie.original_title}

@@ -6,13 +6,14 @@ import { Poster, Loader, Error, Section } from "@/common";
 import { Casts, Videos, Genre } from "./components";
 
 import { useGetShowQuery } from "@/services/TMDB";
+import { useMotion } from "@/hooks/useMotion";
 import { mainHeading, maxWidth, paragraph } from "@/styles";
-import { staggerContainer, fadeDown } from "@/utils/motion";
 import { cn } from "@/utils/helper";
 
 const Detail = () => {
   const { category, id } = useParams();
   const [show, setShow] = useState<Boolean>(false);
+  const { fadeDown, staggerContainer } = useMotion();
 
   const {
     data: movie,
@@ -83,7 +84,7 @@ const Detail = () => {
 
             <m.ul
               variants={fadeDown}
-              className="flex flex-row items-center md:gap-4 sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap"
+              className="flex flex-row items-center  sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap"
             >
               {genres.map((genre: { name: string; id: number }) => {
                 return <Genre key={genre.id} name={genre.name} />;

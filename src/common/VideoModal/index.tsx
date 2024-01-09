@@ -5,38 +5,38 @@ import { IoMdClose } from "react-icons/io";
 import Overlay from "../Overlay";
 import { useGlobalContext } from "@/context/globalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { zoomIn } from "@/utils/motion";
+import { useMotion } from "@/hooks/useMotion";
 
 const VideoModal = () => {
   const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
+  const { zoomIn } = useMotion();
 
   const closeModal = useCallback(() => {
     toggleModal();
     setVideoId("");
   }, [setVideoId, toggleModal]);
-
+  
   const { ref } = useOnClickOutside(closeModal);
 
   useEffect(() => {
     const body = document.body;
-    const rootNode = document.documentElement
+    const rootNode = document.documentElement;
     if (isModalOpen) {
       const scrollTop = rootNode.scrollTop;
       body.style.top = `-${scrollTop}px`;
-      body.classList.add('no-scroll')
+      body.classList.add("no-scroll");
 
       return;
     }
 
     const top = parseFloat(body.style.top) * -1;
-    body.classList.remove('no-scroll');
+    body.classList.remove("no-scroll");
     if (top) {
       rootNode.style.scrollBehavior = "auto";
       rootNode.scrollTop = top;
       rootNode.style.scrollBehavior = "smooth";
     }
-
-  }, [isModalOpen])
+  }, [isModalOpen]);
 
   return (
     <AnimatePresence>

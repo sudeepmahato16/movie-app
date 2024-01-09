@@ -1,15 +1,16 @@
 import { m } from "framer-motion";
 
 import { useTheme } from "@/context/themeContext";
-import { zoomIn } from "@/utils/motion";
 import { themeOptions } from "@/constants";
 import { textColor } from "@/styles";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { cn } from "@/utils/helper";
+import { useMotion } from "@/hooks/useMotion";
 
 const ThemeMenu = () => {
   const { theme, setTheme, checkSystemTheme, setShowThemeOptions, closeMenu } =
     useTheme();
+  const { zoomIn } = useMotion();
 
   const { ref } = useOnClickOutside(closeMenu);
 
