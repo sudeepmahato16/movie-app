@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 import { useParams } from "react-router-dom";
 
@@ -23,6 +23,17 @@ const Detail = () => {
     category: String(category),
     id: Number(id),
   });
+
+  useEffect(() => {
+    document.title =
+      (movie?.title || movie?.name) && !isLoading
+        ? movie.title || movie.name
+        : "tMovies";
+
+    return () => {
+      document.title = "tMovies";
+    };
+  }, [movie?.title, isLoading, movie?.name]);
 
   const toggleShow = () => setShow((prev) => !prev);
 
@@ -97,14 +108,7 @@ const Detail = () => {
               </button>
             </m.p>
 
-            <m.h3
-              variants={fadeDown}
-              className="text-secColor font-bold md:text-[18px] sm:text-[16.75px] xs:text-[15.75px] text-[14.75px]"
-            >
-              Top Casts
-            </m.h3>
-
-            <Casts casts={credits.cast} />
+            <Casts casts={credits?.cast || []} />
           </m.div>
         </div>
       </section>
