@@ -51,18 +51,18 @@ export const useMotion = () => {
         ? undefined
         : {
             hidden: {
-              y: "-25px",
+              y: -25,
               opacity: 0,
             },
             show: {
               y: 0,
               opacity: 1,
               transition: {
-                duration: 0.4,
+                duration: 0.5,
                 ease: "easeOut",
                 type: "tween",
                 opacity: {
-                  duration: 0.6,
+                  duration: 0.625,
                 },
               },
             },
