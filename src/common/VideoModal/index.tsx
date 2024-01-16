@@ -15,7 +15,7 @@ const VideoModal = () => {
     toggleModal();
     setVideoId("");
   }, [setVideoId, toggleModal]);
-  
+
   const { ref } = useOnClickOutside(closeModal);
 
   useEffect(() => {
@@ -37,6 +37,17 @@ const VideoModal = () => {
       rootNode.style.scrollBehavior = "smooth";
     }
   }, [isModalOpen]);
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (isModalOpen && e.key !== "Escape") return;
+      closeModal();
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [closeModal, isModalOpen]);
 
   return (
     <AnimatePresence>
