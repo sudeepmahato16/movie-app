@@ -40,8 +40,9 @@ const VideoModal = () => {
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (isModalOpen && e.key !== "Escape") return;
-      closeModal();
+      if (isModalOpen && e.key === "Escape") {
+        closeModal();
+      }
     };
 
     document.addEventListener("keydown", handleKeyPress);
