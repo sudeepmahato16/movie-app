@@ -111,7 +111,7 @@ Make sure you have all the necessary prerequisites installed on your system. Fol
 - Run the following command to install the project's dependencies using npm:
 
   ```bash
-  npm install 
+  npm install
   ```
 
 - Start the server
@@ -154,3 +154,11 @@ To contribute code to movie app project:
 5. Open a pull request back to the main repository, including a description of your changes and any relevant issue numbers
 
 Thank you for your contribution to Movie app project! We appreciate your efforts to help make this a great movie application.
+
+<br/>
+
+## Credits
+
+UI/UX design adapted from Tuat Tran Anh's tutorial.
+
+- Tutorial: [Responsive React Movies App With API | ReactJS Movies | ReactJS Tutorial](https://youtu.be/ntYXj9W1Ez8?si=ddwD3FZ6sot_NX9K)
