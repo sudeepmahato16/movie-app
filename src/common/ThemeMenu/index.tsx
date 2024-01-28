@@ -31,9 +31,9 @@ const ThemeMenu = () => {
       animate="show"
       exit="hidden"
       style={{
-        background: `${theme === "Light" ? "#FAFAFA" : "rgba(0,0,0,0.4)"}`,
+        background: `${theme === "Light" ? "#FAFAFA" : "rgba(0,0,0,0.7)"}`,
       }}
-      className="absolute top-[200%] right-[25%] bg-primary shadow-md backdrop-blur-sm  rounded-md overflow-hidden dark:dark-glass light-glass"
+      className="absolute top-[200%] right-[25%] bg-primary shadow-md backdrop-blur-sm  rounded-md overflow-hidden dark:dark-glass light-glass backdrop:blur-md"
     >
       {themeOptions.map((option, index) => (
         <li

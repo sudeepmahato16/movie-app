@@ -128,7 +128,7 @@ body {
 }
 
 .header-bg--light {
-  background: rgba(254, 254, 254, 0.7);
+  background: #fefefe;
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.075);

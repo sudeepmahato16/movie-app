@@ -30,10 +30,10 @@ const ThemeProvider = ({ children }: Props) => {
     }
   };
 
-  // check theme stored in local storage;
   const checkTheme = useCallback(() => {
     if (initialTheme) return;
-    checkSystemTheme();
+    setTheme("Dark");
+    // checkSystemTheme();
   }, []);
 
   useEffect(() => {
