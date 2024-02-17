@@ -48,7 +48,7 @@ const Casts: FC<CastsProps> = ({ casts }) => {
                   height={isNotMobile ? 96 : 54}
                   src={`https://image.tmdb.org/t/p/original/${profilePath}`}
                   alt={name}
-                  className=" object-cover rounded-md shadow-md transition-all duration-300"
+                  className=" object-cover rounded-md shadow-md"
                 />
               </div>
 

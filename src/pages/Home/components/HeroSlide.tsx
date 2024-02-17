@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +46,7 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
           {title}
         </m.h2>
         <m.p variants={fadeDown} className={paragraph}>
-          {overview.length > 180 ? `${overview.slice(0, 180)}...` : overview}
+          {overview.length > 180 ? `${overview.substring(0, 180)}...` : overview}
         </m.p>
         <m.div
           variants={fadeDown}
@@ -81,4 +80,4 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
   );
 };
 
-export default memo(HeroSlide);
+export default HeroSlide;

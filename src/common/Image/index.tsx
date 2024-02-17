@@ -9,7 +9,7 @@ interface ImageProps {
   alt: string;
   width: string | number;
   height: string | number;
-  zoomInEffect?: boolean;
+  effect?: "zoomIn";
 }
 
 const Image: React.FC<ImageProps> = ({
@@ -18,7 +18,7 @@ const Image: React.FC<ImageProps> = ({
   width,
   alt,
   height,
-  zoomInEffect = false,
+  effect,
 }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -33,10 +33,11 @@ const Image: React.FC<ImageProps> = ({
       height={height}
       width={width}
       className={cn(
+        "transition-all duration-300",
         className,
         !isImageLoaded
-          ? `opacity-0 ${zoomInEffect ? "scale-95" : ""}`
-          : `opacity-100 ${zoomInEffect ? "scale-100" : ""}`
+          ? `opacity-0 ${effect === "zoomIn" ? "scale-95" : ""}`
+          : `opacity-100 ${effect === "zoomIn" ? "scale-100" : ""}`
       )}
       afterLoad={handleLoad}
     />

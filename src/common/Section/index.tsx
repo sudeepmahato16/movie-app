@@ -1,5 +1,6 @@
-import { memo, useState, useRef, useEffect, useMemo, FC } from "react";
+import { memo, FC, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useInView } from "framer-motion";
 
 import MoviesSlides from "./MoviesSlides";
 import { SkelatonLoader } from "../Loader";
@@ -26,8 +27,12 @@ const Section: FC<SectionProps> = ({
   id,
   showSimilarShows,
 }) => {
-  const [isInView, setIsInView] = useState<boolean>(false);
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, {
+    margin: "100px",
+    once: true,
+  });
+
   const { theme } = useTheme();
 
   const {
@@ -44,40 +49,11 @@ const Section: FC<SectionProps> = ({
       id,
     },
     {
-      skip: !isInView,
+      skip: !inView,
     }
   );
 
-  useEffect(() => {
-    const observerHandler = (
-      entries: IntersectionObserverEntry[],
-      observer: IntersectionObserver
-    ) => {
-      const entry = entries[0];
-      if (!entry.isIntersecting) return;
-      setIsInView(true);
-      observer.unobserve(entry.target);
-    };
-
-    const observer = new IntersectionObserver(observerHandler, {
-      root: null,
-      rootMargin: "580px",
-      threshold: 0.1,
-    });
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const errorMessage = useMemo(
-    () => (isError ? getErrorMessage(error) : ""),
-    [error, isError]
-  );
+  const errorMessage = isError ? getErrorMessage(error) : "";
 
   const sectionStyle = cn(
     `sm:py-[20px] xs:py-[18.75px] py-[16.75px] font-nunito`,
@@ -90,9 +66,7 @@ const Section: FC<SectionProps> = ({
 
   return (
     <section className={sectionStyle} ref={ref}>
-      <div
-        className="flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]"
-      >
+      <div className="flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]">
         <h3 className="sm:text-[22.25px] xs:text-[20px] text-[18.75px] dark:text-gray-50 sm:font-bold font-semibold relative">
           <span>{title}</span>
           <div className="line" />
@@ -103,14 +77,11 @@ const Section: FC<SectionProps> = ({
           </Link>
         )}
       </div>
-      <div className="xs:min-h-[250px] min-h-[216px]">
-        {isLoading ? (
+      <div className="sm:h-[312px] xs:h-[309px] h-[266px]">
+        {isLoading || !inView ? (
           <SkelatonLoader />
         ) : isError ? (
-          <Error
-            error={String(errorMessage)}
-            className="xs:h-[250px] h-[216px] text-[18px]"
-          />
+          <Error error={String(errorMessage)} className="h-full text-[18px]" />
         ) : (
           <MoviesSlides
             movies={data.results.slice(0, 12)}
