@@ -3,12 +3,13 @@ import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 
 const context = React.createContext({
   videoId: "",
-  setVideoId: (prevValue: string) => {},
-  getTrailerId: (id: number | string) => {},
-  toggleModal: () => {},
+  setVideoId: (prevValue: string) => { },
+  getTrailerId: (id: number | string) => { },
+  closeModal: () => { },
   isModalOpen: false,
   showSidebar: false,
-  setShowSidebar: (prevValue: boolean) => {},
+  setShowSidebar: (prevValue: boolean) => { },
+  setIsModalOpen: (value: boolean) => { }
 });
 
 interface Props {
@@ -20,9 +21,11 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [videoId, setVideoId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = useCallback(() => {
-    setIsModalOpen((prev) => !prev);
-  }, []);
+  const closeModal = useCallback(() => {
+    if (!isModalOpen) return;
+    setIsModalOpen(false);
+    setVideoId("")
+  }, [isModalOpen]);
 
   const getTrailerId = async (id: number | string) => {
     try {
@@ -41,11 +44,12 @@ const GlobalContextProvider = ({ children }: Props) => {
       value={{
         getTrailerId,
         videoId,
-        toggleModal,
+        closeModal,
         isModalOpen,
         setVideoId,
         showSidebar,
         setShowSidebar,
+        setIsModalOpen
       }}
     >
       {children}

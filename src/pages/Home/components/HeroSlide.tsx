@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +10,7 @@ import { cn } from "@/utils/helper";
 import { useMotion } from "@/hooks/useMotion";
 
 const HeroSlide = ({ movie }: { movie: IMovie }) => {
-  const { getTrailerId, toggleModal } = useGlobalContext();
+  const { getTrailerId, setIsModalOpen } = useGlobalContext();
   const navigate = useNavigate();
   const { fadeDown, staggerContainer } = useMotion();
 
@@ -22,7 +23,7 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
 
   const showTrailer = () => {
     getTrailerId(id);
-    toggleModal();
+    setIsModalOpen(true);
   };
 
   const handleWatchNow = () => {
@@ -80,4 +81,4 @@ const HeroSlide = ({ movie }: { movie: IMovie }) => {
   );
 };
 
-export default HeroSlide;
+export default memo(HeroSlide);

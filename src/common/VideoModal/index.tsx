@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 
@@ -6,17 +6,13 @@ import Overlay from "../Overlay";
 import { useGlobalContext } from "@/context/globalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useMotion } from "@/hooks/useMotion";
+import { useOnKeyPress } from "@/hooks/useOnKeyPress";
 
 const VideoModal = () => {
-  const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
+  const { videoId, closeModal, isModalOpen } = useGlobalContext();
   const { zoomIn } = useMotion();
-
-  const closeModal = useCallback(() => {
-    toggleModal();
-    setVideoId("");
-  }, [setVideoId, toggleModal]);
-
   const { ref } = useOnClickOutside(closeModal);
+  useOnKeyPress("Escape", closeModal)
 
   useEffect(() => {
     const body = document.body;
@@ -38,17 +34,6 @@ const VideoModal = () => {
     }
   }, [isModalOpen]);
 
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (isModalOpen && e.key === "Escape") {
-        closeModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-
-    return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [closeModal, isModalOpen]);
 
   return (
     <AnimatePresence>

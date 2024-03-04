@@ -22,7 +22,7 @@ const Image: React.FC<ImageProps> = ({
 }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  const handleLoad = () => {
+  const onLoad = () => {
     setIsImageLoaded(true);
   };
 
@@ -33,13 +33,13 @@ const Image: React.FC<ImageProps> = ({
       height={height}
       width={width}
       className={cn(
-        "transition-all duration-300",
+        "transition-all duration-300 ease-in",
         className,
         !isImageLoaded
           ? `opacity-0 ${effect === "zoomIn" ? "scale-95" : ""}`
           : `opacity-100 ${effect === "zoomIn" ? "scale-100" : ""}`
       )}
-      afterLoad={handleLoad}
+      onLoad={onLoad}
     />
   );
 };

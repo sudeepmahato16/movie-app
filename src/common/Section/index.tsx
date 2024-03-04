@@ -29,7 +29,7 @@ const Section: FC<SectionProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, {
-    margin: "100px",
+    margin: "420px",
     once: true,
   });
 
@@ -66,11 +66,11 @@ const Section: FC<SectionProps> = ({
 
   return (
     <section className={sectionStyle} ref={ref}>
-      <div className="flex flex-row justify-between items-center sm:mb-6 mb-[22.75px]">
-        <h3 className="sm:text-[22.25px] xs:text-[20px] text-[18.75px] dark:text-gray-50 sm:font-bold font-semibold relative">
-          <span>{title}</span>
+      <div className="flex flex-row justify-between items-center mb-[22.75px]">
+        <div className=" relative">
+          <h3 className="sm:text-[22.25px] xs:text-[20px] text-[18.75px] dark:text-gray-50 sm:font-bold font-semibold">{title}</h3>
           <div className="line" />
-        </h3>
+        </div>
         {!showSimilarShows && (
           <Link to={`/${category}?type=${type}`} className={linkStyle}>
             View all
@@ -78,13 +78,13 @@ const Section: FC<SectionProps> = ({
         )}
       </div>
       <div className="sm:h-[312px] xs:h-[309px] h-[266px]">
-        {isLoading || !inView ? (
+        {isLoading ? (
           <SkelatonLoader />
         ) : isError ? (
           <Error error={String(errorMessage)} className="h-full text-[18px]" />
         ) : (
           <MoviesSlides
-            movies={data.results.slice(0, 12)}
+            movies={data.results.slice(0, 10)}
             category={category}
           />
         )}

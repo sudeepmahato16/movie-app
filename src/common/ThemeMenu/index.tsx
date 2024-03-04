@@ -6,6 +6,7 @@ import { textColor } from "@/styles";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { cn } from "@/utils/helper";
 import { useMotion } from "@/hooks/useMotion";
+import { useOnKeyPress } from "@/hooks/useOnKeyPress";
 
 const ThemeMenu = () => {
   const { theme, setTheme, checkSystemTheme, setShowThemeOptions, closeMenu } =
@@ -13,6 +14,7 @@ const ThemeMenu = () => {
   const { zoomIn } = useMotion();
 
   const { ref } = useOnClickOutside(closeMenu);
+  useOnKeyPress("Escape", closeMenu)
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {
@@ -47,7 +49,7 @@ const ThemeMenu = () => {
             name="theme"
             type="button"
             className={cn(
-              "flex flex-row items-center gap-3 font-medium py-2 px-4 text-[14px]",
+              "flex flex-row items-center gap-3 w-full font-medium py-2 px-4 text-[14px]",
               theme === option.title && textColor
             )}
             onClick={() => {
