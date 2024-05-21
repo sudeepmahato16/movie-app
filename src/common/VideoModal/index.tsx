@@ -11,8 +11,8 @@ import { useOnKeyPress } from "@/hooks/useOnKeyPress";
 const VideoModal = () => {
   const { videoId, closeModal, isModalOpen } = useGlobalContext();
   const { zoomIn } = useMotion();
-  const { ref } = useOnClickOutside(closeModal);
-  useOnKeyPress("Escape", closeModal)
+  const { ref } = useOnClickOutside(closeModal, true, isModalOpen);
+  useOnKeyPress("Escape", closeModal, isModalOpen)
 
   useEffect(() => {
     const body = document.body;
