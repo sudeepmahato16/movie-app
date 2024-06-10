@@ -20,7 +20,8 @@ body {
 body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
-  overflow-y: scroll
+  overflow-y: scroll;
+  @apply dark:bg-black bg-mainColor;
 }
 
 .no-scroll {
@@ -90,14 +91,17 @@ body {
 }
 
 .dark-glass {
-  background: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.075),
-      rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.075),
+    rgba(255, 255, 255, 0)
+  );
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 
-  border: 1px solid linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border: 1px solid
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
 
 .text-shadow {
@@ -119,9 +123,11 @@ body {
 }
 
 .header-bg--dark {
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.3));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3)
+  );
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

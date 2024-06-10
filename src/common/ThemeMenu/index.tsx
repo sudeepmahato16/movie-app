@@ -13,8 +13,14 @@ const ThemeMenu = () => {
     useTheme();
   const { zoomIn } = useMotion();
 
-  const { ref } = useOnClickOutside(closeMenu);
-  useOnKeyPress("Escape", closeMenu)
+  const { ref } = useOnClickOutside({
+    action: closeMenu
+  });
+  
+  useOnKeyPress({
+    action: closeMenu,
+    key: "Escape"
+  })
 
   const changeTheme = (theme: string) => {
     if (theme === "System") {

@@ -1,20 +1,27 @@
 import { useEffect, useRef } from "react";
 
-export const useOnClickOutside = (
-  action: () => void,
+interface IUseOutsideClick {
+  action: () => void;
+  listenCapturing?: boolean;
+  enable?: boolean;
+}
+
+export const useOnClickOutside = ({
+  action,
   listenCapturing = true,
-  startListening = true
-) => {
+  enable = true,
+}: IUseOutsideClick) => {
   const ref = useRef<any>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
+      console.log('hello')
       if (ref.current && !ref.current.contains(e.target as Node)) {
         e.stopPropagation();
         action();
       }
     };
-    if (startListening) {
+    if (enable) {
       document.addEventListener("click", handleClick, listenCapturing);
     } else {
       document.removeEventListener("click", handleClick, listenCapturing);
@@ -22,7 +29,7 @@ export const useOnClickOutside = (
 
     return () =>
       document.removeEventListener("click", handleClick, listenCapturing);
-  }, [action, listenCapturing, startListening]);
+  }, [action, listenCapturing, enable]);
 
   return { ref };
 };

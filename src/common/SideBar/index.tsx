@@ -24,7 +24,10 @@ const SideBar: React.FC = () => {
     setShowSidebar(false);
   }, [setShowSidebar]);
 
-  const { ref } = useOnClickOutside(closeSideBar);
+  const { ref } = useOnClickOutside({
+    action: closeSideBar,
+    enable: showSidebar
+  });
 
   return (
     <AnimatePresence>

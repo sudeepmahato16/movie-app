@@ -22,7 +22,6 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = useCallback(() => {
-    console.log('hello')
     if (!isModalOpen) return;
     setIsModalOpen(false);
     setVideoId("")

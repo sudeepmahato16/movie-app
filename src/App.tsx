@@ -24,7 +24,7 @@ const App = () => {
       <VideoModal />
       <SideBar />
       <Header />
-      <main className="dark:bg-black bg-mainColor lg:pb-14 md:pb-4 sm:pb-2 xs:pb-1 pb-0">
+      <main className=" lg:pb-14 md:pb-4 sm:pb-2 xs:pb-1 pb-0">
         <ScrollToTop>
           <Suspense fallback={<Loader />}>
             <Routes>
