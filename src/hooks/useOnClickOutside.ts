@@ -15,7 +15,6 @@ export const useOnClickOutside = ({
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      console.log('hello')
       if (ref.current && !ref.current.contains(e.target as Node)) {
         e.stopPropagation();
         action();

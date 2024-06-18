@@ -9,7 +9,6 @@ interface IUseKeyPress {
 export const useOnKeyPress = ({ key, action, enable = true }: IUseKeyPress) => {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      console.log(e.key)
       if (e.key === key) action(e);
     };
 

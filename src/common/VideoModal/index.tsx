@@ -41,7 +41,6 @@ const VideoModal = () => {
     }
   }, [isModalOpen]);
 
-
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -62,7 +61,7 @@ const VideoModal = () => {
               <IoMdClose />
             </button>
             <iframe
-              src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+              src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1`}
               title="trailer"
               width="100%"
               height="100%"
