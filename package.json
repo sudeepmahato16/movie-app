@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ctrl/react-adsense": "^1.8.0",
     "@reduxjs/toolkit": "^1.9.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.5",

@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import ReactGA from "react-ga4";
+import { Adsense } from "@ctrl/react-adsense";
 
 import {
   Header,
@@ -13,7 +14,11 @@ import {
 
 import "react-loading-skeleton/dist/skeleton.css";
 import "swiper/css";
-import { GA_MEASUREMENT_ID } from "./utils/config";
+import {
+  GA_MEASUREMENT_ID,
+  GOOGLE_AD_CLIENT,
+  GOOGLE_AD_SLOT,
+} from "./utils/config";
 
 const Catalog = lazy(() => import("./pages/Catalog"));
 const Home = lazy(() => import("./pages/Home"));
@@ -22,7 +27,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
   useEffect(() => {
-    ReactGA.initialize(GA_MEASUREMENT_ID || "");
+    if(!GA_MEASUREMENT_ID) return;
+    ReactGA.initialize(GA_MEASUREMENT_ID);
     ReactGA.send("pageview");
   }, []);
 
@@ -43,6 +49,14 @@ const App = () => {
           </Suspense>
         </ScrollToTop>
       </main>
+
+      <Adsense
+        client={GOOGLE_AD_CLIENT || ""}
+        slot={GOOGLE_AD_SLOT || ""}
+        style={{ display: "block" }}
+        format="auto"
+        responsive="true"
+      />
       <Footer />
     </>
   );
