@@ -66,32 +66,32 @@ const Detail = () => {
     <>
       <section className="w-full" style={backgroundStyle}>
         <div
-          className={`${maxWidth} lg:py-36 sm:py-[136px] sm:pb-28 xs:py-28 xs:pb-12 pt-24 pb-8 flex flex-row lg:gap-12 md:gap-10 gap-8 justify-center `}
+          className={`${maxWidth} lg:py-36 sm:py-[136px] sm:pb-28 xs:py-28 xs:pb-12 pt-24 pb-8 flex flex-row lg:gap-12 md:gap-10 gap-8 justify-center`}
         >
           <Poster title={title} posterPath={posterPath} />
           <m.div
             variants={staggerContainer(0.2, 0.4)}
             initial="hidden"
             animate="show"
-            className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1"
+            className="text-gray-300 sm:max-w-[80vw] max-w-[90vw]  md:max-w-[520px] font-nunito flex flex-col lg:gap-5 sm:gap-4 xs:gap-[14px] gap-3 mb-8 flex-1 will-change-transform motion-reduce:transform-none"
           >
             <m.h2
               variants={fadeDown}
-              className={cn(mainHeading, " md:max-w-[420px]")}
+              className={cn(mainHeading, " md:max-w-[420px] will-change-transform motion-reduce:transform-none")}
             >
               {title || name}
             </m.h2>
 
             <m.ul
               variants={fadeDown}
-              className="flex flex-row items-center  sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap"
+              className="flex flex-row items-center  sm:gap-[14px] xs:gap-3 gap-[6px] flex-wrap will-change-transform motion-reduce:transform-none"
             >
               {genres.map((genre: { name: string; id: number }) => {
                 return <Genre key={genre.id} name={genre.name} />;
               })}
             </m.ul>
 
-            <m.p variants={fadeDown} className={paragraph}>
+            <m.p variants={fadeDown} className={`${paragraph} will-change-transform motion-reduce:transform-none`}>
               <span>
                 {overview.length > 280
                   ? `${show ? overview : `${overview.slice(0, 280)}...`}`

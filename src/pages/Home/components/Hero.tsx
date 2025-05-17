@@ -25,7 +25,7 @@ const Hero = ({ movies }: { movies: IMovie[] }) => (
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}
-          className=" h-full w-full "
+          className=" h-full w-full will-change-transform motion-reduce:transform-none"
         >
           {({ isActive }) => (isActive ? <HeroSlide movie={movie} /> : null)}
         </SwiperSlide>
