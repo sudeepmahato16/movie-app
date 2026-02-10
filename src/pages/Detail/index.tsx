@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 import { useParams } from "react-router-dom";
 
-import { Poster, Loader, Error, Section } from "@/common";
+import { Poster, Loader, Error, Section, WatchlistButton } from "@/common";
 import { Casts, Videos, Genre } from "./components";
 
 import { useGetShowQuery } from "@/services/TMDB";
@@ -108,6 +108,10 @@ const Detail = () => {
                 {!show ? "show more" : "show less"}
               </button>
             </m.p>
+
+            <m.div variants={fadeDown} className="will-change-transform motion-reduce:transform-none">
+              <WatchlistButton movie={movie} category={category as "movie" | "tv"} variant="full" />
+            </m.div>
 
             <Casts casts={credits?.cast || []} />
           </m.div>

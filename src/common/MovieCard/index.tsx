@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
 import Image from "../Image";
+import WatchlistButton from "../WatchlistButton";
 import { IMovie } from "@/types";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -33,6 +34,10 @@ const MovieCard = ({
           <div className="xs:text-[48px] text-[42px] text-[#ff0000] scale-[0.4] group-hover:scale-100 transition-all duration-300 ">
             <FaYoutube />
           </div>
+        </div>
+
+        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+          <WatchlistButton movie={movie} category={category as "movie" | "tv"} />
         </div>
       </Link>
 
