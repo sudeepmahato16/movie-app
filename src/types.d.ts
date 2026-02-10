@@ -16,3 +16,7 @@ export interface IMovie {
   backdrop_path: string
 }
 
+export interface IWatchlistItem extends IMovie {
+  category: "movie" | "tv";
+}
+
