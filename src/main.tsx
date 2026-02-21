@@ -7,6 +7,7 @@ import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { tmdbApi } from "@/services/TMDB";
 import GlobalContextProvider from "@/context/globalContext";
 import ThemeProvider from "@/context/themeContext";
+import WatchlistProvider from "@/context/watchlistContext";
 import App from "./App";
 import "./index.css";
 
@@ -16,9 +17,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ApiProvider api={tmdbApi}>
         <ThemeProvider>
           <GlobalContextProvider>
-            <LazyMotion features={domAnimation}>
-              <App />
-            </LazyMotion>
+            <WatchlistProvider>
+              <LazyMotion features={domAnimation}>
+                <App />
+              </LazyMotion>
+            </WatchlistProvider>
           </GlobalContextProvider>
         </ThemeProvider>
       </ApiProvider>

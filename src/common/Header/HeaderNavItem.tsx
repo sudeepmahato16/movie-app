@@ -6,9 +6,10 @@ interface HeaderProps {
   link: { title: string; path: string };
   isNotFoundPage: boolean;
   showBg: boolean;
+  badge?: number;
 }
 
-const HeaderNavItem = ({ link, showBg, isNotFoundPage }: HeaderProps) => {
+const HeaderNavItem = ({ link, showBg, isNotFoundPage, badge }: HeaderProps) => {
   return (
     <li>
       <NavLink
@@ -27,7 +28,14 @@ const HeaderNavItem = ({ link, showBg, isNotFoundPage }: HeaderProps) => {
         }}
         end
       >
-        {link.title}
+        <span className="flex items-center gap-1">
+          {link.title}
+          {badge ? (
+            <span className="text-[10px] bg-yellow-400 text-black rounded-full px-[5px] py-[1px] font-bold leading-none">
+              {badge}
+            </span>
+          ) : null}
+        </span>
       </NavLink>
     </li>
   );

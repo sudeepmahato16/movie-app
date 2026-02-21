@@ -8,6 +8,7 @@ import Overlay from "../Overlay";
 
 import { useGlobalContext } from "@/context/globalContext";
 import { useTheme } from "@/context/themeContext";
+import { useWatchlist } from "@/context/watchlistContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useMotion } from "@/hooks/useMotion";
 import { navLinks, themeOptions } from "@/constants";
@@ -18,6 +19,7 @@ import { cn } from "@/utils/helper";
 const SideBar: React.FC = () => {
   const { showSidebar, setShowSidebar } = useGlobalContext();
   const { theme } = useTheme();
+  const { watchlist } = useWatchlist();
   const { slideIn } = useMotion();
 
   const closeSideBar = useCallback(() => {
@@ -57,6 +59,7 @@ const SideBar: React.FC = () => {
                       link={link}
                       closeSideBar={closeSideBar}
                       key={link.title.replaceAll(" ", "")}
+                      badge={link.path === "/watchlist" ? watchlist.length : undefined}
                     />
                   );
                 })}
