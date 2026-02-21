@@ -6,9 +6,10 @@ import { cn } from "@/utils/helper";
 interface SidebarNavItemProps {
   link: INavLink;
   closeSideBar: () => void;
+  badge?: number;
 }
 
-const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
+const SidebarNavItem = ({ link, closeSideBar, badge }: SidebarNavItemProps) => {
   return (
     <li>
       <NavLink
@@ -20,6 +21,11 @@ const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
       >
         {<link.icon className="text-[18px]" />}
         <span>{link.title}</span>
+        {badge ? (
+          <span className="ml-auto text-[10px] bg-yellow-400 text-black rounded-full px-[5px] py-[1px] font-bold leading-none">
+            {badge}
+          </span>
+        ) : null}
       </NavLink>
     </li>
   );

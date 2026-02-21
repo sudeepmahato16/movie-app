@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { IMovie } from "@/types";
 
 export const getErrorMessage = (error: any) => {
   let errorMessage;
@@ -32,3 +33,12 @@ export const getTheme = () => {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const saveWatchlist = (items: IMovie[]) => {
+  localStorage.setItem("watchlist", JSON.stringify(items));
+};
+
+export const getWatchlist = (): IMovie[] => {
+  const data = localStorage.getItem("watchlist");
+  return data ? (JSON.parse(data) as IMovie[]) : [];
+};

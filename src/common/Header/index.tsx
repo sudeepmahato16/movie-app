@@ -11,6 +11,7 @@ import HeaderNavItem from "./HeaderNavItem";
 
 import { useGlobalContext } from "@/context/globalContext";
 import { useTheme } from "@/context/themeContext";
+import { useWatchlist } from "@/context/watchlistContext";
 import { maxWidth, textColor } from "@/styles";
 import { navLinks } from "@/constants";
 import { THROTTLE_DELAY } from "@/utils/config";
@@ -19,6 +20,7 @@ import { cn } from "@/utils/helper";
 const Header = () => {
   const { openMenu, theme, showThemeOptions } = useTheme();
   const { setShowSidebar } = useGlobalContext();
+  const { watchlist } = useWatchlist();
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isNotFoundPage, setIsNotFoundPage] = useState<boolean>(false);
@@ -87,6 +89,7 @@ const Header = () => {
                   link={link}
                   isNotFoundPage={isNotFoundPage}
                   showBg={isActive}
+                  badge={link.path === "/watchlist" ? watchlist.length : undefined}
                 />
               );
             })}
